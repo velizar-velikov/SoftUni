@@ -1,0 +1,4 @@
+function easterDecoration(input){
+
+}
+easterDecoration()
