@@ -8,7 +8,7 @@ function testGit() {
         screen: 1080,
         windows: 11 
     }
-    const dog = {
+    let dog = {
         name: Turtle,
         years: 12,
         colour: brown,
@@ -19,6 +19,7 @@ function testGit() {
         meals: 3,
         brain: big
     }
+<<<<<<< Updated upstream
     const rabbit = {
         name: Bonnel,
         age: 5,
@@ -27,5 +28,9 @@ function testGit() {
         legs: 4,
         ears: long,
         eyes: 2
+=======
+    dog.name = Bojo;
+    console.log(dog.name);
+>>>>>>> Stashed changes
 }
 
