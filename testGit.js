@@ -19,5 +19,13 @@ function testGit() {
         meals: 3,
         brain: big
     }
+    const rabbit = {
+        name: Bonnel,
+        age: 5,
+        colour: white,
+        speed: very_fast,
+        legs: 4,
+        ears: long,
+        eyes: 2
 }
 
