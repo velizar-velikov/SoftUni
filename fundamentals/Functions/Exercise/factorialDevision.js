@@ -1,21 +1,14 @@
 function factorialDevision(intOne, intTwo) {
-    let factorialFirst = a => {
-        if (a > 1) {
-            return a * factorialFirst(a - 1);
-        } else {
+    let factorial = a => {
+        if (a <= 1) {
             return 1;
+        } else {
+            return a * factorial(a - 1);
         }
     }
 
-    let factorialSecond = b => {
-        if (b > 1) {
-            return b * factorialSecond(b - 1);
-        }else {
-            return 1;
-        }
-    }
-    let numOne = factorialFirst(intOne);
-    let numTwo = factorialSecond(intTwo);
+    let numOne = factorial(intOne);
+    let numTwo = factorial(intTwo);
     return (numOne / numTwo).toFixed(2);
 }
-console.log(factorialDevision(6, 2))
+console.log(factorialDevision(3, 2))
