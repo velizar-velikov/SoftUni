@@ -3,7 +3,6 @@ function guineaPig(input) {
     let hayG = Number(input[1]) * 1000;
     let coverG = Number(input[2]) * 1000;
     let pigWeight = Number(input[3]) * 1000;
-    // let outOfProvisions = false;
 
     for (let i = 1; i <= 30; i++) {
         foodG -= 300;
@@ -15,19 +14,18 @@ function guineaPig(input) {
         }
         if (foodG <= 0 || hayG <= 0 || coverG <= 0) {
             console.log('Merry must go to the pet store!');
-            // outOfProvisions = true;
-            // return;
+            return;
         }
     }
-    console.log(`Everything is fine! Puppy is happy! Food: ${(foodG / 1000).toFixed(2)}, Hay: ${(hayG / 1000).toFixed(2)}, Cover: ${(coverG / 1000).toFixed(2)}`)
+    console.log(`Everything is fine! Puppy is happy! Food: ${(foodG / 1000).toFixed(2)}, Hay: ${(hayG / 1000).toFixed(2)}, Cover: ${(coverG / 1000).toFixed(2)}.`)
 }
-guineaPig(["10", 
-"5", 
-"5.2", 
-"1"])
-// guineaPig(["1", 
-// "1.5", 
-// "3", 
+guineaPig(["10",
+    "5",
+    "5.2",
+    "1"])
+// guineaPig(["1",
+// "1.5",
+// "3",
 // "1.5"])
 // guineaPig(["9",
 // "5",
