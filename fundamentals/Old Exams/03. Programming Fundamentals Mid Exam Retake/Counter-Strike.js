@@ -27,8 +27,8 @@ function counterStrike(input) {
     }
 }
 counterStrike(["200",
-"54",
-"14",
-"28",
-"13",
-"End of battle"])
+    "54",
+    "14",
+    "28",
+    "13",
+    "End of battle"])
