@@ -3,7 +3,7 @@ function numbers(input) {
     arr = strArrToNumArr()
     let avgNum = findAvgNum();
     let topNums = findTopNums();
-    // topNums.sort((a, b) => b - a);
+    topNums.sort((a, b) => b - a);
 
     if (topNums.length == 0) {
         console.log('No');
