@@ -1,9 +1,9 @@
 function printSongs(input) {
     class Song {
         constructor(typeList, name, time) {
-           this.typeList = typeList;
-           this.name = name;
-           this.time = time 
+            this.typeList = typeList;
+            this.name = name;
+            this.time = time
         }
     }
     let numberOfSongs = input.shift();
