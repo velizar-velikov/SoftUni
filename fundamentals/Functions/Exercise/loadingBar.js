@@ -15,4 +15,4 @@ function loadingBar(number) {
         console.log('Still loading...');
     }
 }
-loadingBar(100)
+loadingBar(50)
