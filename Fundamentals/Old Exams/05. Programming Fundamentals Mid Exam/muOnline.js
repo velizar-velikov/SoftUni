@@ -1,5 +1,5 @@
 // muOnline is the same as dungeonesDark from Array - Exercise with only difference in input way and output formatting
-// so coppied dungeonesDark and passed with 100/100
+// so coppied dungeonestDark and passed with 100/100
 function dungeonestDark(str) {
       let newArr = str.split('|');
       let health = 100;
