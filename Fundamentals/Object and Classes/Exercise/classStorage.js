@@ -6,23 +6,19 @@ function solve() {
     
     class Storage {
 
-        storage = {};
-        totalCost = 0;
-
+        
         constructor(capacity) {
             this.capacity = capacity;
+            this.storage = [];
+            this.totalCost = 0;
         }
         addProduct(product) {
-            this.storage[product] = product;
+            this.storage.push(product);
             this.capacity -= product.quantity;
             this.totalCost += product.price * product.quantity;
         }
         getProducts() {
-            let result = '';
-            for (let item in this.storage) {
-                result += JSON.stringify(item) + '\n';
-            }
-            return result;
+            return this.storage.map(product => JSON.stringify(product)).join('\n');
         }
     }
 
