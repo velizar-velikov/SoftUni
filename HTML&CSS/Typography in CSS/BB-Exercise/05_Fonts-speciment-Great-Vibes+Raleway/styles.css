@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=IM+Fell+Great+Primer:ital@0;1&family=Raleway:ital,wght@1,300&display=swap');
+
 body {
     text-align: left;
     font-family: Raleway, sans-serif;
@@ -9,6 +12,9 @@ h2 {
     font-family: Great Vibes, cursive;
     line-height: 1.2;
     font-weight: bold;
+}
+ol {
+    list-style-type: decimal;
 }
 ul li {
     list-style: square;
