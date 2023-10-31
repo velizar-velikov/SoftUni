@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+}
+
+.viewport {
+    height: 100vh;
+    position: relative;
+}
+
+.card {
+    width: 10em;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5em;
+    overflow: hidden;
+    border: 1px solid rgb(255, 255, 255, 0.5);
+    box-shadow: 0 0 1.5em 0.4em rgb(0, 0, 0, 0.3);
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card .shadow {
+    display: block;
+    position: absolute;
+    content: "";
+    background: rgb(0, 0, 0, 0.2);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 1.5em 0.5em rgb(0, 0, 0, 0.7) inset;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+.card:hover .shadow {
+    opacity: 0;
+}
+ 
+.viewport:nth-child(1){
+    background: linear-gradient(90deg, rgba(4,74,155,1) 1%, rgba(23,187,168,1) 58%, rgba(0,255,216,1) 89%);
+}
+
+.viewport:nth-child(2) {
+    background: linear-gradient(90deg, rgba(200,3,106,1) 1%, rgba(214,96,21,1) 68%, rgba(224,115,7,1) 89%);
+}
