@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EEE;
+    padding: 5rem;
+}
+
+.main-container {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+    /* min-height: 100vh; */
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 15px;
+    min-height: 100vh;
+}
+
+header, main, aside, footer { 
+    padding: 2rem;
+    background-color: #FFF;
+    border-radius: 0.4rem;
+    color: #000;
+}
+
+header, footer {
+    flex-basis: 100%;
+}
+
+main {
+    flex-grow: 2;
+}
+
+aside {
+    flex-grow: 1;
+}
