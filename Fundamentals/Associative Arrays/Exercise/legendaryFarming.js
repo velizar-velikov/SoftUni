@@ -1,5 +1,5 @@
 function legendaryFarming(str) {
-    let legendaries = { shards: 'Shadowmourne', fragments: 'Valanyr', motes: 'Dragowrath' };
+    let legendaries = { shards: 'Shadowmourne', fragments: 'Valanyr', motes: 'Dragonwrath' };
     let keyMaterials = { shards: 0, fragments: 0, motes: 0 };
     let junkMaterials = {};
     let keyMaterialsTypes = ['shards', 'fragments', 'motes']
