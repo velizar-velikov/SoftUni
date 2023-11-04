@@ -38,10 +38,6 @@ function arenaTier(input) {
                 }
 
                 if (commonTechnique) {
-                    // let totalSkillGlad1 = 0;
-                    // let totalSkillGlad2 = 0;
-                    // Object.values(gladiatorPool[gladiator1]).forEach(skill => totalSkillGlad1 + skill);
-                    // Object.values(gladiatorPool[gladiator2]).forEach(skill => totalSkillGlad2 + skill);
 
                     if (totalSkill[gladiator1] > totalSkill[gladiator2]) {
                         delete gladiatorPool[gladiator2];
@@ -57,7 +53,7 @@ function arenaTier(input) {
     }
 
     let totalSkillEntries = Object.entries(totalSkill).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-    
+
 
     for (let entry of totalSkillEntries) {
         console.log(`${entry[0]}: ${entry[1]} skill`);
@@ -87,4 +83,4 @@ arenaTier([
     'Gladius vs Julius',
     'Gladius vs Maximilian',
     'Ave Cesar'
-    ])
+])
