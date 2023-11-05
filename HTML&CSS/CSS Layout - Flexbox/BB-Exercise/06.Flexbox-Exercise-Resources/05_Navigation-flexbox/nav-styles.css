@@ -1,0 +1,28 @@
+body {
+    padding: 2em;
+}
+
+header {
+    border-bottom: 2px solid rgb(0, 0, 0);
+    display: flex;
+}
+
+h1 {
+    display: flex;
+    flex-grow: 1;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+}
+
+ nav ul li a{
+     color: rgb(0, 153, 0);
+     text-decoration: none;
+     margin: 0.8em;
+ }
