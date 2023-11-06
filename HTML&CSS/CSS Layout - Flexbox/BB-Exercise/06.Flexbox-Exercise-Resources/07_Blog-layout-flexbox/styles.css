@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(238, 238, 238);
+}
+
+header {
+    padding-bottom: 2em;
+    border-bottom: 3px solid black;
+    flex-basis: 85%;
+    width: 70%;
+}
+
+section {
+    padding-bottom: 2em;
+}
+
+h1, h2, h3, blockquote {
+    font-family: Georgia, serif;
+}
+
+h2, h3 {
+    padding-bottom: 1em;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
+    justify-content: center;
+}
+
+main {
+    width: 60%;
+    padding-block: 2em;
+}
+
+aside {
+    width: 25%;
+    padding-left: 4em;
+    padding-block: 2em;
+}
+
+p {
+    padding-bottom: 1em;
+}
+
+blockquote {
+    float: right;
+    width: 45%;
+    border-left: 3px solid grey;
+    padding: 0 0 3em 2em;
+    margin-left: 0.5em;
+}
+
+blockquote footer {
+    text-align: right;
+    padding-top: 0.5em;
+}
+
+blockquote p, blockquote footer {
+    color: grey; 
+    font-style: italic;
+}
+
+img {
+    display: block;
+    background: (255, 255, 255);
+    border: 3px solid black;
+    padding: 0.3em;
+    box-shadow: 0 0 1em 0.3em rgb(0, 0, 0, 0.3);
+}
+
+.one img {
+    float:right;
+    margin: 0 0 0.5em 0.5em;
+}
+
+.three img {
+    float: left;
+    margin: 0 1em 0 0;
+}
+
+ul {
+    padding-bottom: 1em;
+}
+
+li {
+    padding-left: 2em;
+    list-style: none;
+}
+
+a {
+    color: rgb(0 , 153, 0);
+    text-decoration: none;
+}
