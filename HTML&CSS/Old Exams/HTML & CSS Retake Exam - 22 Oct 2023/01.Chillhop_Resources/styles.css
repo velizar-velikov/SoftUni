@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.801);
+}
+
+header {
+    margin-block: 1em;
+}
+
+h1 {
+    color: rgba(245, 245, 245, 0.921);
+    margin-bottom: 1em;
+}
+
+.card {
+    display: flex;
+    background-color: #068ec4;
+    border: 5px solid rgba(0, 0, 0, 0.792);
+    border-radius: 1em;
+    margin: 4em 8em;
+    gap: 2em;
+    justify-content: space-evenly;
+    padding: 3em;
+    width: 70%;
+    height: auto;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-block: 1em;
+    padding-top: 1em;
+}
+
+button {
+    border-radius: 0.3em;
+    border: 3px solid black;
+    padding: 0.5em 1em;
+    margin-right: 1em;
+}
+
+button:nth-child(1) {
+    background-color: rgb(203, 57, 82);
+}
+
+button:nth-child(1) a {
+    color: whitesmoke;
+}
+
+button:nth-child(2) a {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media all and (max-width:700px) {
+    .card {
+        flex-direction: column-reverse;
+    }
+}
