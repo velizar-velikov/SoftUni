@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image-square {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 9em;
+    height: 9em;
+}
+
+html {
+    font-family: Inter, serif;
+    font-size: 16px;
+}
+
+body {
+    background-image: url(../01/images/background.jpg);
+    display: flex;
+    align-items: center;
+    padding-block: 4em;
+}
+
+p {
+    color: #595959;
+}
+
+.quotes {
+    font-size: 3em;
+    color: black;
+}
+
+.style-column .quotes {
+    font-size: 5em;
+    padding-bottom: 0;
+}
+
+
+.author {
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.style-row .text p.quotes {
+    padding-bottom: 0.5em;
+}
+
+article {
+    background-color: white;
+}
+
+.style-row:first-child img {
+    transform: translateY(-15px);
+}
+
+.style-column img {
+    transform: translateY(-13px);
+    filter: grayscale(1);
+}
+
+.image {
+    display: flex;
+    align-items: center;
+}
+
+.style-column .image-square {
+    width: 6em;
+    height: 6em;
+}
+
+.container {
+    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    gap: 2em;
+    padding-inline: 2em;
+}
+
+.left-side {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.style-row {
+    flex: 1 1 45%;
+    padding: 3em 2em;
+}
+
+.right-side {
+    flex: 1 1 30%;
+    display: flex;
+}
+
+.style-row {
+    display: flex;
+    gap: 2em;
+}
+
+.style-row .text {
+    max-width: 80%;
+}
+
+.style-column {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 3em 1.5em 2em 1.5em;
+}
+
+.style-column .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-box {
+    border-top: 1px solid lightgrey;
+    flex-basis: 100%;
+    justify-self: flex-end;
+    display: flex;
+    gap: 1em;
+}
+
+.author-info {
+    align-self: center;
+}
+
+.job-title {
+    font-size: 12px;
+    font-weight: bold;
+}
