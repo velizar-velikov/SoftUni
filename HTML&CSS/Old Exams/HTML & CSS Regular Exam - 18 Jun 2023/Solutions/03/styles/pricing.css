@@ -36,7 +36,7 @@
     flex-direction: column;
     list-style: none;
     align-items: flex-start;
-    padding: 2em 1.3em;
+    padding: 2em 1.4em;
     border-left: 1px solid lightgray;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
@@ -83,7 +83,7 @@
 #has-top-border {
     padding-top: 2.2em;
     border-top: 1px solid gray;
-    padding-right: 5em;
+    padding-right: 3em;
 }
 
 .pricing-plan-expand {
