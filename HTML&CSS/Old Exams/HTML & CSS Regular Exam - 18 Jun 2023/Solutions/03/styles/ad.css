@@ -1,0 +1,40 @@
+.ad {
+    background-color: #ACE1DE;
+    padding-inline: 16em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ad-phone {
+    padding: 0em 3em 1em 3em;
+    border: 2px dashed rgb(178, 177, 177);
+}
+
+.ad-phone img {
+    width: 20em;
+    height: auto;
+}
+
+.ad-text {
+    padding-left: 6em;
+    padding-top: 5em;
+}
+
+.ad-text-heading {
+    font-size: 2.5em;
+    padding-bottom: 1em;
+}
+
+.ad-text-subheading {
+    padding-bottom: 0.7em;
+}
+
+.ad-text-p {
+    padding-bottom: 2.4em;
+}
+
+.ad-text-footer p {
+    border-bottom: 2px solid rgb(154, 153, 153);
+    display: inline-block;
+    padding-bottom: 0.1em;
+}

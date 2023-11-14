@@ -1,0 +1,43 @@
+.header-topbar {
+    padding: 1.3em 10em;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+}
+
+.header-topbar-nav-list, 
+.header-topbar-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-topbar-nav-list-item {
+    margin-right: 1.6em;
+}
+
+.header-topbar-profile-login {
+    margin-right: 1.5em;
+}
+
+.header-topbar-nav-list-item,
+ .header-topbar-profile-login, 
+ .header-topbar-profile-signup {
+    list-style: none;
+}
+
+.header-topbar-nav-list-item a,
+.header-topbar-profile-login a,
+.header-topbar-profile-signup a {
+    color: black;
+    text-decoration: none;
+}
+
+.header-topbar-profile-signup {
+    background-color: #ACE1DE;
+    border-radius: 0.3em;
+    padding: 0.5em 0.8em;
+}
+
+

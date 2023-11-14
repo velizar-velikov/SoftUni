@@ -1,0 +1,117 @@
+.pricing {
+    padding-block: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4em;
+    background-color: #F3F5FA;
+}
+
+.pricing-btn {
+    display: inline-block;
+    justify-self: center;
+    text-decoration: none;
+    color: black;
+    background-color: #ACE1DE;
+    padding: 0.5em 0.7em;
+    border-radius: 0.4em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.pricing-heading {
+    padding-bottom: 2em;
+    font-size: 2.2em;
+}
+
+.pricing-plans {
+    display: flex;
+}
+
+.pricing-plan-item {
+    background-color: white;
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: flex-start;
+    padding: 2em 1.3em;
+    border-left: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    line-height: 1.5em;
+}
+
+.pricing-plan-item:nth-child(1) {
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+.pricing-plan-item-heading {
+    align-self: center;
+}
+
+.pricing-plan-includes,
+.pricing-plan-expand-p {
+    padding-bottom: 0.7em;
+}
+
+.price-bold {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.pricing-plan-btn {
+    display: block;
+    width: 100%;
+    padding: 1em 0;
+    text-align: center;
+    background-color: #ADE2DF;
+    text-decoration: none;
+    color: black;
+    border-radius: 0.3em;
+    font-weight: bold;
+    margin-top: 2em;
+}
+
+
+.pricing-plan-price {
+    padding-block: 2.2em;
+}
+
+#has-top-border {
+    padding-top: 2.2em;
+    border-top: 1px solid gray;
+    padding-right: 5em;
+}
+
+.pricing-plan-expand {
+    padding: 2em;
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: #ACE1DE;
+}
+
+.pricing-plan-expand-heading {
+    text-align: center;
+}
+
+.pricing-plan-expand-subtitle {
+    padding-bottom: 2em;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.pricing-plan-expand-btn {
+    margin-top: 14.7em;
+    display: block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 1.1em;
+    border-radius: 0.3em;
+}

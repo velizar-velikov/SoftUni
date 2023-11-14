@@ -1,0 +1,52 @@
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4em 3em;
+    gap: 1.5em;
+    background-color: #ACE1DE;
+}
+
+main .banner {
+    align-items: center;
+}
+main .banner h1,
+main .banner .banner-p,
+main .banner .banner-btn-wrapper {
+    width: 40%;
+    text-align: center;
+}
+
+.banner-heading {
+    font-size: 3.7em;
+    letter-spacing: 1px;
+}
+
+.banner-p {
+    font-size: 1.2em;
+}
+
+.banner-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.banner-btn {
+    background-color: black;
+    padding: 1em 1.2em;
+    margin-top: 0.5em;
+    border-radius: 0.3em;
+}
+
+.banner-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner-btn i {
+    color: white;
+    padding-right: 0.5em;
+}

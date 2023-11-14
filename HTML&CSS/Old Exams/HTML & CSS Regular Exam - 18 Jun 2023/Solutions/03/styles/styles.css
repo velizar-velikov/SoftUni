@@ -1,0 +1,12 @@
+@import url(./reset.css);
+@import url(./navigation.css);
+@import url(./banner.css);
+@import url(./stats.css);
+@import url(./ad.css);
+@import url(./pricing.css);
+@import url(./footer.css);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
+
+html {
+    font-family: Inter, sans-serif;
+}

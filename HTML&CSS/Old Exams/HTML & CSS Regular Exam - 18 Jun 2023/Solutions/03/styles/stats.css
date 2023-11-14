@@ -1,0 +1,31 @@
+.stats {
+    padding: 5em 12em;
+    background-color: white;
+}
+
+.stats-list {
+    display: flex;
+    border-left: 2px solid rgba(232, 226, 226);
+    border-right:2px solid rgba(232, 226, 226);
+}
+
+.stats-list-item {
+    list-style: none;
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.stats-list-item:nth-child(1),
+.stats-list-item:nth-child(2) {
+    border-right: 2px solid rgb(197, 195, 195);
+}
+
+.stats-list-item-heading {
+    padding-bottom: 1em;
+    font-size: 1.7em;
+}
+
+.stats-list-item-p {
+    padding-bottom: 4.5em;
+    padding-inline: 0.8em;
+}
