@@ -73,6 +73,7 @@
     border-radius: 0.3em;
     font-weight: bold;
     margin-top: 2em;
+    /* margin-top: auto; */
 }
 
 
@@ -87,7 +88,7 @@
 }
 
 .pricing-plan-expand {
-    padding: 2em;
+    padding: 2.1em;
     flex-basis: 40%;
     display: flex;
     flex-direction: column;
@@ -106,7 +107,7 @@
 }
 
 .pricing-plan-expand-btn {
-    margin-top: 13.1em;
+    margin-top: auto;
     display: block;
     background-color: black;
     color: white;
