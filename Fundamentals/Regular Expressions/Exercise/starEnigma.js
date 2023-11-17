@@ -7,12 +7,18 @@ function starEnigma(input) {
     let command = input[index];
     while (index < input.length) {
         let pattern = /[star]/gi;
-        let specialLetterCounter = command.match(pattern).length;
-        let decriptedStr = command.split('').map(letter => {
-            let newLetter = String.fromCharCode(letter.charCodeAt() - specialLetterCounter);
-            return newLetter;
-        }).join('');
-        decriptedArr.push(decriptedStr);
+        let matches = command.match(pattern);
+        if (matches !== null) {
+            let count = matches.length;
+            let decriptedStr = command.split('').map(letter => {
+                let newLetter = String.fromCharCode(letter.charCodeAt() - count);
+                return newLetter;
+            }).join('');
+            decriptedArr.push(decriptedStr);
+        } else {
+            let decriptedStr = command;
+            decriptedArr.push(decriptedStr);
+        }
 
         index++;
         command = input[index];
