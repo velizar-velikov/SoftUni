@@ -1,5 +1,5 @@
 function netherRealms(data) {
-    let splittingPattern = /,[ ]+/g;
+    let splittingPattern = /[, ]+/g;
     let demonNames = data.trim().split(splittingPattern);
 
     let demons = {};
