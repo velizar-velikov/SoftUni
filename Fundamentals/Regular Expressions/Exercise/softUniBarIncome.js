@@ -1,5 +1,5 @@
 function calcIncome(input) {
-    let pattern = /%(?<name>[A-Z][a-z]+)%[^|$|.]*<(?<product>\w+)>[^|$|.]*\|(?<count>\d+)\|[^|$|.0-9]*(?<price>\d+\.?\d*)\$/g;
+    let pattern = /%(?<name>[A-Z][a-z]+)%[^|$%.]*<(?<product>\w+)>[^|$%.]*\|(?<count>\d+)\|[^|$%.0-9]*(?<price>\d+\.?\d*)\$/g;
 
     let totalMoney = 0;
     let match = [...(input.join(' ')).matchAll(pattern)];
