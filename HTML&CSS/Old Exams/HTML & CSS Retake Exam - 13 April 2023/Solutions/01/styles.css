@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Inter;
+    font-size: 16px;
+}
+
+body {
+    height: 50em;
+    overflow: hidden;
+}
+
+.plans-list {
+    display: flex;
+    background-image: url("./image/background.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    gap: 1.5em;
+    justify-content: center;
+    padding: 4em;
+    align-items: center;
+    box-shadow: 0 0 1em 0.3em rgb(0, 0, 0, 0.3);
+}
+
+.plans-list-item {
+    flex-basis: 29%;
+    background-color: white;
+    padding: 1.5em 1.5em;
+    height: 31em;
+    position: relative;
+}
+
+.plans-list-item:nth-child(2) {
+    height: 33em;
+}
+
+.plan-price {
+    padding-block: 1.4em;
+    font-size: 1.3em;
+}
+
+.price-number {
+    font-size: 3.2em;
+    font-weight: bold;
+}
+
+.payment {
+    margin-bottom: 2em;
+    color: rgb(180, 178, 178);
+    font-size: 0.8em;
+}
+
+.includes-item {
+    list-style: none;
+    padding-bottom: 0.8em;
+}
+
+.btn {
+    display: inline-block;
+    position: absolute;
+    background-color: black;
+    padding: 0.8em 2em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    bottom: 1.5em;
+    left: 1.5em;
+    border-radius: 0.3em;
+}

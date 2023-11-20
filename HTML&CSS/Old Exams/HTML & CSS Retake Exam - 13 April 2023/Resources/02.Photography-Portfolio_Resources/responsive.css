@@ -1,0 +1,80 @@
+@media screen and (max-width: 600px) {
+
+    .navigation-nav,
+    .home-text {
+        display: none;
+    }
+
+    .navigation-header {
+        position: relative;
+    }
+
+    .navigation-max-width {
+        padding-bottom: 0;
+    }
+
+    .home-portofolio.section-container {
+        padding-top: 0;
+    }
+
+    .button.button-lg.button-secondary {
+        margin-bottom: 1.3em;
+    }
+
+    .home-tab-selector-cards-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-about.section-container {
+        padding-top: 1.7em;
+        padding-bottom: 2.1em;
+    }
+
+    .home-max-width1.max-content-container {
+        flex-direction: column;
+    }
+
+    .home-image-container {
+        display: none;
+    }
+
+    .home-max-width2.max-content-container {
+        flex-direction: column;
+        padding-top: 2em;
+    }
+
+    .home-text10 {
+        margin-right: 0.5em;
+    }
+
+    .home-text12 {
+        padding-right: 2em;
+    }
+
+    .home-top-part {
+        flex-direction: column;
+    }
+
+    .home-links-container {
+        flex-direction: column;
+        width: initial;
+    }
+
+    .home-text13 {
+        padding-top: 2em;
+    }
+
+    .section-container {
+        padding-top: 0;
+        padding-bottom: 2.5em;
+    }
+
+    .button-primary.button {
+        padding: 1.5em 1.7em;
+    }
+
+    .home-subscribe-container {
+        width: initial;
+    }
+}

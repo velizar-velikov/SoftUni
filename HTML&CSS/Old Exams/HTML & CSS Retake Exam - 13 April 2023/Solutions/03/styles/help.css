@@ -1,0 +1,48 @@
+.help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 1.5em 7em 3em 7em;
+}
+
+.help-title {
+    font-size: 1.4em;
+}
+
+.help-p {
+    font-size: 1.1em;
+    letter-spacing: 0.07em;
+    font-weight: bold;
+    padding-inline: 20em;
+    text-align: center;
+}
+
+.help-list {
+    display: flex;
+    gap: 7em;
+    justify-content: space-between;
+}
+
+.help-list-item {
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.help-list-item i {
+    color: #85DCFF;
+    font-size: 8em;
+}
+
+.help-list-item-title {
+    font-size: 1.23em;
+}
+
+.help-list-item-p {
+    text-align: center;
+    padding-inline: 1em;
+}
