@@ -1,6 +1,7 @@
 // 71/100 в judge
 function radioCrystals(arr) {
     let desiredThickness = arr[0];
+    let toFinish = false;
 
     let operations = ['Cut', 'Lap', 'Grind', 'Etch', 'X-ray']
     for (let i = 1; i < arr.length; i++) {
@@ -9,8 +10,15 @@ function radioCrystals(arr) {
         let operation = '';
         let operationInaRow = 1;
         let numberOperations = 1;
+        let crystalReady = false;
 
-        while (currentCrystalThickness > desiredThickness) {
+        while (!crystalReady) {
+            currentCrystalThickness = decreaseThikness(currentCrystalThickness);
+            let nextOperation = '';
+            getNextOperation(currentCrystalThickness);
+            countOrPrintOperation(operation);
+            if (toFinish) return;
+            numberOperations = operationInaRow;
 
             function decreaseThikness(currentCrystalThickness) {
                 if (1 / 4 * currentCrystalThickness + 1 >= desiredThickness) {
@@ -31,9 +39,6 @@ function radioCrystals(arr) {
                 }
                 return currentCrystalThickness;
             }
-            currentCrystalThickness = decreaseThikness(currentCrystalThickness)
-
-            let nextOperation = '';
 
             function getNextOperation(currentCrystalThickness) {
                 if (1 / 4 * currentCrystalThickness + 1 >= desiredThickness) {
@@ -44,14 +49,11 @@ function radioCrystals(arr) {
                     nextOperation = operations[2];
                 } else if (currentCrystalThickness - 2 + 1 >= desiredThickness) {
                     nextOperation = operations[3];
-                } else if (currentCrystalThickness == desiredThickness) {
+                } else if (currentCrystalThickness + 1 == desiredThickness) {
                     nextOperation = operations[4];
                 }
                 return nextOperation;
             }
-            getNextOperation(currentCrystalThickness)
-
-            numberOperations = operationInaRow;
 
             function countOrPrintOperation(operation) {
                 if (nextOperation == operation) {
@@ -60,20 +62,24 @@ function radioCrystals(arr) {
                     operationInaRow = 1;
                     console.log(`${operation} x${numberOperations}`);
                 }
-                if (operationInaRow == 1) {
+                if (operationInaRow == 1 && operation !== 'X-ray') {
+                    currentCrystalThickness = Math.floor(currentCrystalThickness);
                     console.log('Transporting and washing');
                 }
                 if (currentCrystalThickness == desiredThickness) {
                     console.log(`Finished crystal ${desiredThickness} microns`);
+                    crystalReady = true;
+                    if (i == arr.length - 1) {
+                        toFinish = true;
+                        return;
+                    }
                 }
                 return operationInaRow;
             }
-            countOrPrintOperation(operation)
-
         }
     }
-
-
 }
-radioCrystals([1000, 4000, 8100])
+// radioCrystals([1000, 4000, 8100])
+
+radioCrystals([1375, 50000])
 
