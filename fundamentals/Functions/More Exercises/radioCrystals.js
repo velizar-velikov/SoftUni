@@ -1,4 +1,3 @@
-// 71/100 в judge
 function radioCrystals(arr) {
     let desiredThickness = arr[0];
     let toFinish = false;
