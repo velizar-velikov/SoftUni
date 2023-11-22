@@ -11,8 +11,6 @@ function pascalCaseSplitter(str) {
         }
         word += char;
     } if (word.length > 0) {
-        // if (word !== word.toLowerCase() && word !== word.toUpperCase()) {
-        // }
         words.push(word);
 
         console.log(words.join(', '));
