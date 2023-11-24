@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Mulish, sans-serif;
+    color: gray;
+}
+
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.card-form-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-form {
+    background-image: url("./images/form-background.png");
+    overflow: hidden;
+    background-size: cover;
+    border-radius: 1.5em;
+    width: 50em;
+    box-shadow: 0.9em 0.6em 0.8em 0.4em rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.form {
+    width: 60%;
+    padding: 5em 3em 4em 3em;
+}
+
+.form-heading {
+    margin-bottom: 1em;
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    letter-spacing: 2px;
+}
+
+input {
+    margin-top: 0.1em;
+}
+
+#first-name, #last-name, #email, #password, #confirm-password {
+    border-radius: 1.2em;
+    border: 1px solid rgb(234, 230, 230);
+    font-size: 1.15em;
+    padding: 0.5em 0.5em;
+}
+
+.name-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    margin-bottom: -0.5em;
+}
+
+.first-name-wrapper, .last-name-wrapper {
+    flex-basis: 50%;
+}
+
+#first-name, #last-name {
+    width: 100%;
+    display: flex;
+}
+
+#email, #password, #confirm-password {
+    width: 100%;
+    margin-bottom: 0.3em;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    background-color: #AE3C33;
+    padding: 0.8em 2.1em;
+    border-radius: 1.8em;
+    margin: 5em 0 0 7em;
+}
