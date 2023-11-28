@@ -1,3 +1,15 @@
 function create(words) {
-   console.log('TODO:...');
+   words.forEach(word => {
+      let div = document.createElement('div');
+      let para = document.createElement('p');
+      para.textContent = word;
+      para.style.display = 'none';
+      div.appendChild(para);
+      div.addEventListener('click', showPara);
+      let result = document.getElementById('content');
+      result.appendChild(div);
+      function showPara() {
+         para.style.display = 'block';
+      }
+   })
 }
