@@ -1,11 +1,14 @@
 function solve() {
 
-  let textArea = document.querySelector('h1 + textarea');
+  let textAreas = document.getElementsByTagName('textarea');
+  let textArea = textAreas[0];
 
-  let furnitureLists = textArea.value;
+  let furnitureLists = JSON.parse(textArea.value);
 
-  let generateBtn = document.querySelector('button');
-  let buyBtn = document.querySelectorAll('button')[1];
+  let buttons = document.getElementsByTagName('button');
+  let generateBtn = buttons[0];
+  let buyBtn = buttons[1];
+  debugger
 
   function handleGenerate() {
     for (let furnitureList of furnitureLists) {
@@ -57,7 +60,7 @@ function solve() {
     row.appendChild(cell4);
     row.appendChild(cell5);
 
-    let tableBody = document.querySelector('table tbody');
+    let tableBody = document.querySelector('tbody');
     tableBody.appendChild(row);
 
   }
