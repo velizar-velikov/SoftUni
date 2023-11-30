@@ -34,7 +34,7 @@ function solve() {
             }
         }
         let firstSum = sums[0];
-        if (inputValuesArr.includes('') || sums.some(sum => sum != firstSum)) {
+        if (inputValuesArr.includes('') || sums.some(sum => sum != firstSum || inputValuesArr.some(value => value < 0))) {
             isInvalid = true;
         }
         if (isInvalid == false) {
