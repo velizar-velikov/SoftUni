@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Courgette;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding: 2em 7em;
+    background-color: #F5F5F5;
+    height: 100vh;
+}
+
+header h1 {
+    font-size: 3.5em;
+    font-weight: normal;
+    letter-spacing: 4px;
+}
+
+header h2 {
+    font-size: 2em;
+    color: #CB2027;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-right: -0.7em;
+}
+
+.homes {
+    background-color: #F5F5F5;
+    display: flex;
+    gap: 2em;
+    justify-content: space-between;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1em;
+    overflow: hidden;
+    background-color: white;
+    object-fit: contain;
+    flex-basis: 33%;
+    height: 34em;
+}
+
+.img {
+    width: 100%;
+    height: 18em;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.img img {
+    width: 100%;
+    height: auto;
+}
+
+.text {
+    text-align: center;
+    padding-inline: 1.5em;
+}
+
+h3 {
+    padding: 0.6em 0;
+    border-bottom: 2px solid #CB2027;
+    margin-bottom: 1em;
+    font-size: 1.6em;
+}
+
+.home-para {
+    font-size: 1.2em;
+}
+
+
+i {
+    background-color: #CB2027;
+    color: white;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 1em;
+    font-weight: bold;
+    padding-top: 0.11em;
+}
+
+.btn {
+    text-decoration: none;
+    color: black;
+}
+
+.btn-text {
+    font-size: 1.2em;
+    margin-block: 3em 2em; 
+    display: inline-block;
+}
+
+.home:first-child .btn-text {
+    margin-top: 4.2em;
+}
+
+.icon {
+    display: inline-block;
+    margin-left: 0.5em;
+}
