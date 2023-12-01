@@ -1,0 +1,167 @@
+@media screen and (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        gap: 1em;
+    } 
+
+    .menu p {
+        font-size: 22px;
+    }
+    .nav-options {
+        flex-direction: column;
+        justify-content: center;
+        width: initial;
+        padding-left: 0;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    body > header > div{
+        background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4)), url('../image/dancing-girl.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    header div h1 {
+        font-size: 46px;
+    }
+
+    header div p {
+        font-size: 11px;
+    }
+
+    .trainings {
+        flex-direction: column;
+    }
+
+    .trainings div {
+        width: 66%;
+    }
+    
+    .trainings div img  {
+        width: 85px;
+        height: 85px;
+    }
+
+    .trainings div h3 {
+        font-size: 14px;
+    }
+
+    .trainings div p {
+        font-size: 11px;
+        padding-inline: 3em;
+    }
+
+    .instructors {
+        width: 100%;
+    }
+
+    .instructors h2 {
+        font-size: 25px;
+    }
+
+    .instructors > p {
+        font-size: 12px;
+        padding-inline: 2em;
+    }
+
+    .instructors-pic div {
+        width: 14rem;
+    }
+
+    .instructors-pic {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .instructors-pic h3 {
+        font-size: 14px;
+    }
+
+    .instructors-pic p {
+        font-size: 12px;
+    }
+
+    .classes h2 {
+        font-size: 27px;
+    }
+
+    .classes li {
+        width: 46%;
+        font-size: 0.8em;
+    }
+
+    .classes li > p {
+        font-size: 46px;
+    }
+
+    .classes li div p {
+        font-size: 11px;
+    }
+
+    .classes li div h3 {
+        font-size: 16px;
+    }
+
+    .getInTouch {
+        flex-direction: column;
+        align-items: initial;
+        padding-bottom: 1.6em;
+    }
+
+    .getInTouch h2 {
+        font-size: 24px;
+    }
+
+    .getInTouch form input {
+        width: 60%;
+        height: 2.2rem;
+        border-radius: 0.2rem;
+        padding-left: 0.5rem;
+        font-size: 11px;
+    }
+    
+    .getInTouch textarea {
+        padding-left: 0.5rem;
+        border-radius: 0.2rem;
+        font-size: 11px;
+    }
+
+    .form {
+        flex-basis: 70%;
+    }
+
+    .getInTouch button {
+        padding: 0.6rem 2rem;
+        font-size: 13px;
+    }
+
+    .site-footer {
+        font-size: 10px;
+    }
+
+    .site-footer .wrapper {
+        flex-wrap: wrap;
+    }
+
+    .site-footer .about {
+        flex-basis: 100%;
+    }
+
+    .site-footer .sitemap {
+        flex-basis: 50%;
+    }
+
+    .site-footer .contacts {
+        flex-basis: 40%;
+    }
+
+    .about header > p {
+        font-size: 7px;
+    }
+
+    .contacts h3 {
+        padding-bottom: 1.6rem;
+        padding-left: 0.4rem;
+    }
+}
