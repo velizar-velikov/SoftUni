@@ -37,6 +37,14 @@
     .bottom-banner-heading {
         font-size: 1.9em;
     }
+
+    .top-bar {
+        padding-right: 3em;
+    }
+
+    .secondary-nav-list-item a {
+        padding: 0.5em 0.8em;
+    }
 }
 
 @media screen and (max-width: 700px){
@@ -67,5 +75,13 @@
     }
     .bottom-banner-heading {
         font-size: 1.5em;
+    }
+
+    .card-list {
+        align-items: center;
+    }
+
+    .card-list-item {
+        width: 65%;
     }
 }
