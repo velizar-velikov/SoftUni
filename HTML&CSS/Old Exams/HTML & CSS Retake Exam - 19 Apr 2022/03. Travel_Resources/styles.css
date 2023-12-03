@@ -6,6 +6,7 @@
 
 html {
     font-family: Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 .top-bar {
@@ -128,7 +129,7 @@ html {
 }
 
 .banner-info-p {
-    font-size: 19px;
+    font-size: 1.19em;
     margin-top: 1em;
     margin-bottom: 0.6em;
     padding-bottom: 0.7em;
