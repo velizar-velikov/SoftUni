@@ -147,3 +147,126 @@ html {
 .banner-info-btn:hover {
     background-color: white;
 }
+
+.card {
+    background: linear-gradient(to right, #95660A, #CFAB3B);
+    padding: 1.5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    gap: 1em;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.card-list-item {
+    list-style: none;
+    width: 30em;
+}
+
+.btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.6em 1em;
+    border: 3px solid white;
+    text-align: center;
+    transition: background-color 0.1s ease-in;
+    transition: color 0.1s ease-in;
+    border-radius: 0.1em;
+}
+
+.btn:hover {
+    background-color: whitesmoke;
+    color: #95660A;
+}
+
+
+.bottom-banner {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-banner-heading {
+    font-size: 2.5em;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #4F5772;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.bottom-banner-p {
+    color: #4F5772;
+}
+
+.bottom-banner-list {
+    display: flex;
+    gap: 0.3em;
+    flex-wrap: wrap;
+    width: 73%;
+}
+
+.bottom-banner-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    flex: 1;
+    margin-top: 1em;
+    align-items: center;
+}
+
+.img {
+    border: 8px double #4F5772;
+    width: 13em;
+    height: 13em;
+    border-radius: 10em;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.img img {
+    width: 100%;
+    height: auto;
+}
+
+.img-heading {
+    text-align: center;
+    font-weight: normal;
+    color: #4F5772;
+    font-size: 0.92em;
+}
+
+.newsletter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9em 1em 0.5em 1em;
+    background: linear-gradient(to right, #bb820f, rgb(194, 153, 31));
+    color: whitesmoke;
+}
+
+.newsletter-text {
+    align-self: flex-end;
+}
+
+.newsletter h4 {
+    font-size: 0.88em;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+}
+
+.newsletter p {
+    font-size: 0.8em;
+}
+
+.site-footer {
+    text-align: center;
+    padding-block: 1.15em;
+}
