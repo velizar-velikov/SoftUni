@@ -1,0 +1,88 @@
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
+  .navbar {
+    justify-content: center;
+    padding-top: 15px;
+  }
+
+  .navbar-light .navbar-brand {
+    margin-right: 0;
+  }
+
+  .hero img {
+    display: none;
+  }
+
+  .container-fluid {
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin-top: 45px;
+  }
+
+  .hero-btns a {
+    display: inline-block;
+    width: 22em;
+    padding-block: 4em;
+  }
+
+  .hero-btns a:first-child {
+    padding-block: 19px;
+  }
+
+  .hero-btns {
+    margin-bottom: 90px;
+  }
+
+  .service-box {
+    text-align: start;
+    padding-block: 20px;
+  }
+
+  .service-box h3 {
+    font-size: 2.1rem;
+    margin-bottom: 0.9em;
+  }
+
+  .service-box p {
+    font-size: 1.1rem;
+  }
+
+  .col-12 {
+    text-align: center;
+  }
+
+  .col-12.col-sm-12.col-lg-6 {
+    text-align: center;
+    margin-top: 5em;
+  }
+
+  h5 {
+    font-size: 1.4rem;
+  }
+
+  .about p {
+    font-size: 1.5rem;
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer h3 {
+    margin-inline: 1em;
+  }
+
+  footer h6 {
+    padding-bottom: 10px;
+  }
+}

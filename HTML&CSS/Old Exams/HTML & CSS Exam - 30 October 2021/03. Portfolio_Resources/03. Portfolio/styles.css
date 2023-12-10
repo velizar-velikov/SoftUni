@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&display=swap");
+
+&:root {
+  --color-background: #efefef;
+  --color-txt: rgb(53, 51, 51);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  font-family: Raleway, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 6%;
+  gap: 2.5em;
+  color: var(--color-text);
+}
+
+.container {
+  display: flex;
+  background-color: var(--color-background);
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 6em;
+  color: var(--color-text);
+  height: 35em;
+  position: relative;
+}
+
+.container-1 {
+  padding-right: 1em;
+}
+
+.text {
+  flex-basis: 35%;
+}
+
+.text-title {
+  color: black;
+  font-size: 2.5em;
+  margin-bottom: 0.7em;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.thin {
+  font-weight: 200;
+}
+
+.text-p {
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.line {
+  width: 1px;
+  height: 60px;
+  background-color: black;
+  margin-top: 1.5em;
+}
+
+.img-wrapper {
+  flex-basis: 47%;
+  align-self: flex-end;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.menu a {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  display: flex;
+  gap: 0.9em;
+  color: black;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.menu-text {
+  color: rgb(31, 31, 31);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.fa-bars {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.img-wrapper-2 {
+  flex-basis: 36%;
+  margin-right: 3em;
+  align-self: center;
+}
+
+.text-2 {
+  flex-basis: 48%;
+}
+
+.container-2 {
+  justify-content: initial;
+  gap: 4em;
+}
+
+.title-wrapper {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.hor-line {
+  width: 70px;
+  height: 1px;
+  background-color: var(--color-txt);
+}
+
+.text-title-2 {
+  margin-bottom: 0;
+}
+
+.text-2 .text-p {
+  margin-bottom: 2em;
+}
+
+.icons {
+  display: flex;
+  gap: 1em;
+}
+
+.icon {
+  width: 2.3em;
+  height: 2.3em;
+  background-color: rgb(148, 146, 146);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.1em;
+}
+
+.fa-brands {
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+}
+
+.main-img-wrapper {
+  height: 43em;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-img-wrapper img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container-3 {
+  padding-right: 6em;
+}
+
+.container-3 .img-wrapper {
+  flex-basis: 50%;
+  align-self: center;
+}
+
+.images {
+  padding-inline: 7em;
+  position: relative;
+}
+
+.image-wrapper {
+  flex-basis: 40%;
+  transition: all 0.3s ease-in-out;
+  scale: 1;
+  z-index: 1;
+}
+
+.image-wrapper img {
+  width: 100%;
+}
+
+.image-wrapper:nth-child(2) {
+  width: 43%;
+  position: relative;
+  z-index: 3;
+  scale: 1.3;
+}
+
+/* .image-wrapper:nth-child(1):hover,
+.image-wrapper:nth-child(3):hover {
+  position: relative;
+  z-index: 5;
+  scale: 1.3;
+}
+
+.image-wrapper:nth-child(1):hover + .image-wrapper:nth-child(2) {
+  scale: 1;
+} */
+
+@keyframes scaleUp {
+  from {
+    scale: 1;
+  }
+
+  to {
+    scale: 1.3;
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    scale: 1.3;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+.hovered {
+  /* scale: 1.3; */
+  animation: scaleUp 0.3s ease-in-out;
+  animation-fill-mode: both;
+  position: relative;
+  z-index: 5;
+  transition: all 0.3 ease-in-out;
+}
+
+.image-wrapper:nth-child(1):not(:hover),
+.image-wrapper:nth-child(3):not(:hover) {
+  animation: scaleDown 0.3s ease-in-out;
+  animation-fill-mode: backwards;
+}
+
+.form {
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5em;
+  padding-inline: 11em;
+}
+
+.form .text-p {
+  text-align: center;
+  font-style: italic;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 38em;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+  gap: 1.5em;
+}
+
+input[type="email"],
+input[type="text"] {
+  padding: 0.7em;
+  flex: 1;
+  outline: none;
+}
+
+textarea {
+  padding: 0.7em;
+  flex-basis: 100%;
+  outline: none;
+  resize: none;
+}
+
+input[type="email"]::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: black;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+button {
+  padding: 0.6em;
+  flex-basis: 100%;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border-radius: 0.2em;
+}
+
+.form-footer {
+  padding-block: 1em;
+  font-size: 0.85em;
+}
