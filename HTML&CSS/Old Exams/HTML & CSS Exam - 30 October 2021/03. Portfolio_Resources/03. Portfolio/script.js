@@ -7,16 +7,15 @@ images[0].addEventListener("mouseout", scaleDown);
 images[2].addEventListener("mouseout", scaleDown);
 
 function scaleUp(e) {
-  console.log(e.target);
-  e.target.classList.add("hovered");
-  e.target.classList.remove("unhovered");
-  middleImage.style.zIndex = "0";
+  let hoveredImage = e.target;
+  hoveredImage.classList.add("hovered");
   middleImage.style.scale = "1";
+  middleImage.style.zIndex = "0";
 }
 
 function scaleDown(e) {
-  e.target.classList.remove("hovered");
-  e.target.classList.add("unhovered");
-  middleImage.style.zIndex = "5";
+  let hoveredImage = e.target;
+  hoveredImage.classList.remove("hovered");
   middleImage.style.scale = "1.3";
+  middleImage.style.zIndex = "5";
 }
