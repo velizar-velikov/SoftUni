@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Agbalumo", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 870px;
+  background-color: #d5ebea;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  align-items: center;
+}
+
+.titles {
+  text-align: center;
+  width: 100%;
+  padding: 1.5em 4em 0 2em;
+}
+
+.title {
+  width: 100%;
+  font-size: 2.3rem;
+  border-bottom: 3px solid black;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: normal;
+  border-bottom: 2px solid black;
+}
+
+.info {
+  background-color: white;
+  padding: 3em 3em 3em 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.map {
+  border: 3px solid black;
+  padding: 0.6em 0.8em 0.8em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.img-wrapper {
+  width: 100%;
+}
+
+.img-wrapper img {
+  width: 100%;
+}
+
+.map-text {
+  text-indent: 3em;
+  font-size: 0.8em;
+  display: flex;
+}
+
+.main-text {
+  text-indent: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  font-size: 1.05rem;
+  align-self: flex-end;
+}
+
+.facts {
+  background-color: white;
+}
+
+.facts-title {
+  display: inline-block;
+  color: white;
+  background-color: black;
+  padding: 0.2em 3em 0em;
+  font-size: 1.4rem;
+}
+
+.facts-wrapper {
+  background-color: #d5ebea;
+  padding: 1em 0 0em 2.4em;
+  font-size: 1.07rem;
+}
+
+.facts-wrapper p {
+  margin-bottom: 0.6em;
+}
+
+.bold {
+  font-weight: bold;
+}
