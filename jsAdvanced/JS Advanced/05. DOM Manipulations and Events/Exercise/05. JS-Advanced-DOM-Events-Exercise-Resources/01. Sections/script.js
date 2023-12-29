@@ -8,8 +8,8 @@ function create(words) {
       div.addEventListener('click', showPara);
       let result = document.getElementById('content');
       result.appendChild(div);
-      function showPara() {
-         para.style.display = 'block';
+      function showPara(e) {
+         e.target.children[0].style.display = 'block';
       }
    })
 }
