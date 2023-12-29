@@ -21,7 +21,7 @@ function solve() {
     }
 
     function validateInput(nameInput, hallInput, ticketPriceInput) {
-        if (nameInput.value && hallInput.value && !isNaN(Number(ticketPriceInput.value))) {
+        if (nameInput.value != '' && hallInput.value != '' && ticketPriceInput.value != '' && !isNaN(Number(ticketPriceInput.value))) {
             return true;
         }
         return false;
@@ -95,7 +95,7 @@ function solve() {
         let movieName = movieItem.querySelector('span').textContent;
         let ticketPrice = movieItem.querySelector('div strong').textContent;
         let ticketsCountInput = archiveBtn.parentElement.querySelector('input');
-        if (!isNaN(Number(ticketsCountInput.value)) && ticketsCountInput.value) {
+        if (!isNaN(Number(ticketsCountInput.value)) && ticketsCountInput.value != '' && Number(ticketsCountInput.value) >= 0) {
             moviesList.removeChild(movieItem);
             let archiveMovieItem = createArchiveMovieTemplate(movieName, ticketPrice, ticketsCountInput);
             archiveList.appendChild(archiveMovieItem);
