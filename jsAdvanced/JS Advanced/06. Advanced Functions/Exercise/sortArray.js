@@ -1,7 +1,7 @@
 function sortArray(nums, sortMethod) {
     let methods = {
-        'asc': arr => arr = arr.sort((a, b) => a - b),
-        'desc': arr => arr = arr.sort((a, b) => b - a)
+        'asc': arr => arr.sort((a, b) => a - b),
+        'desc': arr => arr.sort((a, b) => b - a)
     }
     return methods[sortMethod](nums);
 }
