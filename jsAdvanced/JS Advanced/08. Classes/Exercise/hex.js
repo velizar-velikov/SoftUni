@@ -8,21 +8,21 @@ class Hex {
     }
 
     toString() {
-        return `0x${this.value.toString(16).toUpperCase()}`;
+        return '0x' + this.value.toString(16).toUpperCase();
     }
 
-    plus(number) {
-        if (number.toString(16) === number) {
-            return `0x${(this.value + parseInt(number, 16)).toString(16)}`;
+    plus(input) {
+        if (typeof input === 'object') {
+            return new Hex(this.value + input.value);
         }
-        return `0x${(this.value + number).toString(16).toUpperCase()}`;
+        return new Hex(this.value + input);
     }
 
-    minus(number) {
-        if (number.toString(16).toUpperCase() == number) {
-            return `0x${(this.value - parseInt(number, 16)).toString(16)}`;
+    minus(input) {
+        if (typeof input === 'object') {
+            return new Hex(this.value - input.value);
         }
-        return `0x${(this.value - number).toString(16).toUpperCase()}`;
+        return new Hex(this.value - input);
     }
 
     parse(str) {
