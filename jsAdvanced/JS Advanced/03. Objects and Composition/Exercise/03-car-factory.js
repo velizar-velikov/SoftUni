@@ -23,7 +23,7 @@ function carFactory(car) {
         Math.floor(car.wheelsize) - 1
         : car.wheelsize;
 
-    car.wheels = [...new Array(4).fill(size)];
+    car.wheels = new Array(4).fill(size);
     delete car.wheelsize;
     return car;
 }
