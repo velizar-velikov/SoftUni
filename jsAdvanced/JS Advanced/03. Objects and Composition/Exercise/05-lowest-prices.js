@@ -3,12 +3,10 @@ function lowestPrices(input) {
     const products = {};
     input.forEach(info => {
         const [town, product, price] = info.split(' | ');
-        if (products[product]) {
-            products[product][town] = Number(price);
-        } else {
+        if (!products[product]) {
             products[product] = {};
-            products[product][town] = Number(price);
         }
+        products[product][town] = Number(price);
     })
 
     for (let [product, townObj] of Object.entries(products)) {
