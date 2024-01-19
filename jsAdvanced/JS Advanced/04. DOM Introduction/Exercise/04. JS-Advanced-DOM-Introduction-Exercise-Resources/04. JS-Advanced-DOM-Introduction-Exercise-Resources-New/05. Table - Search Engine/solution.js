@@ -1,16 +1,15 @@
 function solve() {
-   document.querySelector('#searchBtn').addEventListener('click', onClick);
+   document.getElementById('searchBtn').addEventListener('click', onClick);
+   const input = document.getElementById('searchField');
+   const rowsToSearch = document.querySelectorAll('tbody tr');
 
    function onClick() {
-      let input = document.getElementById('searchField');
-      let rowsToSearch = document.querySelectorAll('table tbody tr');
-      for (let i = 0; i < rowsToSearch.length; i++) {
-         let row = rowsToSearch[i];
-         row.classList = '';
+      for (let row of rowsToSearch) {
+         row.className = '';
          let cellsInRow = row.children;
          for (let cell of cellsInRow) {
             if (cell.textContent.includes(input.value) && input.value.length !== 0) {
-               row.classList.add('select');
+               row.className = 'select';
             }
          }
       }
