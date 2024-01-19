@@ -1,23 +1,15 @@
-let str = document.getElementById('text').value;
-let modifier = document.getElementById('naming-convention').value;
+function solve() {
 
-function solve(str, modifier) {
-  let result = '';
-  str = str.toLowerCase();
-  let words = str.split(' ');
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i];
-    if (modifier === 'Pascal Case') {
-      result += word[0].toUpperCase() + word.slice(1)
-    } else if (modifier === 'Camel Case') {
-      if (i === 0) {
-        result += word;
-      } else {
-        result += word[0].toUpperCase() + word.slice(1)
-      }
-    } else {
-      result = 'Error!';
-    }
-  }
-  document.getElementById('result').textContent = result;
+  const input = document.getElementById('text');
+  const currentCase = document.getElementById('naming-convention').value;
+  let resultArr = input.value.split(' ').map(word => word.toLowerCase());
+
+  if (currentCase == 'Camel Case') {
+    resultArr = [resultArr[0], ...resultArr.slice(1).map(word => word[0].toUpperCase() + word.substring(1))];
+  } else if (currentCase == 'Pascal Case') {
+    resultArr = resultArr.map(word => word[0].toUpperCase() + word.substring(1));
+  } else {
+    resultArr = ['Error!'];
+  };
+  document.getElementById('result').textContent = resultArr.join('');
 }
