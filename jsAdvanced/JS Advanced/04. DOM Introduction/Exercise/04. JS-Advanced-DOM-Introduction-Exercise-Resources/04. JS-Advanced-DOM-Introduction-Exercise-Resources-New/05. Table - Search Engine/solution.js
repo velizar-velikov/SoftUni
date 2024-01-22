@@ -5,8 +5,8 @@ function solve() {
 
    function onClick() {
       for (let row of rowsToSearch) {
+         let cellsInRow = row.querySelectorAll('td');
          row.className = '';
-         let cellsInRow = row.children;
          for (let cell of cellsInRow) {
             if (cell.textContent.includes(input.value) && input.value.length !== 0) {
                row.className = 'select';
