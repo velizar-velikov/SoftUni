@@ -1,21 +1,23 @@
 function attachEventsListeners() {
-    let dayBtn = document.getElementById('daysBtn');
-    let hourBtn = document.getElementById('hoursBtn');
-    let minBtn = document.getElementById('minutesBtn');
-    let secBtn = document.getElementById('secondsBtn');
 
-    dayBtn.addEventListener('click', calcValues);
-    hourBtn.addEventListener('click', calcValues);
-    minBtn.addEventListener('click', calcValues);
-    secBtn.addEventListener('click', calcValues);
+    const btns = [
+        document.getElementById('daysBtn'),
+        document.getElementById('hoursBtn'),
+        document.getElementById('minutesBtn'),
+        document.getElementById('secondsBtn')
+    ]
+
+    btns.forEach(btn => btn.addEventListener('click', calcValues));
+
+    const dayInput = document.getElementById('days');
+    const hourInput = document.getElementById('hours');
+    const minInput = document.getElementById('minutes');
+    const secondsInput = document.getElementById('seconds');
 
     function calcValues(e) {
-        let element = e.target;
-        let dayInput = document.getElementById('days');
-        let hourInput = document.getElementById('hours');
-        let minInput = document.getElementById('minutes');
-        let secondsInput = document.getElementById('seconds');
-        let enteredInput = element.parentElement.querySelector('input[type="text"]');
+        const element = e.target;
+        const enteredInput = element.parentElement.querySelector('input[type="text"]');
+
         if (enteredInput == dayInput) {
             hourInput.value = dayInput.value * 24;
             minInput.value = hourInput.value * 60;
