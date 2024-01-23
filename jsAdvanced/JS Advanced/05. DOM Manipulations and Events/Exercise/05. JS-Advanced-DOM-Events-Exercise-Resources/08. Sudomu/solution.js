@@ -1,59 +1,59 @@
 function solve() {
-    let inputs = document.querySelectorAll('tbody input');
-    let buttons = document.getElementsByTagName('button');
-    let checkBtn = buttons[0];
-    let clearBtn = buttons[1];
-    let table = document.querySelector('table');
-    let para = document.querySelector('#check p');
 
-    checkBtn.addEventListener('click', checkInputs);
-    clearBtn.addEventListener('click', clearInputs);
+    const checkBtn = document.querySelectorAll('button')[0];
+    const clearBtn = document.querySelectorAll('button')[1];
+    const rows = document.querySelectorAll('tbody tr');
+    const resultEl = document.querySelector('#check p');
+    const table = document.querySelector('table');
+    const inputs = document.querySelectorAll('table tbody input[type="number"]')
 
-    function checkInputs() {
-        let inputValuesArr = Array.from(inputs).map(input => input.value);
-        let sums = [];
-        let isInvalid = false;
+    checkBtn.addEventListener('click', checkSudomu);
+    clearBtn.addEventListener('click', getInitialState);
 
-        for (let i = 0; i < 3; i++) {
-            let verticalSum = 0;
-            let horSum = 0;
-            let horSet = new Set();
-            let verticalSet = new Set();
-            for (let j = 0; j < 3; j++) {
-                let horNum = Number(inputValuesArr[i * 3 + j]);
-                let verticalNum = Number(inputValuesArr[i + j * 3]);
-                horSum += horNum;
-                verticalSum += verticalNum;
-                horSet.add(horNum);
-                verticalSet.add(verticalNum);
-            }
-            sums.push(horSum);
-            sums.push(verticalSum);
-            if (horSet.size !== 3 || verticalSet.size !== 3) {
-                isInvalid = true;
-            }
-        }
-        let firstSum = sums[0];
-        if (inputValuesArr.includes('') || sums.some(sum => sum != firstSum || inputValuesArr.some(value => value < 0))) {
-            isInvalid = true;
-        }
-        if (isInvalid == false) {
+    function checkSudomu() {
+
+        if (checkRows() && checkColumns()) {
+            resultEl.textContent = 'You solve it! Congratulations!';
+            resultEl.style.color = 'green';
             table.style.border = '2px solid green';
-            para.textContent = 'You solve it! Congratulations!';
-            para.style.color = 'green';
         } else {
+            resultEl.textContent = 'NOP! You are not done yet...';
+            resultEl.style.color = 'red';
             table.style.border = '2px solid red';
-            para.textContent = 'NOP! You are not done yet...';
-            para.style.color = 'red';
         }
-
     }
-    function clearInputs() {
-        for (let i = 0; i < 9; i++) {
-            inputs[i].value = '';
+
+    function checkRows() {
+
+        for (let i = 0; i < rows.length; i++) {
+            const rowInputs = Array.from(rows[i].querySelectorAll('input[type="number"]')).map(rowInput => Number(rowInput.value));
+            const uniqueValues = Array.from(new Set(rowInputs)).sort((a, b) => a - b);
+            if (JSON.stringify(uniqueValues) != JSON.stringify([1, 2, 3])) {
+                return false;
+            }
         }
-        table.style.border = 'initial';
-        para.style.color = 'initial';
-        para.textContent = '';
+        return true;
+    }
+
+    function checkColumns() {
+        for (let i = 0; i < rows.length; i++) {
+            const columnInputs = [];
+            for (let j = 0; j < rows.length; j++) {
+                const inputValue = rows[j].querySelectorAll('input[type="number"]')[i].value;
+                columnInputs.push(Number(inputValue));
+            }
+            columnInputs.sort((a, b) => a - b)
+            const uniqueValues = Array.from(new Set(columnInputs));
+            if (JSON.stringify(uniqueValues) != JSON.stringify([1, 2, 3])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function getInitialState() {
+        Array.from(inputs).forEach(input => input.value = '');
+        table.style.border = '';
+        resultEl.textContent = '';
     }
 }
