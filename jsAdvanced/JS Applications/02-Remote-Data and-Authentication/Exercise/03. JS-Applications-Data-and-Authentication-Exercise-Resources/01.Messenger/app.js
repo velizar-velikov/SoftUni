@@ -13,6 +13,7 @@ function attachEvents() {
     async function sendInfo() {
 
         if (checkInputs() == false) {
+            alert('All fields are required!')
             return;
         }
 
