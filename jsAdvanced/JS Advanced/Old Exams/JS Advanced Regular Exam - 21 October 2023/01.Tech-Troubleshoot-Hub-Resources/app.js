@@ -118,7 +118,3 @@ function solution() {
     return Array.from(inputs).map(input => input.value);
   }
 }
-
-
-
-
