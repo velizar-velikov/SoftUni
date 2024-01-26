@@ -1,3 +1,4 @@
+document.getElementById('logout').style.display = 'none';
 const form = document.querySelector('form#register');
 
 form.addEventListener('submit', onRegister);

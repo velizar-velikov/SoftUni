@@ -1,9 +1,8 @@
+document.getElementById('logout').style.display = 'none';
 const form = document.querySelector('form#login');
 
 const loginBtn = document.querySelector('button');
 form.addEventListener('submit', loginUser);
-const logoutBtn = document.getElementById('logout');
-logoutBtn.style.display = 'none';
 
 async function loginUser(e) {
     e.preventDefault();
