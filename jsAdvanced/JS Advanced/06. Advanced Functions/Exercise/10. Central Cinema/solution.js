@@ -1,5 +1,3 @@
-//solved with 90/100
-
 function solve() {
     let moviesList = document.querySelector('#movies > ul');
     let archiveList = document.querySelector('#archive > ul');
