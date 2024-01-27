@@ -1,4 +1,4 @@
-let outer = (function () {
+let add = (function () {
     let sum = 0;
 
     return function add(num) {
@@ -8,4 +8,4 @@ let outer = (function () {
     }
 })();
 
-console.log(outer(6)(7)(3).toString());
+console.log(add(1).toString());
