@@ -5,7 +5,7 @@ describe('onlineStore', () => {
 
     describe('isProductAvailable', () => {
 
-        //Positive tests
+        //Correct input tests
         it('out of stock', () => {
             assert.equal(onlineStore.isProductAvailable('apple', 0), 'Sorry, apple is currently out of stock.');
             assert.equal(onlineStore.isProductAvailable('apple', -1), 'Sorry, apple is currently out of stock.');
@@ -14,7 +14,7 @@ describe('onlineStore', () => {
             assert.equal(onlineStore.isProductAvailable('apple', 1), 'Great! apple is available for purchase.');
         });
 
-        //Negative tests
+        //Incorrect input tests
         it('product is not a string throws an error', () => {
             assert.throws(() => { onlineStore.isProductAvailable(1, 1) }, Error, 'Invalid input.');
             assert.throws(() => { onlineStore.isProductAvailable({}, 1) }, Error, 'Invalid input.');
@@ -31,7 +31,7 @@ describe('onlineStore', () => {
 
     describe('canAffordProduct', () => {
 
-        //Positive tests
+        //Correct input tests
         it('not enough funds', () => {
             assert.equal(onlineStore.canAffordProduct(2, 1), "You don't have sufficient funds to buy this product.");
         });
@@ -42,7 +42,7 @@ describe('onlineStore', () => {
             assert.equal(onlineStore.canAffordProduct(1, 1), 'Product purchased. Your remaining balance is $0.');
         });
 
-        //Negative tests
+        //Incorrect input tests
         it('productPrice is not a number throws an error', () => {
             assert.throws(() => { onlineStore.canAffordProduct('1', 1) }, Error, 'Invalid input.');
             assert.throws(() => { onlineStore.canAffordProduct({}, 1) }, Error, 'Invalid input.');
@@ -59,7 +59,7 @@ describe('onlineStore', () => {
 
     describe('getRecommendedProducts', () => {
 
-        //Positive tests
+        //Correct input tests
         it('recommend one product', () => {
             assert.equal(onlineStore.getRecommendedProducts([{ name: 'apple', category: 'fruit' }], 'fruit'), "Recommended products in the fruit category: apple");
         });
@@ -70,7 +70,7 @@ describe('onlineStore', () => {
             assert.equal(onlineStore.getRecommendedProducts([{ name: 'apple', category: 'fruit' }], 'meat'), 'Sorry, we currently have no recommended products in the meat category.');
         });
 
-        //Negative tests
+        //Incorrect input tests
         it('productList is not an array throws an error', () => {
             assert.throws(() => { onlineStore.getRecommendedProducts('1', 'meat') }, Error, 'Invalid input.');
             assert.throws(() => { onlineStore.getRecommendedProducts({}, 'meat') }, Error, 'Invalid input.');
