@@ -1,0 +1,17 @@
+{
+  "name": "03.online-store_resources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "onlineStore.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^5.0.3",
+    "mocha": "^10.2.0"
+  }
+}
