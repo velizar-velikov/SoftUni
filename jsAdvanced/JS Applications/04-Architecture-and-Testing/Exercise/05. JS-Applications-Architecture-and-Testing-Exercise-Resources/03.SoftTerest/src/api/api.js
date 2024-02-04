@@ -18,15 +18,20 @@ async function request(method, url, data) {
     }
 
     try {
-        console.log(options);
         const response = await fetch(`${host}/${url}`, options);
 
         if (!response.ok) {
+            //Unauthorized
+            if (response.status === 403) {
+                localStorage.removeItem('user');
+                throw new Error('Access denied')
+            }
             const error = await response.json();
             throw new Error(error.message);
         }
 
-        return response.json();
+        return response.status === 204 ? response : response.json();
+
     } catch (error) {
         alert(error.message);
         throw error;

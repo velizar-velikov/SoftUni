@@ -1,5 +1,8 @@
 import { onLogout } from './utils.js';
+import { ideasSection, showCatalog } from './views/catalog.js';
+import { onCreate } from './views/create.js';
 
+export let ctx = null;
 export function initialize(routes) {
 
     const nav = document.querySelector('nav');
@@ -10,13 +13,18 @@ export function initialize(routes) {
         showSection,
         updateNav,
     };
+    ctx = context;
 
     function showSection(section) {
         document.getElementById('root').replaceChildren(section);
     }
 
     function onNavigate(event) {
-        const target = event.target;
+        let target = event.target;
+
+        if (target.tagName === 'IMG') {
+            target = target.parentElement;
+        }
 
         if (target.tagName == 'A') {
             event.preventDefault();
@@ -27,6 +35,7 @@ export function initialize(routes) {
 
             if (url.pathname == '/logout') {
                 onLogout();
+                showCatalog(ctx);
             }
         }
     }
@@ -39,18 +48,12 @@ export function initialize(routes) {
         }
     }
 
+
     function updateNav() {
         const user = localStorage.getItem('user');
 
-        if (user) {
-            nav.querySelectorAll('.user').forEach(el => el.style.display = 'block');
-            nav.querySelectorAll('.guest').forEach(el => el.style.display = 'none');
-        } else {
-            nav.querySelectorAll('.user').forEach(el => el.style.display = 'none');
-            nav.querySelectorAll('.guest').forEach(el => el.style.display = 'block');
-
-        }
+        nav.querySelectorAll('.user').forEach(el => el.style.display = user ? 'block' : 'none');
+        nav.querySelectorAll('.guest').forEach(el => el.style.display = user ? 'none' : 'block');
     }
-
     return context;
 }

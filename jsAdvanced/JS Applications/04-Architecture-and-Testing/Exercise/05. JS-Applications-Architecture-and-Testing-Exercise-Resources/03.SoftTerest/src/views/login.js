@@ -1,5 +1,6 @@
 import * as  api from '../api/api.js';
-import { showHome } from './home.js';
+import { homeSection, showHome } from './home.js';
+
 
 const section = document.getElementById('loginPage');
 
@@ -20,11 +21,15 @@ async function onLogin(e) {
         alert('All input fields are required!');
         return;
     }
-    loginForm.reset();
 
     const data = await api.post('users/login', { email, password });
-    if (data.accessToken == JSON.parse(localStorage.getItem('user').accessToken)) {
-        localStorage.setItem('user', JSON.stringify(data));
-        showHome(context);
-    }
+    localStorage.setItem('user', JSON.stringify(data));
+    document.getElementById('root').replaceChildren(homeSection);
+    loginForm.reset();
+
+    (function updateNav() {
+        const nav = document.querySelector('nav');
+        nav.querySelectorAll('.user').forEach(el => el.style.display = 'block');
+        nav.querySelectorAll('.guest').forEach(el => el.style.display = 'none');
+    })();
 }
