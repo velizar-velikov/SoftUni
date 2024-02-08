@@ -34,7 +34,7 @@ function solve() {
         }
 
         //saving input values before clearing them
-        const inputValues = Array.from(inputs).map(input => input.value);
+        const inputValues = Array.from(inputs).map(input => input.value.trim());
         const li = createListItem(inputValues);
         previewList.appendChild(li);
 
