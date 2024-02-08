@@ -11,6 +11,9 @@
         return this.toString().length == 0;
     }
     String.prototype.truncate = function (n) {
+        if (n < 4) {
+            return '.'.repeat(n);
+        }
         if (this.length <= n) {
             return this.toString();
         }
@@ -21,11 +24,8 @@
             }
             return result;
         }
-        if (n < 4) {
-            return '.'.repeat(n);
-        } else {
-            return this.substring(0, n - 3) + '...';
-        }
+        return this.substring(0, n - 3) + '...';
+
     }
 
     String.format = function (str, ...params) {
