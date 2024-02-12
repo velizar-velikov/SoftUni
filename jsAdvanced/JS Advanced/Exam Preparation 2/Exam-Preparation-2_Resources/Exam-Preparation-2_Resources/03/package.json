@@ -1,0 +1,17 @@
+{
+  "name": "03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "findApartment.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha ./findApartment.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0"
+  }
+}
