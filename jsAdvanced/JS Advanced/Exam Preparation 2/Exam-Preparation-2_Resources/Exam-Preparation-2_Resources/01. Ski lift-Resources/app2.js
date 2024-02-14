@@ -18,6 +18,7 @@ function solve() {
     const ticketInfoList = document.querySelector('.ticket-info-list');
     const confirmTicketList = document.querySelector('.confirm-ticket');
 
+    /**t@type {HTMLElement[]} */
     const inputs = [
         firstNameInput,
         lastNameInput,
@@ -43,6 +44,11 @@ function solve() {
         nextBtn.disabled = true;
     }
 
+    /**
+     * takes values and creates list item element
+     * @param {string[]} inputsValues 
+     * @returns {HTMLLIElement}
+     */
     function createListItemForInfo(inputsValues) {
         const li = createElement('li', { className: 'ticket' }, [
             createElement('article', {}, [
@@ -72,6 +78,11 @@ function solve() {
         confirmTicketList.appendChild(createListItemForConfirm(inputsValues));
     }
 
+    /**
+    * takes values and creates list item element
+    * @param {string[]} inputsValues 
+    * @returns {HTMLLIElement}
+    */
     function createListItemForConfirm(inputsValues) {
         const li = createElement('li', { className: 'ticket-content' }, [
             createElement('article', {}, [
@@ -102,7 +113,13 @@ function solve() {
         nextBtn.disabled = false;
     }
 
-
+    /**
+     * 
+     * @param {string} tagName type of html element
+     * @param {Object} attributes object with html attributes and their values
+     * @param {string} content 
+     * @returns 
+     */
     function createElement(tagName, attributes = {}, content = '') {
         const element = document.createElement(tagName);
 
