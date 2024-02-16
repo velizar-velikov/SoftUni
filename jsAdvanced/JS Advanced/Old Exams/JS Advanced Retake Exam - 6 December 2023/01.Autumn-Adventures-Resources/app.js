@@ -22,7 +22,7 @@ function solve() {
 
         const checkList = document.getElementById('check-list');
 
-        if (checkInputs() === false) {
+        if (checkInputs() === true) {
             return;
         }
         e.target.disabled = 'disabled';
@@ -32,7 +32,7 @@ function solve() {
         const pEvent = document.createElement('p');
         const pContact = document.createElement('p');
 
-        pTime.textContent = `Begins: ${dateInput.value} at ${timeInput.value}`;
+        pTime.textContent = `Begins: ${dateInput.value} at: ${timeInput.value}`;
         pPlace.textContent = `In: ${placeInput.value}`;
         pEvent.textContent = `Event: ${eventInput.value}`;
         pContact.textContent = `Contact: ${contactInput.value}`;
@@ -67,7 +67,7 @@ function solve() {
     }
 
     function checkInputs() {
-        return inputs.every(input => input.value !== '' && input.value.length > 0);
+        return inputs.some(input => input.value == '');
     }
 
     function clearInputs() {
@@ -114,7 +114,7 @@ function solve() {
 
         const finishedBtn = document.createElement('button');
         finishedBtn.classList.add('finished-btn');
-        finishedBtn.textContent = 'Move To Finished';
+        finishedBtn.textContent = 'Move to Finished';
 
         finishedBtn.addEventListener('click', moveToFinished);
 
@@ -140,6 +140,7 @@ function solve() {
     function clearFinishedList(e) {
         const finishedList = document.getElementById('finished-list');
         finishedList.innerHTML = '';
+        addBtn.disabled = false;
     }
 }
 
