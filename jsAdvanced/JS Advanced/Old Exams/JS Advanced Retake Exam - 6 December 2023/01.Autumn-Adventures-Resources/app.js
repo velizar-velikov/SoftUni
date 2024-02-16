@@ -143,7 +143,3 @@ function solve() {
         addBtn.disabled = false;
     }
 }
-
-
-
-
