@@ -1,0 +1,13 @@
+{
+  "name": "practice-folder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ArrayFlatImplementation.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
