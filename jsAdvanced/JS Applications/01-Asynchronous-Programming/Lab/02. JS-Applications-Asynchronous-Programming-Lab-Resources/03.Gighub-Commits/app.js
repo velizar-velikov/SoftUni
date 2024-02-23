@@ -41,7 +41,6 @@ function loadCommits() {
                 commitsDiv.appendChild(li);
                 throw err;
             }).catch(err => {
-                debugger
                 throw err;
             })
         })
