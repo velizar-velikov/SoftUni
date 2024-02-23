@@ -1,3 +1,5 @@
+const host = 'http://localhost:3030/jsonstore/blog/';
+
 function attachEvents() {
 
     const loadPostsBtn = document.getElementById('btnLoadPosts');
@@ -13,55 +15,54 @@ function attachEvents() {
     const posts = [];
 
     async function loadPosts() {
+        postsEl.innerHTML = '';
 
-        try {
-            const postsResponse = await fetch('http://localhost:3030/jsonstore/blog/posts');
+        const postsData = await get('posts');
 
-            if (!postsResponse.ok) throw new Error();
-
-            const postsData = await postsResponse.json();
-
-            postsEl.innerHTML = '';
-            for (let value of Object.values(postsData)) {
-                const option = document.createElement('option');
-                option.setAttribute('value', value.id);
-                option.textContent = value.title;
-                postsEl.appendChild(option);
-                posts.push({ title: value.title, body: value.body });
-            }
-        } catch (e) {
-            console.log(e);
+        for (let value of Object.values(postsData)) {
+            const option = document.createElement('option');
+            option.value = value.id;
+            option.textContent = value.title;
+            postsEl.appendChild(option);
+            posts.push({
+                title: value.title,
+                body: value.body
+            });
         }
     }
 
+
     async function viewPosts() {
+        const selectedOption = Array.from(document.querySelectorAll('option')).find(option => option.selected);
+        if (selectedOption == undefined) return;
 
-        try {
-            const selectedOption = Array.from(document.querySelectorAll('option')).find(option => option.selected);
-            if (selectedOption == undefined) return;
+        const commentsData = await get('comments');
 
-            const commentsResponse = await fetch(`http://localhost:3030/jsonstore/blog/comments`);
-
-            if (!commentsResponse.ok) throw new Error();
-
-            const commentsData = await commentsResponse.json();
-
-            const body = posts.find(post => post.title == selectedOption.textContent).body;
-            postTitle.textContent = selectedOption.textContent;
-            postBody.textContent = body;
-
-            postComments.innerHTML = '';
-            for (let comment in commentsData) {
-                if (commentsData[comment].postId == selectedOption.getAttribute('value')) {
-                    const li = document.createElement('li');
-                    li.id = commentsData[comment].id;
-                    li.textContent = commentsData[comment].text;
-                    postComments.appendChild(li);
-                }
+        const body = posts.find(post => post.title == selectedOption.textContent).body;
+        postTitle.textContent = selectedOption.textContent;
+        postBody.textContent = body;
+        postComments.innerHTML = '';
+        for (let comment in commentsData) {
+            if (commentsData[comment].postId == selectedOption.value) {
+                const li = document.createElement('li');
+                li.id = commentsData[comment].id;
+                li.textContent = commentsData[comment].text;
+                postComments.appendChild(li);
             }
-        } catch (e) {
-            console.log(e);
         }
+    }
+
+}
+
+async function get(endpoint) {
+    try {
+        const response = await fetch(`${host}${endpoint}`);
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        alert(`Error: ${e.message}`);
     }
 }
 
