@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>My Cookbook</title>
-    <link rel="stylesheet" href="static/site.css">
-    <link rel="stylesheet" href="static/recipe.css">
-    <link rel="stylesheet" href="static/form.css">
+    <link rel="stylesheet" href="../static/site.css">
+    <link rel="stylesheet" href="../static/recipe.css">
+    <link rel="stylesheet" href="../static/form.css">
+    <script type="module" src="../js/views/create.js"></script>
 </head>
 
 <body>
     <header>
         <h1>My Cookbook</h1>
         <nav>
-            <a href="index.html">Catalog</a>
+            <a href="../../index.html">Catalog</a>
             <a class="active">Create Recipe</a>
         </nav>
     </header>
@@ -23,8 +24,10 @@
             <form>
                 <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
                 <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
-                <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
-                <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+                <label class="ml">Ingredients: <textarea name="ingredients"
+                        placeholder="Enter ingredients on separate lines"></textarea></label>
+                <label class="ml">Preparation: <textarea name="steps"
+                        placeholder="Enter preparation steps on separate lines"></textarea></label>
                 <input type="submit" value="Create Recipe">
             </form>
         </article>

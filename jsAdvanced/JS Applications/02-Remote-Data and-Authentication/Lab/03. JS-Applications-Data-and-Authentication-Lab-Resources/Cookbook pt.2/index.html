@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>My Cookbook</title>
-    <link rel="stylesheet" href="static/site.css">
-    <link rel="stylesheet" href="static/recipe.css">
-    <script src="/src/app.js"></script>
+    <link rel="stylesheet" href="./src/static/site.css">
+    <link rel="stylesheet" href="./src/static/recipe.css">
+    <script type="module" src="./src/js/app.js"></script>
 </head>
 
 <body>
@@ -15,12 +15,12 @@
         <nav>
             <a class="active">Catalog</a>
             <div id="user">
-                <a href="create.html">Create Recipe</a>
+                <a href="./src/markup/create.html">Create Recipe</a>
                 <a id="logoutBtn" href="javascript:void(0)">Logout</a>
             </div>
             <div id="guest">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
+                <a href="./src/markup/login.html">Login</a>
+                <a href="./src/markup/register.html">Register</a>
             </div>
         </nav>
     </header>
