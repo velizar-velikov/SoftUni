@@ -35,7 +35,7 @@ async function lockedProfile() {
 					<label>Email:</label>
 					<input type="email" name="user${count}Email" value="${profile.email}" disabled readonly />
 					<label>Age:</label>
-					<input type="text" name="user${count}Age" value="${profile.age}" disabled readonly />`
+					<input type="email" name="user${count}Age" value="${profile.age}" disabled readonly />`
 
         hiddenInfo.style.display = 'none';
         profileElement.appendChild(hiddenInfo);
