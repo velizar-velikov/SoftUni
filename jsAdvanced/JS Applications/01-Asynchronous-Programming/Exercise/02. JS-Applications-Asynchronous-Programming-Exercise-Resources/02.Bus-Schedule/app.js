@@ -3,14 +3,14 @@ function solve() {
     const departBtn = document.getElementById('depart');
     const arriveBtn = document.getElementById('arrive');
 
-    const infoBox = document.getElementById('info');
+    const infoBox = document.querySelector('.info');
     let stopId = 'depot';
     let stopName;
 
     async function depart() {
 
         try {
-            let response = await fetch(`http://localhost:3030/jsonstore/bus/schedule/${stopId}`);
+            const response = await fetch(`http://localhost:3030/jsonstore/bus/schedule/${stopId}`);
 
             if (!response.ok) {
                 const error = new Error();
