@@ -1,5 +1,6 @@
 import { get } from "./api.js";
 
+
 if (document.querySelectorAll('a')[1].textContent == 'Login') {
     window.addEventListener('load', loadFurniture);
 }

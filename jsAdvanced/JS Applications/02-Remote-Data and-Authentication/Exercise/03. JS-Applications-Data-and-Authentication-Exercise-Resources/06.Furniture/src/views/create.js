@@ -1,6 +1,7 @@
 import { post } from "../api/api.js";
 import { loadFurniture } from "../api/loadFurniture.js";
 
+
 export async function createRecipe(e) {
     e.preventDefault();
 
