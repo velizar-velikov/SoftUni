@@ -1,5 +1,3 @@
-
-
 window.addEventListener('load', onLoad);
 
 function onLoad() {
@@ -21,7 +19,7 @@ const months = {
     'Oct': 10,
     'Nov': 11,
     'Dec': 12
-}
+};
 
 let year;
 let month;
@@ -30,7 +28,8 @@ let monthNumber;
 function goIn(event) {
 
     const currentTarget = event.currentTarget;
-    const section = currentTarget.parentElement.parentElement.parentElement.parentElement
+    const section = currentTarget.parentElement.parentElement.parentElement.parentElement;
+
     if (section.className == 'daysCalendar') {
         return;
 
@@ -38,6 +37,7 @@ function goIn(event) {
         year = currentTarget.children[0].textContent;
         section.style.display = 'none';
         document.querySelector(`#year-${year}`).style.display = 'block';
+
     } else if (section.className == 'monthCalendar') {
         year = section.querySelector('caption').textContent;
         month = currentTarget.children[0].textContent;
@@ -47,14 +47,12 @@ function goIn(event) {
         document.querySelector(`#month-${year}-${monthNumber}`).style.display = 'block';
     }
 
-    const captions = document.querySelectorAll('caption');
-    [...captions].slice(1).forEach(caption => caption.addEventListener('click', goBack));
+    [...document.querySelectorAll('caption')].slice(1).forEach(caption => caption.addEventListener('click', goBack));
 
     function goBack(event) {
 
         const caption = event.currentTarget;
         const section = caption.parentElement.parentElement;
-        console.log(section);
 
         if (section.className == 'daysCalendar') {
             section.style.display = 'none';
@@ -65,4 +63,3 @@ function goIn(event) {
         }
     }
 }
-
