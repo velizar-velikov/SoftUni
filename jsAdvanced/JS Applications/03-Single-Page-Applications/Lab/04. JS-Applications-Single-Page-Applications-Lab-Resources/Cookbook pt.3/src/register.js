@@ -1,37 +1,21 @@
-const form = document.querySelector('form');
+import { post } from "./data/api.js";
 
-form.addEventListener('submit', (ev => {
+export async function register(ev) {
     ev.preventDefault();
     const formData = new FormData(ev.target);
-    onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
-}));
+    const { email, password, rePass } = Object.fromEntries(formData.entries());
 
-async function onSubmit(data) {
-    if (data.password != data.rePass) {
+    if (email == '' || password == '' || rePass == '') {
+        alert('All fields are required!');
+        return;
+    } else if (password != rePass) {
+        alert('Passwords must match!');
         return console.error('Passwords don\'t match');
     }
 
-    const body = JSON.stringify({
-        email: data.email,
-        password: data.password,
-    });
+    const responseData = await post('users/register', { email, password, rePass });
 
-    try {
-        const response = await fetch('http://localhost:3030/users/register', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body
-        });
-        const data = await response.json();
-        if (response.status == 200) {
-            sessionStorage.setItem('authToken', data.accessToken);
-            window.location.pathname = 'index.html';
-        } else {
-            throw new Error(data.message);
-        }
-    } catch (err) {
-        console.error(err.message);
-    }
+    sessionStorage.setItem('authToken', responseData.accessToken);
+    sessionStorage.setItem('userId', responseData._id);
+    ev.target.reset();
 }
