@@ -15,6 +15,8 @@ export function e(type, attributes, ...content) {
         if (typeof e == 'string' || typeof e == 'number') {
             // const node = document.createTextNode(e);
             // result.appendChild(node);
+
+            //using innerHTML to make use of html entity signs for edit/delete icons
             result.innerHTML = e;
         } else {
             result.appendChild(e);
