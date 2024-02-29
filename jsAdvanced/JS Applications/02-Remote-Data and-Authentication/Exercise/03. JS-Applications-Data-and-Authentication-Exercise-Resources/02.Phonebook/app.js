@@ -65,7 +65,7 @@ function attachEvents() {
         if (element.textContent == 'Delete') {
             element.parentElement.remove();
         }
-        const key = element.parentElement.id;
+        const key = element.parentElement.dataset.id;
 
         try {
             const response = await fetch(`${url}/${key}`, {
@@ -85,7 +85,7 @@ function attachEvents() {
 
         for (let obj of Object.values(phonebookData)) {
             const li = document.createElement('li');
-            li.id = obj._id;
+            li.dataset.id = obj._id;
             li.textContent = `${obj.person}: ${obj.phone}`;
 
             const button = document.createElement('button');
