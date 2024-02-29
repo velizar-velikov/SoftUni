@@ -1,10 +1,11 @@
 import { post } from "../data/api.js";
+import { loadAllCatches } from "../data/loadCatches.js";
 import { showNav } from "../utils.js";
 import { logout } from "./logout.js";
 
 document.getElementById('logout').addEventListener('click', logout);
 
-showNav();
+showNav('login');
 const formElement = document.querySelector('form#login');
 formElement.addEventListener('submit', login);
 

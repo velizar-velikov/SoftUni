@@ -2,7 +2,7 @@ import { post } from "../data/api.js";
 import { showNav } from "../utils.js";
 import { logout } from "./logout.js";
 
-showNav();
+showNav('register');
 
 document.getElementById('logout').addEventListener('click', logout);
 
