@@ -2,6 +2,7 @@ import { login } from "./login.js";
 import { register } from "./register.js";
 import { create } from "./create.js";
 import { logout, showHome, showSection } from "./utils.js";
+import { onFormSubmit } from "./submit.js";
 
 const links = {
     '/recipes': showSection,
@@ -21,23 +22,14 @@ document.querySelector('nav').addEventListener('click', (e) => {
     }
 });
 
-window.addEventListener('load', (ev) => showHome(links));
+showHome(links);
 document.getElementById('logoutBtn').addEventListener('click', logout);
 
 //registerForm
-document.getElementById('registerForm').addEventListener('submit', async (ev) => {
-    await register(ev);
-    showHome(links);
-});
+document.getElementById('registerForm').addEventListener('submit', onFormSubmit.bind(null, links, register));
 
 //loginForm
-document.getElementById('loginForm').addEventListener('submit', async (ev) => {
-    await login(ev);
-    showHome(links);
-});
+document.getElementById('loginForm').addEventListener('submit', onFormSubmit.bind(null, links, login));
 
 //createForm
-document.getElementById('createForm').addEventListener('submit', async (ev) => {
-    await create(ev);
-    showHome(links);
-});
+document.getElementById('createForm').addEventListener('submit', onFormSubmit.bind(null, links, create));
