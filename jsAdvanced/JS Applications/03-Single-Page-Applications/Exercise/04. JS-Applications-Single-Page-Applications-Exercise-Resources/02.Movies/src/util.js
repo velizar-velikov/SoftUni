@@ -19,8 +19,12 @@ export function showWelcomeMessage(email) {
     messageElement.textContent = `Welcome, ${email}`;
 }
 
-export async function logout() {
-    await get('users/logout');
-    sessionStorage.removeItem('user');
-    showSection('form-login');
+export async function isLikedByUser(movieData) {
+    const userId = JSON.parse(sessionStorage.getItem('user'))._id;
+    const movieCreatorId = movieData._ownerId;
+
+    const likesForThisMovie = (await get(`data/likes`)).filter(like => like.movieId === movieData._id);
+
+    debugger
+    return likesForThisMovie.some(like => like._ownerId === userId) || userId === movieCreatorId;
 }
