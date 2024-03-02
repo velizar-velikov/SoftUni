@@ -1,5 +1,6 @@
 import { post } from "../data/api.js";
-import { showSection, updateNav } from "../util.js";
+import { showWelcomeMessage, updateNav } from "../util.js";
+import { showHome } from "./home.js";
 
 export async function register(event) {
     event.preventDefault();
@@ -14,12 +15,11 @@ export async function register(event) {
         return alert('Passwords must match!');
     }
 
-    debugger
     const responseData = await post('users/register', { email, password });
 
     sessionStorage.setItem('user', JSON.stringify(responseData));
 
-    showSection('home-page');
+    showHome();
     updateNav();
     showWelcomeMessage(email);
 }
