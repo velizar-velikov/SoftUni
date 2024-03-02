@@ -1,5 +1,6 @@
 import { post } from "../data/api.js";
-import { showSection, showWelcomeMessage, updateNav } from "../util.js";
+import { showWelcomeMessage, updateNav } from "../util.js";
+import { showHome } from "./home.js";
 
 export async function login(event) {
     event.preventDefault();
@@ -16,7 +17,7 @@ export async function login(event) {
 
     sessionStorage.setItem('user', JSON.stringify(responseData));
 
-    showSection('home-page');
+    showHome();
     updateNav();
     showWelcomeMessage(email);
 }
