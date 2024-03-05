@@ -25,6 +25,5 @@ export async function isLikedByUser(movieData) {
 
     const likesForThisMovie = (await get(`data/likes`)).filter(like => like.movieId === movieData._id);
 
-    debugger
     return likesForThisMovie.some(like => like._ownerId === userId) || userId === movieCreatorId;
 }

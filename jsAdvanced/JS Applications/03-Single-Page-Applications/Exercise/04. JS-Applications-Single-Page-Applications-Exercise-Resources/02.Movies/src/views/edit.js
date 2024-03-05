@@ -19,17 +19,14 @@ export async function loadForEdit(e) {
 
     showSection('edit-movie');
     const id = e.target.parentElement.parentElement.parentElement.parentElement.dataset.movieId;
-    console.log(id);
     const movieData = await get(`data/movies/${id}`);
 
-    console.log(movieData);
 
     const titleElement = document.querySelector('#edit-movie #title');
     const descriptionElement = document.querySelector('#edit-movie [name="description"]');
     const imgElement = document.querySelector('#edit-movie #imageUrl');
 
     form.addEventListener('submit', (e) => edit(e, movieData._id));
-    debugger
 
     //loading info for editing
     titleElement.value = movieData.title;
