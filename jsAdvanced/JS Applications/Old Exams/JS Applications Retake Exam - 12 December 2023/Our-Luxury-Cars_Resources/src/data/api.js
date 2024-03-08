@@ -3,7 +3,8 @@ import { clearUserData, getUserData } from "../util.js";
 async function request(method, url, data) {
 
     const options = {
-        method
+        method,
+        headers: {}
     };
 
     if (data) {
@@ -13,7 +14,7 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    const userData = getUserData();
+    let userData = getUserData();
 
     if (userData) {
         options.headers['X-Authorization'] = userData.accessToken;
@@ -28,6 +29,7 @@ async function request(method, url, data) {
             if (userData && response.status == 403) {
                 clearUserData();
             }
+            throw new Error(error.message);
         }
 
         if (response.status == 204) {
@@ -42,7 +44,7 @@ async function request(method, url, data) {
     }
 }
 
-export const get = () => request('GET', url);
-export const post = () => request('POST', url, data);
-export const put = () => request('PUT', url, data);
-export const del = () => request('DELETE', url);
+export const get = (url) => request('GET', url);
+export const post = (url, data) => request('POST', url, data);
+export const put = (url, data) => request('PUT', url, data);
+export const del = (url) => request('DELETE', url);
