@@ -45,6 +45,6 @@ async function start() {
     if (cars.length == 0) {
         context.render(section, nothingH3);
     } else {
-        context.render(section, ...cars.map(car => carTemplate(car)));
+        context.render(section, ...cars.map(carTemplate));
     }
 }
