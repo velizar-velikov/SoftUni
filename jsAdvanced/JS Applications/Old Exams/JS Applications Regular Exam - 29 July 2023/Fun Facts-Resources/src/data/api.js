@@ -6,7 +6,7 @@ import { clearUserData, getUserData } from "../utils.js";
  */
 
 /**
- * 
+ * Sends requests to the server with specified method, url and data(optional)
  * @param {String} method HTTP method
  * @param {String} url url to make a request to
  * @param {Object} [data] data to send with the request
