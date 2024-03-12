@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data/data.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data/data.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { del, get, post, put } from "./api.js";
+
+/**
+ * Host to make requests for facts
+ * @type {String}
+ */
+const host = 'http://localhost:3030';
+
+/**
+ * Endpoints to make requests for facts
+ * @type {{ all: String,
+ * create: String,
+ * byId: Function,
+ * toLike: String,
+ * allLikes: Function,
+ * factLikesByUser: Function }}
+ */
+const endpoints = {
+    all: '/data/facts?sortBy=_createdOn%20desc',
+    create: '/data/facts',
+    /**
+     * Takes a fact id and returns the endpoint for that fact
+     * @param {String} factId id of a fact
+     * @returns {String} endpoint for the said fact
+     */
+    byId: (factId) => `/data/facts/${factId}`,
+    toLike: '/data/likes',
+    allLikes: (factId) => `/data/likes?where=factId%3D%22${factId}%22&amp;distinct=_ownerId&amp;count`,
+    factLikesByUser: (factId, userId) => `/data/likes?where=factId%3D%22${factId}%22%20and%20_ownerId%3D%22${userId}%22&amp;count`
+};
+
+/**
+ * Returns facts array of objects as a promise
+ * @returns {Promise}
+ */
+export const getFacts = () => {
+    return get(host + endpoints.all);
+}
+
+/**
+ * Takes a fact id and returns a fact object as a promise
+ * @param {String} factId fact id
+ * @returns {Promise}
+ */
+export const getFactById = (factId) => {
+    return get(host + endpoints.byId(factId));
+}
+
+/**
+ * Sends a request to create a fact with given properties
+ * @param {String} category fact category
+ * @param {String} imageUrl fact image
+ * @param {String} description fact description
+ * @param {String} moreInfo fact more info
+ * @returns {Promise}
+ */
+export const createFact = (category, imageUrl, description, moreInfo) => {
+    return post(host + endpoints.create, { category, imageUrl, description, moreInfo });
+}
+
+/**
+ * Sends a request to update a fact
+ * @param {String} category fact category
+ * @param {String} imageUrl fact image
+ * @param {String} description fact description
+ * @param {String} moreInfo fact more info
+ * @returns {Promise}
+ */
+export const updateFact = (id, category, imageUrl, description, moreInfo) => {
+    return put(host + endpoints.byId(id), { category, imageUrl, description, moreInfo });
+}
+
+/**
+ * Sends a request to delete a fact with said id
+ * @param {String} factId fact id
+ * @returns {Promise}
+ */
+export const deleteFact = (factId) => {
+    return del(host + endpoints.byId(factId));
+}
+
+/**
+ * Sends a request to like a fact with said id
+ * @param {String} factId fact id
+ * @returns {Promise}
+ */
+export const likeFact = (factId) => {
+    return post(host + endpoints.toLike, { factId });
+}
+
+/**
+ * Gets all likes for a post with said id
+ * @param {String} factId fact id
+ * @returns {Promise}
+ */
+export const getAllLikesForPost = (factId) => {
+    return get(host + endpoints.allLikes(factId));
+}
+
+
+/**
+ * A function that checks if a user has liked a certain fact.
+ * @param {string} factId the id of a current fact
+ * @param {string} userId the id of the current user
+ * @returns {Promise} promise that resolves to boolean
+ */
+export const hasUserLikedFact = async (factId, userId) => {
+    const factLikesByCurrentUser = await get(host + endpoints.factLikesByUser(factId, userId));
+
+    return factLikesByCurrentUser > 0;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-auth.html">auth</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clearUserData">clearUserData</a></li><li><a href="global.html#createFact">createFact</a></li><li><a href="global.html#createSubmitHandler">createSubmitHandler</a></li><li><a href="global.html#deleteFact">deleteFact</a></li><li><a href="global.html#endpoints">endpoints</a></li><li><a href="global.html#getAllLikesForPost">getAllLikesForPost</a></li><li><a href="global.html#getFactById">getFactById</a></li><li><a href="global.html#getFacts">getFacts</a></li><li><a href="global.html#getUserData">getUserData</a></li><li><a href="global.html#hasUserLikedFact">hasUserLikedFact</a></li><li><a href="global.html#host">host</a></li><li><a href="global.html#likeFact">likeFact</a></li><li><a href="global.html#setUserData">setUserData</a></li><li><a href="global.html#updateFact">updateFact</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 12 2024 23:13:57 GMT+0200 (Източноевропейско стандартно време)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
