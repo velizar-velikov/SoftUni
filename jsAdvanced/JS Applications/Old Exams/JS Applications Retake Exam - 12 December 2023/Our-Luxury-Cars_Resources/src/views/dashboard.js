@@ -1,4 +1,4 @@
-import { getAllCars } from "../data/data.js";
+import { getAllCars } from '../data/data.js';
 
 const root = document.getElementById('root');
 
@@ -8,9 +8,7 @@ section.remove();
 const welcomeMsgElement = document.getElementById('cars-message');
 const nothingH3 = document.querySelector('.nothing');
 
-
 let context = {};
-
 
 export function showDashboardView(ctx) {
     context = ctx;
@@ -35,9 +33,10 @@ const carTemplate = (car) => {
     `;
 
     return div;
-}
+};
 
 async function start() {
+    debugger;
     const cars = await getAllCars();
 
     context.render(root, welcomeMsgElement, section);

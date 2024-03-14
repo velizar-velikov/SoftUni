@@ -1,6 +1,6 @@
 import { getMyFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { getUserData } from '../utils.js';
+import { changeNavLinkColour, getUserData } from '../utils.js';
 
 const myDashboardTemplate = (myFurniture) => html`
     <section id="my-dashboard">
@@ -39,4 +39,5 @@ export async function showMyDashboardPage(ctx) {
     const myFurniture = await getMyFurniture(getUserData()._id);
 
     ctx.render(myDashboardTemplate(myFurniture));
+    changeNavLinkColour('profileLink');
 }

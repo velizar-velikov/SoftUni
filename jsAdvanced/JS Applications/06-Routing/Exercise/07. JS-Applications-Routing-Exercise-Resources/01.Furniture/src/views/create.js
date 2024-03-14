@@ -1,6 +1,6 @@
 import { createFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { createSubmitHandler, validateInput } from '../utils.js';
+import { changeNavLinkColour, createSubmitHandler, validateInput } from '../utils.js';
 
 const createTemplate = (onCreate) => html`
     <section id="create">
@@ -54,6 +54,7 @@ const createTemplate = (onCreate) => html`
 
 export function showCreatePage(ctx) {
     ctx.render(createTemplate(createSubmitHandler(onCreate)));
+    changeNavLinkColour('createLink');
 
     const form = document.querySelector('section#create form');
 

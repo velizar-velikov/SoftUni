@@ -1,6 +1,6 @@
 import { login } from '../data/auth.js';
 import { html } from '../lib.js';
-import { createSubmitHandler } from '../utils.js';
+import { changeNavLinkColour, createSubmitHandler } from '../utils.js';
 
 const loginTemplate = (onLogin) => html`
     <section id="login">
@@ -32,6 +32,7 @@ const loginTemplate = (onLogin) => html`
 
 export function showLoginPage(ctx) {
     ctx.render(loginTemplate(createSubmitHandler(onLogin)));
+    changeNavLinkColour('loginLink');
 
     async function onLogin({ email, password }, form) {
         if (email === '' || password === '') {

@@ -1,5 +1,6 @@
 import { getAllFurniture } from '../data/data.js';
 import { html } from '../lib.js';
+import { changeNavLinkColour } from '../utils.js';
 
 const dashboardTemplate = (allFurniture) => html`
     <section id="dashboard">
@@ -36,4 +37,5 @@ export async function showDashboardPage(ctx) {
     const allFurniture = await getAllFurniture();
 
     ctx.render(dashboardTemplate(allFurniture));
+    changeNavLinkColour('catalogLink');
 }

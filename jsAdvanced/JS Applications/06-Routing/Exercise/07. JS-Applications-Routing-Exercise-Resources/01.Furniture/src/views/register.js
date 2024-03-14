@@ -1,6 +1,6 @@
 import { register } from '../data/auth.js';
 import { html } from '../lib.js';
-import { createSubmitHandler } from '../utils.js';
+import { changeNavLinkColour, createSubmitHandler } from '../utils.js';
 
 const registerTemplate = (onRegister) => html`
     <section id="register">
@@ -36,6 +36,7 @@ const registerTemplate = (onRegister) => html`
 
 export function showRegisterPage(ctx) {
     ctx.render(registerTemplate(createSubmitHandler(onRegister)));
+    changeNavLinkColour('registerLink');
 
     async function onRegister({ email, password, rePass }, form) {
         if (email === '' || password === '' || rePass === '') {
@@ -45,7 +46,7 @@ export function showRegisterPage(ctx) {
         }
 
         await register(email, password);
-        
+
         form.reset();
         ctx.page.redirect('/dashboard');
     }
