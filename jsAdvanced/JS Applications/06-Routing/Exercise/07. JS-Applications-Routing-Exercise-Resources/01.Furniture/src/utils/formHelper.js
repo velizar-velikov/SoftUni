@@ -12,10 +12,9 @@ export function createSubmitHandler(callback) {
 }
 
 /**
- * Validates input fields end return true if all are valid,
- * false otherwise
- * @param {Element} form the form to validate
- * @returns { Boolean }
+ * Validates input field end return a boolean
+ * @param {Element} input the form to validate
+ * @returns { Boolean } return true if valid, false otherwise
  */
 export function validateInput(input) {
     const validation = {
