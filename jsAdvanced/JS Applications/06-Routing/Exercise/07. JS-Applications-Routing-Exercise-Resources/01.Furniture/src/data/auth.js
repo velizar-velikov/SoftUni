@@ -1,4 +1,4 @@
-import { clearUserData, setUserData } from '../utils.js';
+import { clearUserData, setUserData } from '../utils/userHelper.js';
 import { get, post } from './api.js';
 
 const host = 'http://localhost:3030';

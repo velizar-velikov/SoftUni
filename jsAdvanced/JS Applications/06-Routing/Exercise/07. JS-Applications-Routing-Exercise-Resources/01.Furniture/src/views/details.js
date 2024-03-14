@@ -1,6 +1,6 @@
 import { deleteFurniture, getFurnitureById } from '../data/data.js';
 import { html } from '../lib.js';
-import { getUserData } from '../utils.js';
+import { getUserData } from '../utils/userHelper.js';
 
 const detailsTemplate = (singleFurniture, onDelete) => html`
     <section id="details">

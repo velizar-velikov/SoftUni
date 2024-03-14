@@ -1,6 +1,7 @@
 import { login } from '../data/auth.js';
 import { html } from '../lib.js';
-import { changeNavLinkColour, createSubmitHandler } from '../utils.js';
+import { createSubmitHandler } from '../utils/formHelper.js';
+import { changeNavLinkColour } from '../utils/navHelper.js';
 
 const loginTemplate = (onLogin) => html`
     <section id="login">

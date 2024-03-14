@@ -1,6 +1,7 @@
 import { createFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { changeNavLinkColour, createSubmitHandler, validateInput } from '../utils.js';
+import { createSubmitHandler, validateInput } from '../utils/formHelper.js';
+import { changeNavLinkColour } from '../utils/navHelper.js';
 
 const createTemplate = (onCreate) => html`
     <section id="create">

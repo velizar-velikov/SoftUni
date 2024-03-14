@@ -1,6 +1,7 @@
 import { getMyFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { changeNavLinkColour, getUserData } from '../utils.js';
+import { changeNavLinkColour } from '../utils/navHelper.js';
+import { getUserData } from '../utils/userHelper.js';
 
 const myDashboardTemplate = (myFurniture) => html`
     <section id="my-dashboard">

@@ -1,6 +1,6 @@
 import { getAllFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { changeNavLinkColour } from '../utils.js';
+import { changeNavLinkColour } from '../utils/navHelper.js';
 
 const dashboardTemplate = (allFurniture) => html`
     <section id="dashboard">

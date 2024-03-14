@@ -1,6 +1,6 @@
 import { logout } from './data/auth.js';
 import { page, render } from './lib.js';
-import { getUserData } from './utils.js';
+import { getUserData } from './utils/userHelper.js';
 import { showCreatePage } from './views/create.js';
 import { showDashboardPage } from './views/dashboard.js';
 import { showDetailsPage } from './views/details.js';

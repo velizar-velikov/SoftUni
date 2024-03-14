@@ -1,11 +1,3 @@
-const userItem = 'userData';
-
-export const getUserData = () => JSON.parse(sessionStorage.getItem(userItem));
-
-export const setUserData = (data) => sessionStorage.setItem(userItem, JSON.stringify(data));
-
-export const clearUserData = () => sessionStorage.removeItem(userItem);
-
 export function createSubmitHandler(callback) {
     return function (event) {
         event.preventDefault();
@@ -47,9 +39,4 @@ export function validateInput(input) {
     }
 
     return isValid;
-}
-
-export function changeNavLinkColour(id) {
-    document.querySelectorAll('nav a').forEach((a) => (a.style.backgroundColor = '#010101'));
-    document.getElementById(id).style.backgroundColor = '#6c8b47';
 }

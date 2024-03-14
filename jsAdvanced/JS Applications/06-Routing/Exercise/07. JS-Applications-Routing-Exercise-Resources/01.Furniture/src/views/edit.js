@@ -1,6 +1,6 @@
 import { getFurnitureById, updateFurniture } from '../data/data.js';
 import { html } from '../lib.js';
-import { createSubmitHandler, validateInput } from '../utils.js';
+import { createSubmitHandler, validateInput } from '../utils/formHelper.js';
 
 const edtiTemplate = (singleFurniture, onEdit) => html`
     <section id="edit">
