@@ -60,10 +60,14 @@ export function showCreatePage(ctx) {
     const form = document.querySelector('section#create form');
 
     const formInputs = [...form].slice(0, -1);
-    formInputs.forEach((input) => input.addEventListener('change', (e) => validateInput(input)));
 
     async function onCreate({ make, model, year, description, price, img, material }, form) {
-        const areValid = formInputs.every(validateInput);
+        let areValid = true;
+        formInputs.forEach((input) => {
+            if (!validateInput(input)) {
+                areValid = false;
+            }
+        });
 
         if (areValid) {
             await createFurniture(make, model, year, description, price, img, material);

@@ -72,10 +72,15 @@ export async function showEditPage(ctx) {
 
     const form = document.querySelector('section#edit form');
     const formInputs = [...form].slice(0, -1);
-    formInputs.forEach((input) => input.addEventListener('change', (e) => validateInput(input)));
 
     async function onEdit({ make, model, year, description, price, img, material }, form) {
-        const areValid = formInputs.every(validateInput);
+
+        let areValid = true;
+        formInputs.forEach((input) => {
+            if (!validateInput(input)) {
+                areValid = false;
+            }
+        });
 
         if (areValid) {
             await updateFurniture(id, make, model, year, description, price, img, material);
