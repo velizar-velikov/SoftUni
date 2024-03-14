@@ -6,7 +6,7 @@ const userItem = 'userData';
  */
 export const getUserData = () => {
     return JSON.parse(sessionStorage.getItem(userItem));
-}
+};
 
 /**
  * Sets userdata in session storage as json
@@ -14,15 +14,14 @@ export const getUserData = () => {
  */
 export const setUserData = (data) => {
     sessionStorage.setItem(userItem, JSON.stringify(data));
-}
+};
 
 /**
  * Clears userdata from session storage
  */
 export const clearUserData = () => {
     sessionStorage.removeItem(userItem);
-}
-
+};
 
 /**
  * A function that takes a function as a parameter
@@ -47,5 +46,5 @@ export function createSubmitHandler(callback) {
         const data = Object.fromEntries(entries);
 
         callback(data, form);
-    }
+    };
 }
