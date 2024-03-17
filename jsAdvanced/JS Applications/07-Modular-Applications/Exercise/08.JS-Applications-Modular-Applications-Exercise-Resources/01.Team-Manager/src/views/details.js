@@ -60,14 +60,14 @@ const detailsTemplate = async (team, userData, member) => html`
     </section>
 `;
 
-const memberTemplate = (member) => html`
-    ${member._ownerId !== getUserData()._id
-        ? html`<li>
-              ${member.user.username}
+const memberTemplate = (member) => html`<li>
+    ${member.user.username}
+    ${member._ownerId !== getUserData()._id && member.isOwner
+        ? html`
               <a @click=${() => member.remove()} href="javascript:void(0)" class="tm-control action">Remove from team</a>
           </li>`
         : null}
-`;
+</li> `;
 
 const requestTemplate = (member) => html`
     <li>
