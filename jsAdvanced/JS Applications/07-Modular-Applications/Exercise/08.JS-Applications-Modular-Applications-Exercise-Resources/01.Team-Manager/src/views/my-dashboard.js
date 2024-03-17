@@ -8,14 +8,17 @@ const myDashboardTemplate = (teams) => html`
             <h1>My Teams</h1>
         </article>
 
-        <article class="layout narrow">
-            <div class="pad-med">
-                <p>You are not a member of any team yet.</p>
-                <p><a href="/dashboard">Browse all teams</a> to join one, or use the button bellow to create your own team.</p>
-            </div>
-            <div class=""><a href="/create" class="action cta">Create Team</a></div>
-        </article>
-
+        ${teams.length == 0
+            ? html`<article class="layout narrow">
+                  <div class="pad-med">
+                      <p>You are not a member of any team yet.</p>
+                      <p>
+                          <a href="/dashboard">Browse all teams</a> to join one, or use the button bellow to create your own team.
+                      </p>
+                  </div>
+                  <div class=""><a href="/create" class="action cta">Create Team</a></div>
+              </article>`
+            : null}
         ${teams.map(teamTemplate)}
     </section>
 `;
