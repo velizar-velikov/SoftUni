@@ -1,0 +1,52 @@
+#notification {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.notification {
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.7rem;
+    background: linear-gradient(to left, rgb(95, 196, 196, 0.8), rgb(95, 196, 196, 0.6));
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 0.3rem 0.3rem rgb(0, 0, 0, 0.2);
+}
+
+.fade-in {
+    animation: fadeIn 0.4s linear;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s linear;
+}
+
+.notification.error {
+    background: linear-gradient(to left, rgb(239, 39, 39), rgb(238, 64, 64));
+}
+
+.notification.success {
+    background: linear-gradient(to left, rgb(58, 191, 58), rgb(76, 212, 76));
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
