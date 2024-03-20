@@ -39,7 +39,6 @@ export async function showSearchView(ctx) {
         update();
     } else {
         const fruits = await getAllFruitsByName(search);
-        debugger;
         update(fruits, search);
     }
 
