@@ -4,7 +4,9 @@ export function createSubmitHandler(callback) {
 
         const form = event.target;
         const formData = new FormData(form);
-        const entries = formData.entries().map(([k, v]) => [k, v.trim()]);
+        const entriesToDebug = formData.entries();
+        debugger;
+        const entries = [...formData.entries()].map(([k, v]) => [k, v.trim()]);
 
         const data = Object.fromEntries(entries);
 
