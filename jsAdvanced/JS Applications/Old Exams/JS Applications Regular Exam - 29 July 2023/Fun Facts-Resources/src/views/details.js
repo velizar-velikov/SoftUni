@@ -44,9 +44,8 @@ export async function showDetailsPage(ctx) {
 
         if (choice === true) {
             await deleteFact(id);
+            ctx.page.redirect('/dashboard');
         }
-
-        ctx.page.redirect('/dashboard');
     }
 
     async function onLike() {
