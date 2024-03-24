@@ -1,5 +1,5 @@
 import { login } from '../data/auth.js';
-import { html } from '../lib.js';
+import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
 
 const loginTemplate = (onLogin, errorMessage) => html`
@@ -23,7 +23,6 @@ export function showLoginPage(ctx) {
     ctx.render(loginTemplate(createSubmitHandler(onLogin)));
 
     async function onLogin({ email, password }, form) {
-
         try {
             const res = await login(email, password);
 

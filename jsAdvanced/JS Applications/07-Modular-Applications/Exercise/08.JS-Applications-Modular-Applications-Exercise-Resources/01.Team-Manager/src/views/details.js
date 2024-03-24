@@ -2,15 +2,13 @@ import {
     approveMember,
     cancelRequest,
     declineRequest,
-    getMemberById,
     getTeamById,
     getTeamMembers,
     leaveTeam,
     removeMember,
     sendMembershipRequest,
 } from '../data/data.js';
-import { html } from '../lib.js';
-import { getUserData } from '../utils/userHelper.js';
+import { html } from '../lib/lib.js';
 
 const detailsTemplate = async (team, userData, member) => html`
     <section id="team-home">
@@ -45,7 +43,7 @@ const detailsTemplate = async (team, userData, member) => html`
                 <h3>Members</h3>
                 <ul class="tm-members">
                     ${team.isOwner ? html`<li>${userData.username}</li>` : null}
-                    ${team.members.filter((m) => m.status == 'member').map(memberTemplate)}
+                    ${team.members.filter((m) => m.status == 'member').map((member) => memberTemplate(member, userData))}
                 </ul>
             </div>
             ${team.isOwner
@@ -60,9 +58,9 @@ const detailsTemplate = async (team, userData, member) => html`
     </section>
 `;
 
-const memberTemplate = (member) => html`<li>
+const memberTemplate = (member, userData) => html`<li>
     ${member.user.username}
-    ${member._ownerId !== getUserData()._id && member.isOwner
+    ${member._ownerId !== userData._id && member.isOwner
         ? html`
               <a @click=${() => member.remove()} href="javascript:void(0)" class="tm-control action">Remove from team</a>
           </li>`
@@ -83,7 +81,7 @@ export async function showDetailsPage(ctx) {
     const team = await getTeamById(id);
     team.members = await getTeamMembers(team._id);
 
-    const userData = getUserData();
+    const userData = ctx.user;
     team.isOwner = team._ownerId === userData._id;
 
     const memberFunctionality = await createMemberFunctionality();

@@ -1,5 +1,5 @@
 import { editTeam, getTeamById } from '../data/data.js';
-import { html } from '../lib.js';
+import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
 
 const editTemplate = (onEdit, team, errorMessage) => html`

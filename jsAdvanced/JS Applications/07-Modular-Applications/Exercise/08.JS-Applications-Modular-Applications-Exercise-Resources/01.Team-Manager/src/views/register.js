@@ -1,5 +1,5 @@
 import { register } from '../data/auth.js';
-import { html } from '../lib.js';
+import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
 
 const registerTemplate = (onRegister, errorMessage) => html`

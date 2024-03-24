@@ -1,6 +1,5 @@
 import { getMyTeamMemberShips, getTeamMembers } from '../data/data.js';
-import { html } from '../lib.js';
-import { getUserData } from '../utils/userHelper.js';
+import { html } from '../lib/lib.js';
 
 const myDashboardTemplate = (teams) => html`
     <section id="my-teams">
@@ -36,7 +35,7 @@ const teamTemplate = ({ team }) => html`
 `;
 
 export async function showMyDashboard(ctx) {
-    const userId = getUserData()._id;
+    const userId = ctx.user._id;
     const teams = await getMyTeamMemberShips(userId);
 
     for (let { team } of teams) {

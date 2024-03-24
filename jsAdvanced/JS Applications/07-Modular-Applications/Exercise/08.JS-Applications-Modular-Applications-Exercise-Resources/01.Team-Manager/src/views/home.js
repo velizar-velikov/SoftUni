@@ -1,4 +1,4 @@
-import { html } from '../lib.js';
+import { html } from '../lib/lib.js';
 
 const homeTemplate = () => html`
     <section id="home">

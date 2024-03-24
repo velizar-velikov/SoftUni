@@ -1,16 +1,17 @@
 import { getAllTeams, getTeamMembers } from '../data/data.js';
-import { html } from '../lib.js';
+import { html } from '../lib/lib.js';
 
-const dashboardTemplate = (teams) => html`
+const dashboardTemplate = (teams, userData) => html`
     <section id="browse">
         <article class="pad-med">
             <h1>Team Browser</h1>
         </article>
 
-        <article class="layout narrow">
-            <div class="pad-small"><a href="/create" class="action cta">Create Team</a></div>
-        </article>
-
+        ${userData
+            ? html` <article class="layout narrow">
+                  <div class="pad-small"><a href="/create" class="action cta">Create Team</a></div>
+              </article>`
+            : null}
         ${teams.map(teamTemplate)}
     </section>
 `;
@@ -33,7 +34,6 @@ export async function showDashboardPage(ctx) {
     for (let team of teams) {
         const teamMembers = await getTeamMembers(team._id);
         team.members = teamMembers.filter((m) => m.status == 'member').length;
-        console.log(team);
     }
-    ctx.render(dashboardTemplate(teams));
+    ctx.render(dashboardTemplate(teams, ctx.user));
 }
