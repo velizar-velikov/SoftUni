@@ -39,15 +39,15 @@ export const approveMember = async (memberId) => {
 };
 
 export const createTeam = async (name, logoUrl, description) => {
-    const teamData = await post(host + endpoints.teams, { name, logoUrl, description });
+    const team = await post(host + endpoints.teams, { name, logoUrl, description });
     // const userData = getUserData();
 
     //creating a team does not automatically add the creator to the team,
     //so we send a membership request and approve it
-    const memberData = await sendMembershipRequest(teamData._ownerId);
+    const memberData = await sendMembershipRequest(team._id);
     await approveMember(memberData._id);
 
-    return teamData;
+    return team;
 };
 
 export const getAllTeams = async () => {
