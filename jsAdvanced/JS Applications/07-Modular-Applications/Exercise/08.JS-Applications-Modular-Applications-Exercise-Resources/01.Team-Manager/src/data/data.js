@@ -62,7 +62,12 @@ export const getTeamById = async (teamId) => {
     return await get(host + endpoints.teamById(teamId));
 };
 
-export const getTeamMembers = async (teamId) => {
+/**
+ * Returns all memberships for a team - both members and pending requests
+ * @param {String} teamId
+ * @returns {Promise<Object>}
+ */
+export const getAllTeamMemberships = async (teamId) => {
     return await get(host + endpoints.teamMemberships(teamId));
 };
 

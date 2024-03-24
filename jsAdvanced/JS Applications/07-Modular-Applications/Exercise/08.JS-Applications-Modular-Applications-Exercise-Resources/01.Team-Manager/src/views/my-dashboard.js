@@ -1,5 +1,6 @@
-import { getMyTeamMemberShips, getTeamMembers } from '../data/data.js';
+import { getMyTeamMemberShips, getAllTeamMemberships } from '../data/data.js';
 import { html } from '../lib/lib.js';
+import { teamMyDashboardTemplate } from './partials/teamMyDashbTemplate.js';
 
 const myDashboardTemplate = (teams) => html`
     <section id="my-teams">
@@ -18,20 +19,8 @@ const myDashboardTemplate = (teams) => html`
                   <div class=""><a href="/create" class="action cta">Create Team</a></div>
               </article>`
             : null}
-        ${teams.map(teamTemplate)}
+        ${teams.map(teamMyDashboardTemplate)}
     </section>
-`;
-
-const teamTemplate = ({ team }) => html`
-    <article class="layout">
-        <img src=${team.logoUrl} class="team-logo left-col" />
-        <div class="tm-preview">
-            <h2>${team.name}</h2>
-            <p>${team.description}</p>
-            <span class="details">${team.members} Members</span>
-            <div><a href="/details/${team._id}" class="action">See details</a></div>
-        </div>
-    </article>
 `;
 
 export async function showMyDashboard(ctx) {
@@ -39,8 +28,8 @@ export async function showMyDashboard(ctx) {
     const teams = await getMyTeamMemberShips(userId);
 
     for (let { team } of teams) {
-        const teamMembers = await getTeamMembers(team._id);
-        team.members = teamMembers.filter((m) => m.status == 'member').length;
+        const allTeamMembers = await getAllTeamMemberships(team._id);
+        team.members = allTeamMembers.filter((m) => m.status == 'member').length;
     }
 
     ctx.render(myDashboardTemplate(teams));
