@@ -1,4 +1,4 @@
-import { getMyTeamMemberShips, getAllTeamMemberships } from '../data/data.js';
+import { getMyTeamMemberShips, getAllTeamMemberships } from '../data/teams.js';
 import { html } from '../lib/lib.js';
 import { teamMyDashboardTemplate } from './partials/teamMyDashbTemplate.js';
 

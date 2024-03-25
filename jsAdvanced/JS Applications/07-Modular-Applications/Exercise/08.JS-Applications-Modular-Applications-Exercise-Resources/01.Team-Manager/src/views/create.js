@@ -1,4 +1,4 @@
-import { createTeam } from '../data/data.js';
+import { createTeam } from '../data/teams.js';
 import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
 

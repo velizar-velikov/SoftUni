@@ -1,4 +1,4 @@
-import { editTeam, getTeamById } from '../data/data.js';
+import { editTeam, getTeamById } from '../data/teams.js';
 import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
 

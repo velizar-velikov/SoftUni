@@ -1,14 +1,8 @@
-import {
-    approveMember,
-    cancelRequest,
-    declineRequest,
-    getAllTeamMemberships,
-    getTeamById,
-    leaveTeam,
-    removeMember,
-    sendMembershipRequest,
-} from '../data/data.js';
 import { html } from '../lib/lib.js';
+
+import { getAllTeamMemberships, getTeamById } from '../data/teams.js';
+import { notOwnerService, ownerService } from '../data/members.js';
+
 import { memberTemplate } from './partials/memberTemplate.js';
 import { requestTemplate } from './partials/requestTemplate.js';
 
@@ -24,7 +18,7 @@ const detailsTemplate = (team, userData, userStatus, membersOfTeam, pendingReque
                     ${team.isOwner
                         ? html` <a href="/details/${team._id}/edit" class="action">Edit team</a>`
                         : html`
-                              ${!userStatus
+                              ${!userStatus && userData
                                   ? html`<a href="javascript:void(0)" class="action" @click=${userActions.onJoin}>Join team</a>`
                                   : null}
                               ${userStatus == 'member'
@@ -87,7 +81,7 @@ export async function showDetailsPage(ctx) {
             member.onDecline = ownerActions.onDecline(member._id);
         });
 
-        const userMemberObject = allMembers.find((member) => member._ownerId === userData._id);
+        const userMemberObject = allMembers.find((member) => member._ownerId === userData?._id);
 
         const userStatus = userMemberObject?.status;
         userMemberId = userMemberObject?._id;
@@ -103,17 +97,17 @@ export async function showDetailsPage(ctx) {
         };
 
         async function onJoin() {
-            await sendMembershipRequest(team._id);
+            await notOwnerService.sendMembershipRequest(team._id);
             update();
         }
 
         async function onCancel() {
-            await cancelRequest(userMemberId);
+            await notOwnerService.cancelRequest(userMemberId);
             update();
         }
 
         async function onLeave() {
-            await leaveTeam(userMemberId);
+            await notOwnerService.leaveTeam(userMemberId);
             update();
         }
     }
@@ -127,21 +121,21 @@ export async function showDetailsPage(ctx) {
 
         function onApprove(memberId) {
             return async function () {
-                await approveMember(memberId);
+                await ownerService.approveMember(memberId);
                 update();
             };
         }
 
         function onDecline(memberId) {
             return async function () {
-                await declineRequest(memberId);
+                await ownerService.declineRequest(memberId);
                 update();
             };
         }
 
         function onRemove(memberId) {
             return async function () {
-                await removeMember(memberId);
+                await ownerService.removeMember(memberId);
                 update();
             };
         }
