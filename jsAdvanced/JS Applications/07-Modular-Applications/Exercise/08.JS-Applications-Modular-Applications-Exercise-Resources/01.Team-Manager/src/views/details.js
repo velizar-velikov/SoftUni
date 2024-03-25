@@ -61,7 +61,7 @@ export async function showDetailsPage(ctx) {
 
     let userMemberId = null;
 
-    // create user actions as object methods
+    // create user actions and ownerActions as object methods
     const userActions = createUserActions();
     const ownerActions = createOwnerActions();
 
