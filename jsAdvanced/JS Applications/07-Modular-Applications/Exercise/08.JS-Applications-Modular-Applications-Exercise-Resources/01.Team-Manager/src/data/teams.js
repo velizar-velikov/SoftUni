@@ -1,6 +1,5 @@
 import { get, post, put } from './api.js';
 import { notOwnerService, ownerService } from './members.js';
-// import { approveMember, sendMembershipRequest } from './members.js';
 
 const host = 'http://localhost:3030';
 
