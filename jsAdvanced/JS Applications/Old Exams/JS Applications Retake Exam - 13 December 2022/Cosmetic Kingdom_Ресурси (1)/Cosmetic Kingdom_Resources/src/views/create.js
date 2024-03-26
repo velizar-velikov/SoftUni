@@ -23,6 +23,11 @@ const createTemplate = (onCreate) => html`
 export function showCreateView(ctx) {
     ctx.render(createTemplate(createSubmitHandler(onCreate)));
 
+    /**
+     * @param {import('../data/data.js').Product} param0
+     * @param {HTMLFormElement} form
+     * @returns {void}
+     */
     async function onCreate({ name, imageUrl, category, description, price }, form) {
         if ([name, imageUrl, category, description, price].some((f) => f === '')) {
             return alert('All fields are required.');
