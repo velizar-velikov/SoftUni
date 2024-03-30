@@ -14,7 +14,7 @@ import { showEditView } from './views/edit.js';
 
 page(renderer(document.getElementById('wrapper')));
 page(addGoTo());
-page('/index.html', '/dashboard');
+page('/index.html', '/');
 page('/', showHomeView);
 page('/dashboard', showDashboardView);
 page('/create', showCreateView);
