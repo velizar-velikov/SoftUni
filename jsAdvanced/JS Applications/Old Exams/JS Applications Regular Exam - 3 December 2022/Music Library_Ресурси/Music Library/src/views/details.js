@@ -1,7 +1,5 @@
 import { addLike, deleteAlbum, editAlbum, getAlbumById, getAllAlbumLikes, hasUserLikedAlbum } from '../data/data.js';
 import { html } from '../lib/lib.js';
-import { createSubmitHandler } from '../utils/formHelper.js';
-import { getUserId } from '../utils/userHelper.js';
 
 const detailsTemplate = (album, likes, isOwner, canLike, onDelete, onLike) => html`
     <section id="details">
