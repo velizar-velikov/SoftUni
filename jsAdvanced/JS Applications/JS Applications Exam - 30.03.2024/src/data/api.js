@@ -5,14 +5,14 @@ async function request(url, options) {
         const response = await fetch(url, options);
 
         if (!response.ok) {
-            if (response.status === 403) {
-                //user session has expired
-                clearUserData();
-            }
             const error = await response.json();
             throw new Error(error.message);
         }
 
+        if (response.status === 403) {
+            //user session has expired
+            clearUserData();
+        }
         if (response.status === 204) {
             //logout - no content
             return response;
