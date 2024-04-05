@@ -19,5 +19,5 @@ const getPersonalInfo = (firstName: string, lastName: string, age: string): Pers
     return new Person(firstName, lastName, Number(age));
 };
 
-const info = getPersonalInfo('Peter', 'Pan', '20');
+const info: PersonalInfo = getPersonalInfo('Peter', 'Pan', '20');
 console.log(info);
