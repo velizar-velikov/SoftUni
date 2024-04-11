@@ -1,8 +1,7 @@
-import { PostService } from '../data/posts.js';
 import { html } from '../lib/lib.js';
+import { Post } from '../types/post.js';
+import postService from '../data/posts.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-
-const postService = new PostService();
 
 const createTemplate = (onCreate: Function) => html`
     <section id="create-page" class="auth">
@@ -42,8 +41,8 @@ const createTemplate = (onCreate: Function) => html`
 export function showCreate(ctx) {
     ctx.render(createTemplate(createSubmitHandler(onCreate)));
 
-    async function onCreate({ title, description, imageUrl, address, phone }, form: HTMLFormElement) {
-        if ([title, description, imageUrl, address, phone].some((f) => f === '')) {
+    async function onCreate({ title, description, imageUrl, address, phone }: Post, form: HTMLFormElement) {
+        if ([title, description, imageUrl, address, phone].some((f: string) => f === '')) {
             return alert('All fields are required!');
         }
 

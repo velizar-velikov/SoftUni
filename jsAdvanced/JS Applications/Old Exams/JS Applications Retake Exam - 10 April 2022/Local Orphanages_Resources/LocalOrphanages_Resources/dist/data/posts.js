@@ -1,13 +1,13 @@
-import { ApiService } from './api.js';
-const api = new ApiService();
+import api from './api.js';
 const host = 'http://localhost:3030';
 const endpoints = {
     allPosts: '/data/posts?sortBy=_createdOn%20desc',
     posts: '/data/posts',
     postById: (id) => `/data/posts/${id}`,
-    postsByUser: (userId) => `/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
+    postsByUser: (userId) => `/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
 };
-export class PostService {
+// using the generic interface
+class PostService {
     async getAll() {
         return await api.get(host + endpoints.allPosts);
     }
@@ -27,3 +27,4 @@ export class PostService {
         return await api.delete(host + endpoints.postById(postId));
     }
 }
+export default new PostService();

@@ -1,7 +1,6 @@
-import { UserService } from '../data/users.js';
+import userService from '../data/users.js';
 import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-const userService = new UserService();
 const loginTemplate = (onLogin) => html `
     <section id="login-page" class="auth">
         <form id="login" @submit=${onLogin}>

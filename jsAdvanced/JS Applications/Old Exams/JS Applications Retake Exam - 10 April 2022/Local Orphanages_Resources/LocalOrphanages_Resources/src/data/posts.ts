@@ -1,28 +1,35 @@
-import { ApiService } from './api.js';
+import { Post } from '../types/post.js';
+import api from './api.js';
 
-const api = new ApiService();
 
 const host = 'http://localhost:3030';
 
-export type Post = {
-    title: string;
-    description: string;
-    address: string;
-    phone: string;
-    imageUrl: string;
-    _ownerId?: string;
-    _createdOn?: number;
-    _id?: string;
-};
+interface PostsEndpoints {
+    allPosts: string;
+    posts: string;
+    postById(id: string): string;
+    postsByUser(userId: string): string;
+}
 
-const endpoints = {
+const endpoints: PostsEndpoints = {
     allPosts: '/data/posts?sortBy=_createdOn%20desc',
     posts: '/data/posts',
     postById: (id: string): string => `/data/posts/${id}`,
-    postsByUser: (userId: string): string => `/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
+    postsByUser: (userId: string): string => `/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
 };
 
-export class PostService {
+// generic interface
+interface PostServiceType<T> {
+    getAll(): Promise<T[]>;
+    getPostsByUser(userId: string): Promise<T[]>;
+    getById(postId: string): Promise<T>;
+    addPost(data: T): Promise<T>;
+    editPost(postId: string, data: T): Promise<T>;
+    deletePost(postId: string): Promise<T>
+}
+
+// using the generic interface
+class PostService implements PostServiceType<Post> {
     async getAll(): Promise<Post[]> {
         return await api.get(host + endpoints.allPosts);
     }
@@ -47,3 +54,5 @@ export class PostService {
         return await api.delete(host + endpoints.postById(postId));
     }
 }
+
+export default new PostService();

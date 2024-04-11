@@ -1,7 +1,7 @@
-import { Post, PostService } from '../data/posts.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
+import { Post } from '../types/post.js';
 
-const postService = new PostService();
 
 const myDashboardTemplate = (posts: Post[]) => html`
     <section id="my-posts-page">
@@ -24,7 +24,7 @@ const postTemplate = (post: Post) => html`
 `;
 
 export async function showMyDashboard(ctx) {
-    const posts = await postService.getPostsByUser(ctx.user._id);
+    const posts: Post[] = await postService.getPostsByUser(ctx.user._id);
 
     ctx.render(myDashboardTemplate(posts));
 }

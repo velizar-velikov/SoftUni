@@ -1,7 +1,8 @@
 import { page } from './lib/lib.js';
-import { addGoTo } from './middlewares/redirect.js';
+import { session } from './middlewares/session.js';
 import { renderer } from './middlewares/render.js';
-import { UserService } from './data/users.js';
+import { addGoTo } from './middlewares/redirect.js';
+import userService from './data/users.js';
 import { showCreate } from './views/create.js';
 import { showDashboard } from './views/dashboard.js';
 import { showLogin } from './views/login.js';
@@ -9,9 +10,7 @@ import { showRegister } from './views/register.js';
 import { showMyDashboard } from './views/my-dashboard.js';
 import { showDetails } from './views/details.js';
 import { showEditPage } from './views/edit.js';
-import { session } from './middlewares/session.js';
 const root = document.getElementById('box');
-const userService = new UserService();
 // middlewares
 page(renderer(root));
 page(addGoTo());

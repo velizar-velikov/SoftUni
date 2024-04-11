@@ -1,7 +1,6 @@
-import { PostService } from '../data/posts.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-const postService = new PostService();
 const editTemplate = (post, onEdit) => html `
     <section id="edit-page" class="auth">
         <form id="edit" @submit=${onEdit}>

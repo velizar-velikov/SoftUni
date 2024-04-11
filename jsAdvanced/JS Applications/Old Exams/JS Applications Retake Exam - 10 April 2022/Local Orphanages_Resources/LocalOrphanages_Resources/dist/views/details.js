@@ -1,8 +1,6 @@
-import { DonationService } from '../data/donations.js';
-import { PostService } from '../data/posts.js';
+import donationService from '../data/donations.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
-const postService = new PostService();
-const donationService = new DonationService();
 const detailsTemplate = (post, isOwner, canDonate, donationsCount, onDelete, onDonate) => html `
     <section id="details-page">
         <h1 class="title">Post Details</h1>

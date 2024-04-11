@@ -1,9 +1,7 @@
-import { DonationService } from '../data/donations.js';
-import { Post, PostService } from '../data/posts.js';
+import donationService from '../data/donations.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
-
-const postService = new PostService();
-const donationService = new DonationService();
+import { Post } from '../types/post.js';
 
 const detailsTemplate = (
     post: Post,
@@ -45,17 +43,17 @@ const detailsTemplate = (
 `;
 
 export async function showDetails(ctx) {
-    const id = ctx.params.id;
-    const post = await postService.getById(id);
+    const id: string = ctx.params.id;
+    const post: Post = await postService.getById(id);
 
-    const isOwner = ctx.user?._id === post._ownerId;
-    let canDonate = ctx.user && !isOwner && !(await donationService.hasUserDonatedForPost(id, ctx.user._id));
-    let donationsCount = await donationService.getTotalDonationsForPost(id);
+    const isOwner: boolean = ctx.user?._id === post._ownerId;
+    let canDonate: boolean = ctx.user && !isOwner && !(await donationService.hasUserDonatedForPost(id, ctx.user._id));
+    let donationsCount: number = await donationService.getTotalDonationsForPost(id);
 
     update();
 
     async function onDelete() {
-        const choice = confirm('Are you sure you want to delete this item?');
+        const choice: boolean = confirm('Are you sure you want to delete this item?');
 
         if (choice) {
             await postService.deletePost(id);

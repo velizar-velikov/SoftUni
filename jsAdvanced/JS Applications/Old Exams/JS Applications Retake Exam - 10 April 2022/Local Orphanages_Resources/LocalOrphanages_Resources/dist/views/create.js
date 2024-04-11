@@ -1,7 +1,6 @@
-import { PostService } from '../data/posts.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-const postService = new PostService();
 const createTemplate = (onCreate) => html `
     <section id="create-page" class="auth">
         <form id="create" @submit=${onCreate}>

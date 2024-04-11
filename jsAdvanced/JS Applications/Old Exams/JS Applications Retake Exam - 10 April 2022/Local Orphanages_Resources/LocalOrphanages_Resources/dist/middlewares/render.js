@@ -1,5 +1,5 @@
 import { render } from '../lib/lib.js';
-import { getUserData } from '../utils/userHelper.js';
+import userHelper from '../utils/userHelper.js';
 import { layoutTemplate } from '../views/layoutTemplate.js';
 export function renderer(root) {
     return function (ctx, next) {
@@ -7,7 +7,7 @@ export function renderer(root) {
         next();
     };
     function renderView(content) {
-        const userData = getUserData();
+        const userData = userHelper.getUserData();
         render(layoutTemplate(userData, content), root);
     }
 }

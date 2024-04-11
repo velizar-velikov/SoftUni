@@ -1,8 +1,7 @@
-import { UserService } from '../data/users.js';
+import userService from '../data/users.js';
 import { html } from '../lib/lib.js';
+import { UserAuthData } from '../types/authData.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-
-const userService = new UserService();
 
 const registerTemplate = (onRegister: Function) => html`
     <section id="register-page" class="auth">
@@ -32,7 +31,7 @@ const registerTemplate = (onRegister: Function) => html`
 export function showRegister(ctx) {
     ctx.render(registerTemplate(createSubmitHandler(onRegister)));
 
-    async function onRegister({ email, password, repeatPassword }, form: HTMLFormElement) {
+    async function onRegister({ email, password, repeatPassword }: UserAuthData, form: HTMLFormElement) {
         if (!email || !password || !repeatPassword) {
             return alert('All fields are required!');
         } else if (password !== repeatPassword) {

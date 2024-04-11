@@ -1,6 +1,5 @@
 import { html } from '../lib/lib.js';
-import { PostService } from '../data/posts.js';
-const postService = new PostService();
+import postService from '../data/posts.js';
 const dashboardTemplate = (posts) => html `
     <section id="dashboard-page">
         <h1 class="title">All Posts</h1>

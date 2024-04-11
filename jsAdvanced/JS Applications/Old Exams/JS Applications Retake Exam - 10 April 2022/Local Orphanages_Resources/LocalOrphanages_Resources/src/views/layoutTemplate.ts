@@ -1,6 +1,7 @@
 import { html } from '../lib/lib.js';
+import { UserData } from '../types/userData.js';
 
-export const layoutTemplate = (userData, content: HTMLTemplateElement) => html`
+export const layoutTemplate = (userData: UserData, content: HTMLTemplateElement) => html`
     <header>
         <h1><a href="/dashboard">Orphelp</a></h1>
         <nav>

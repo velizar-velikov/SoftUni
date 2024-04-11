@@ -1,8 +1,7 @@
-import { UserService } from '../data/users.js';
+import userService from '../data/users.js';
 import { html } from '../lib/lib.js';
+import { UserAuthData } from '../types/authData.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-
-const userService = new UserService();
 
 const loginTemplate = (onLogin: Function) => html`
     <section id="login-page" class="auth">
@@ -27,7 +26,7 @@ const loginTemplate = (onLogin: Function) => html`
 export function showLogin(ctx) {
     ctx.render(loginTemplate(createSubmitHandler(onLogin)));
 
-    async function onLogin({ email, password }, form: HTMLFormElement) {
+    async function onLogin({ email, password }: UserAuthData, form: HTMLFormElement) {
         if (!email || !password) {
             return alert('All fields are required!');
         }

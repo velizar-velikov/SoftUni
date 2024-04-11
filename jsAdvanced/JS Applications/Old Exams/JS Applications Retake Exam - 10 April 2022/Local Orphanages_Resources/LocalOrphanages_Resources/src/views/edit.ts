@@ -1,8 +1,7 @@
-import { Post, PostService } from '../data/posts.js';
+import postService from '../data/posts.js';
 import { html } from '../lib/lib.js';
+import { Post } from '../types/post.js';
 import { createSubmitHandler } from '../utils/formHelper.js';
-
-const postService = new PostService();
 
 const editTemplate = (post: Post, onEdit: Function) => html`
     <section id="edit-page" class="auth">
@@ -40,14 +39,14 @@ const editTemplate = (post: Post, onEdit: Function) => html`
 `;
 
 export async function showEditPage(ctx) {
-    const id = ctx.params.id;
+    const id: string = ctx.params.id;
 
-    const post = await postService.getById(id);
+    const post: Post = await postService.getById(id);
 
     ctx.render(editTemplate(post, createSubmitHandler(onEdit)));
 
-    async function onEdit({ title, description, imageUrl, address, phone }, form: HTMLFormElement) {
-        if ([title, description, imageUrl, address, phone].some((f) => f === '')) {
+    async function onEdit({ title, description, imageUrl, address, phone }: Post, form: HTMLFormElement) {
+        if ([title, description, imageUrl, address, phone].some((f: string) => f === '')) {
             return alert('All fields are required!');
         }
 

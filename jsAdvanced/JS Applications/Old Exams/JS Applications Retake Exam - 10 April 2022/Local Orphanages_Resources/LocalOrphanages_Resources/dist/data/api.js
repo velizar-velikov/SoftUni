@@ -1,5 +1,5 @@
-import { clearUserData, getUserData } from '../utils/userHelper.js';
-export class ApiService {
+import userHelper from '../utils/userHelper.js';
+class ApiService {
     async get(url) {
         return await this.request(url, this.createOptions('GET'));
     }
@@ -17,7 +17,7 @@ export class ApiService {
         if (!response.ok) {
             if (response.status === 403) {
                 //user session has expired
-                clearUserData();
+                userHelper.clearUserData();
             }
             const error = await response.json();
             throw new Error(error.message);
@@ -38,10 +38,11 @@ export class ApiService {
             options.headers['Content-Type'] = 'application/json';
             options.body = JSON.stringify(body);
         }
-        const userData = getUserData();
+        const userData = userHelper.getUserData();
         if (userData) {
             options.headers['X-Authorization'] = userData.accessToken;
         }
         return options;
     }
 }
+export default new ApiService();

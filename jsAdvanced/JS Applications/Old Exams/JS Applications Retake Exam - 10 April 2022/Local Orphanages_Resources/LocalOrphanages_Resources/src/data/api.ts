@@ -1,6 +1,8 @@
-import { clearUserData, getUserData } from '../utils/userHelper.js';
+import { UserData } from '../types/userData.js';
+import userHelper from '../utils/userHelper.js';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
 type Header = {
     'Content-Type'?: string;
     'X-Authorization'?: string;
@@ -11,7 +13,7 @@ type Options = {
     body?: string;
 };
 
-export class ApiService {
+class ApiService {
     async get(url: string) {
         return await this.request(url, this.createOptions('GET'));
     }
@@ -34,7 +36,7 @@ export class ApiService {
         if (!response.ok) {
             if (response.status === 403) {
                 //user session has expired
-                clearUserData();
+                userHelper.clearUserData();
             }
             const error = await response.json();
             throw new Error(error.message);
@@ -50,7 +52,7 @@ export class ApiService {
         return data;
     }
 
-    private createOptions(method: Method, body?): Options {
+    private createOptions(method: Method, body?: Object): Options {
         const options: Options = {
             method,
             headers: {},
@@ -61,7 +63,7 @@ export class ApiService {
             options.body = JSON.stringify(body);
         }
 
-        const userData = getUserData();
+        const userData: UserData = userHelper.getUserData();
         if (userData) {
             options.headers['X-Authorization'] = userData.accessToken;
         }
@@ -69,3 +71,5 @@ export class ApiService {
         return options;
     }
 }
+
+export default new ApiService();
