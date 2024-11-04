@@ -1,7 +1,7 @@
 const { subscribe } = require('./bus');
 
 function start() {
-    subscribe(onMessage);
+    subscribe('ping', onMessage);
 }
 
 function onMessage(data) {
