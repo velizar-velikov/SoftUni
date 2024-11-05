@@ -9,7 +9,7 @@ async function readData() {
 }
 
 async function writeData(data) {
-    await fs.writeFile(fileName, JSON.stringify(data));
+    await fs.writeFile(fileName, JSON.stringify(data, null, 2));
 }
 
 async function getCats() {

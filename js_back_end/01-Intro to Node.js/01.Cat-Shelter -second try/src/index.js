@@ -2,7 +2,7 @@ const http = require('http');
 const { homeHandler } = require('./handlers/home.js');
 const { staticFileHandler } = require('./handlers/static.js');
 const { addBreedHandler, postBreedHandler } = require('./handlers/addBreed.js');
-const { addCatHandler } = require('./handlers/addCat.js');
+const { addCatHandler, postCatHandler } = require('./handlers/addCat.js');
 
 const port = 3000;
 
@@ -15,6 +15,7 @@ const routes = {
     },
     POST: {
         '/cats/add-breed': postBreedHandler,
+        '/cats/add-cat': postCatHandler,
     },
 };
 

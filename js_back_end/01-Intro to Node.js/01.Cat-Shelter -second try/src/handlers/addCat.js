@@ -1,4 +1,4 @@
-const { getBreeds } = require('../model.js');
+const { getBreeds, addCat } = require('../model.js');
 const { readTemplate, layout } = require('../util.js');
 
 const breedTemplate = (breed) => `
@@ -15,4 +15,24 @@ async function addCatHandler(req, res) {
     res.end();
 }
 
-module.exports = { addCatHandler };
+async function postCatHandler(req, res) {
+    let data = '';
+    req.on('data', (chunk) => (data += chunk.toString()));
+    req.on('end', async () => {
+        const formData = new URLSearchParams(data);
+        const cat = Object.fromEntries(formData.entries());
+        console.log(cat);
+        // transform the cat object into the type that is expected from cats.json
+
+        if (cat) {
+            await addCat(cat);
+            res.writeHead(301, ['Location', '/']);
+            res.end();
+        } else {
+            res.writeHead(301, ['Location', '/cats/add-cat']);
+            res.end();
+        }
+    });
+}
+
+module.exports = { addCatHandler, postCatHandler };
