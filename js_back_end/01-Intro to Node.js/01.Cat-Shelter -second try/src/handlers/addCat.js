@@ -22,7 +22,7 @@ async function postCatHandler(req, res) {
         const formData = new URLSearchParams(data);
         const cat = Object.fromEntries(formData.entries());
         console.log(cat);
-        // transform the cat object into the type that is expected from cats.json
+        //TODO: transform the cat object into the type that is expected from cats.json
 
         if (cat) {
             await addCat(cat);
