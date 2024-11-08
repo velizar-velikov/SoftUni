@@ -1,0 +1,36 @@
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8' />
+        <title>{{title}}</title>
+        <!-- Do not forget to change the path to the css file -->
+        <link href='/static/css/style.css' type='text/css' rel='stylesheet' />
+    </head>
+
+    <body>
+
+        <div id='box'>
+
+            <nav>
+                <a href='/'><img src='/static/img/logo.webp' alt='logo' /></a>
+
+                <ul class='menu'>
+                    <li><a class='hover' href='/'>Home</a></li>
+                    <li><a class='hover' href='/create'>Create Post</a></li>
+                    <li><a class='hover' href='/search'>Search</a></li>
+                    <li><a class='hover' href='/about'>About</a></li>
+                </ul>
+
+            </nav>
+
+            <main>
+                {{{body}}}
+            </main>
+            <footer>
+                © JS Back-End Workshop
+            </footer>
+        </div>
+
+    </body>
+
+</html>
