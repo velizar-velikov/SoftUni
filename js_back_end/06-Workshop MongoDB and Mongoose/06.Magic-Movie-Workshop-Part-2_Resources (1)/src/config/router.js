@@ -4,6 +4,7 @@ const { aboutController } = require('../controllers/about.js');
 const { createController } = require('../controllers/moviesController.js');
 const { notFound } = require('../controllers/404.js');
 const { createCastController } = require('../controllers/castController.js');
+const { attachController } = require('../controllers/attach.js');
 
 const router = Router();
 
@@ -16,6 +17,9 @@ router.post('/create-movie', createController.post);
 
 router.get('/create-cast', createCastController.get);
 router.post('/create-cast', createCastController.post);
+
+router.get('/attach/:id', attachController.get);
+router.post('/attach/:id', attachController.post);
 
 router.get('/search', searchController);
 

@@ -4,16 +4,17 @@ const { getAllMovies, getMovieById, searchMovies } = require('../services/movies
 module.exports = {
     homeController: async (req, res) => {
         const movies = await getAllMovies();
-        const casts = await getAllCasts();
 
-        res.render('home', { movies, casts, title: 'Home Page' });
+        res.render('home', { movies, title: 'Home Page' });
     },
     detailsController: async (req, res) => {
         const { id } = req.params;
         const movie = await getMovieById(id);
 
+        console.log(movie);
+
         if (!movie) {
-            res.render('404', { title: 'Error Page' });
+            res.render('404', { casts: movie.cast, title: 'Error Page' });
             return;
         }
 
