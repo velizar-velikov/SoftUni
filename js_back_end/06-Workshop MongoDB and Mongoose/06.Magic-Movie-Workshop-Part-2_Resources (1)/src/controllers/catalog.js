@@ -11,8 +11,6 @@ module.exports = {
         const { id } = req.params;
         const movie = await getMovieById(id);
 
-        console.log(movie);
-
         if (!movie) {
             res.render('404', { casts: movie.cast, title: 'Error Page' });
             return;

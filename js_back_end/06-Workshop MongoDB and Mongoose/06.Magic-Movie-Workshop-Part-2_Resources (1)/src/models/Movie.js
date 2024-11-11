@@ -51,13 +51,4 @@ MovieSchema.path('imageURL').validate(function (value) {
 
 const Movie = model('Movie', MovieSchema);
 
-// title – String, required V
-// genre – String, required V
-// director – String, required V
-// year – Number, required, max and min value V
-// rating – Number, required, max and min value V
-// description – String, required, max length validation V
-// imageURL – String, required, http/https validation V
-// cast – a collection of ObjectIds, ref Cast Model V
-
 module.exports = { Movie };

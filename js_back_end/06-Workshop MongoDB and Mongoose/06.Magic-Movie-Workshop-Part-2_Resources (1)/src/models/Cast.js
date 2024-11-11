@@ -40,10 +40,3 @@ CastSchema.path('imageURL').validate(function (value) {
 const Cast = model('Cast', CastSchema);
 
 module.exports = { Cast };
-
-// name – String, required
-// age – Number, required, max and min value
-// born – String, required
-// name in movie – String, required
-// cast image – String, required, http/https validation
-// movie – ObjectId, ref Movie Model

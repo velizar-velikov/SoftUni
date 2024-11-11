@@ -30,9 +30,6 @@ async function createMovie(movieData) {
 
 async function searchMovies(search) {
     const foundMovies = await Movie.find({ title: `${search.title}`, genre: `${search.genre}`, year: `${search.year}` }).lean();
-    // case-insensitive search
-    // const foundMovies = movies.filter(filterMovie);
-    // return foundMovies.map(toMovieModel);
 
     return foundMovies;
 
