@@ -32,7 +32,7 @@ const MovieSchema = new Schema({
     description: {
         type: String,
         required: true,
-        maxLength: [500, 'Description must be no more than 80 characters, got {VALUE}'],
+        maxLength: [500, 'Description must be no more than 500 characters, got {VALUE}'],
     },
     imageURL: {
         type: String,

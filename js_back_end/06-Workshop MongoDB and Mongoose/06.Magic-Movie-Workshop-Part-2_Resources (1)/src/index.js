@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const { hbsConfig } = require('./config/hbsConfig.js');
 const { expressConfig } = require('./config/expressConfig.js');

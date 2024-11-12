@@ -12,7 +12,7 @@ module.exports = {
         const movie = await getMovieById(id);
 
         if (!movie) {
-            res.render('404', { casts: movie.cast, title: 'Error Page' });
+            res.render('404', { title: 'Error Page' });
             return;
         }
 
