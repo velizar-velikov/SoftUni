@@ -1,0 +1,22 @@
+{
+    "name": "demo2",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "debug": "nodemon ./src/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "express": "^4.21.1",
+        "express-handlebars": "^8.0.1",
+        "express-session": "^1.18.1",
+        "mongoose": "^8.8.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.7"
+    }
+}
