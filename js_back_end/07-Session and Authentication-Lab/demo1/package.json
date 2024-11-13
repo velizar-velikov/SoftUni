@@ -1,0 +1,19 @@
+{
+    "name": "demo1",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "debug": "nodemon ./src/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "express": "^4.21.1",
+        "express-handlebars": "^8.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.7"
+    }
+}
