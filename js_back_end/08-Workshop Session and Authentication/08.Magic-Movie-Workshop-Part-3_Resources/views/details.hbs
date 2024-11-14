@@ -29,6 +29,10 @@
     <div class='main-cast-card'>
         {{#each cast}}
         {{>cast}}
+        {{/else}}
+        <div class="no-cast">
+            <p>There are no casts added yet...</p>
+        </div>
         {{/each}}
     </div>
 

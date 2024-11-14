@@ -143,6 +143,7 @@ footer {
     height: auto;
 }
 
+/* Added for error type visualization */
 .error label {
     color: red;
 }
