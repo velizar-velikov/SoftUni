@@ -3,9 +3,10 @@ const { getAllMovies, getMovieById, searchMovies } = require('../services/movies
 
 module.exports = {
     homeController: async (req, res) => {
+        const { user } = req.session;
         const movies = await getAllMovies();
 
-        res.render('home', { movies, title: 'Home Page' });
+        res.render('home', { movies, user, title: 'Home Page' });
     },
     detailsController: async (req, res) => {
         const { id } = req.params;

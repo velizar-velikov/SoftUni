@@ -1,23 +1,28 @@
+{{#if error}}
+    <div class='error-container'>
+        <p>{{error.message}}</p>
+    </div>
+{{/if}}
 <section id='register-page'>
     <div class='signupSection'>
         <div class='info'>
             <h2>"I hope you're pleased with yourselves. We could all have been killed — or worse, expelled. Now if you don't mind,
                 I'm going to bed."</h2>
         </div>
-        <form action='#' method='' class='signupForm'>
+        <form method='post' class='signupForm'>
             <h2>Register</h2>
             <ul class='noBullet'>
-                <li>
+                <li {{#if fieldErrors.email}}class="error"{{/if}}>
                     <label for='email'>Email:</label>
-                    <input type='text' class='inputFields' id='email' name='' value='' />
+                    <input type='text' class='inputFields' id='email' name='email' value='{{formData.email}}' />
                 </li>
-                <li>
+                <li {{#if fieldErrors.password}}class="error"{{/if}}>
                     <label for='password'>Password:</label>
-                    <input type='password' class='inputFields' id='password' name='' />
+                    <input type='password' class='inputFields' id='password' name='password' />
                 </li>
-                <li>
+                <li {{#if fieldErrors.rePass}}class="error"{{/if}}>
                     <label for='repeat-password'>Repeat-Password:</label>
-                    <input type='password' class='inputFields' id='repeat-password' name='' />
+                    <input type='password' class='inputFields' id='repeat-password' name='repeat-password' />
                 </li>
                 <li id='center-btn'>
                     <button id='join-btn'>Register</button>
