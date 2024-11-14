@@ -1,4 +1,4 @@
-const { createMovie, editMovie, getMovieById, isOwnerOfMovie } = require('../services/movies.js');
+const { createMovie, editMovie, getMovieById, isOwnerOfMovie, deleteMovie } = require('../services/movies.js');
 const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
@@ -85,7 +85,7 @@ module.exports = {
             }
 
             try {
-                await editMovie(movieId, req.body, userId);
+                await editMovie(movieId, req.body);
             } catch (error) {
                 console.log(error.message);
                 res.render('404');
@@ -109,6 +109,12 @@ module.exports = {
 
         console.log('Delete action');
         // delete movie from db
+        try {
+            await deleteMovie(movieId);
+        } catch (error) {
+            res.render('404');
+            return;
+        }
         // redirect to home
         res.redirect('/');
     },

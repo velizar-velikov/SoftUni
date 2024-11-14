@@ -36,10 +36,6 @@ async function editMovie(movieId, movieData, userId) {
         throw new Error(`Movie ${movieId} does not exist`);
     }
 
-    if (movie.creatorId.toString() !== userId.toString()) {
-        throw new Error('Access denied');
-    }
-
     movie.title = movieData.title;
     movie.genre = movieData.genre;
     movie.director = movieData.director;
@@ -53,7 +49,15 @@ async function editMovie(movieId, movieData, userId) {
     return movie;
 }
 
-async function deleteMovie(id) {}
+async function deleteMovie(id) {
+    const movie = await Movie.findOne({ _id: id });
+
+    if (!movie) {
+        throw new Error(`Movie ${id} does not exist`);
+    }
+
+    await Movie.findByIdAndDelete(id);
+}
 
 async function searchMovies(search) {
     const foundMovies = await Movie.find({ title: `${search.title}`, genre: `${search.genre}`, year: `${search.year}` }).lean();
@@ -101,6 +105,7 @@ module.exports = {
     getMovieById,
     createMovie,
     editMovie,
+    deleteMovie,
     searchMovies,
     attachCastToMovie,
     isOwnerOfMovie,
