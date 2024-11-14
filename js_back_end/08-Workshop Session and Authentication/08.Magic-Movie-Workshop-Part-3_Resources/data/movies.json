@@ -1,0 +1,62 @@
+[
+    {
+        "id": "bd19-a850",
+        "title": "The Great Escape",
+        "genre": "Adventure",
+        "director": "John Sturges",
+        "year": 1963,
+        "imageURL": "/static/img/jungle-cruise.jpeg",
+        "rating": 3,
+        "description": "Allied prisoners of war plan for several hundred of their number to escape from a German camp during World War II."
+    },
+    {
+        "id": "61c6-0ed0",
+        "title": "Inception",
+        "genre": "Sci-Fi",
+        "director": "Christopher Nolan",
+        "year": 2010,
+        "imageURL": "/static/img/the-little-mermaid.jpg",
+        "rating": 4,
+        "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+    },
+    {
+        "id": "f1bc-c4ad",
+        "title": "The Godfather",
+        "genre": "Crime",
+        "director": "Francis Ford Coppola",
+        "year": 1972,
+        "imageURL": "/static/img/home-alone.jpeg",
+        "rating": 5,
+        "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+    },
+    {
+        "id": "6dd5-2309",
+        "title": "Pesho e lud",
+        "genre": "fantasy",
+        "director": "Pesho",
+        "year": 2012,
+        "imageURL": "no image",
+        "rating": 2,
+        "description": "dyradyra 100 chadyra"
+    },
+    {
+        "id": "a7e9-854a",
+        "title": "Gosho dobriq",
+        "genre": "comedy",
+        "director": "Todor",
+        "year": 2000,
+        "imageURL": "no image again",
+        "rating": 1,
+        "description": "Gosho entusiasta trygnal da programira"
+    },
+    {
+        "id": "a70d-7c51",
+        "title": "Teodosii",
+        "genre": "comedy",
+        "director": "Velizar",
+        "year": 2002,
+        "imageURL": "no image yet again",
+        "rating": 5,
+        "description": "Teodosii veliki i negovata gvardiq"
+    }
+]
