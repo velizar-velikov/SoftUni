@@ -12,7 +12,7 @@ async function getMovieById(id) {
     return movie;
 }
 
-async function createMovie(movieData) {
+async function createMovie(movieData, userId) {
     const movie = {
         title: movieData.title,
         genre: movieData.genre,
@@ -21,12 +21,39 @@ async function createMovie(movieData) {
         rating: Number(movieData.rating),
         description: movieData.description,
         imageURL: movieData.imageURL,
+        creatorId: userId,
     };
 
     const createdMovie = await Movie.create(movie);
 
     return createdMovie;
 }
+
+async function editMovie(movieId, movieData, userId) {
+    const movie = await Movie.find({ _id: movieId });
+
+    if (!movie) {
+        throw new Error(`Movie ${movieId} does not exist`);
+    }
+
+    if (movie.creatorId.toString() !== userId.toString()) {
+        throw new Error('Access denied');
+    }
+
+    movie.title = movieData.title;
+    movie.genre = movieData.genre;
+    movie.director = movieData.director;
+    movie.year = movieData.year;
+    movie.rating = movieData.rating;
+    movie.description = movieData.description;
+    movie.imageURL = movieData.imageURL;
+
+    await movie.save();
+
+    return movie;
+}
+
+async function deleteMovie(id) {}
 
 async function searchMovies(search) {
     const foundMovies = await Movie.find({ title: `${search.title}`, genre: `${search.genre}`, year: `${search.year}` }).lean();
@@ -55,10 +82,26 @@ async function attachCastToMovie(movieId, castId) {
     return movie;
 }
 
+async function isOwnerOfMovie(movieId, userId) {
+    const movie = await Movie.findOne({ _id: movieId });
+
+    if (!movie) {
+        return false;
+    }
+
+    if (movie.creatorId?.toString() != userId.toString()) {
+        return false;
+    }
+
+    return true;
+}
+
 module.exports = {
     getAllMovies,
     getMovieById,
     createMovie,
+    editMovie,
     searchMovies,
     attachCastToMovie,
+    isOwnerOfMovie,
 };
