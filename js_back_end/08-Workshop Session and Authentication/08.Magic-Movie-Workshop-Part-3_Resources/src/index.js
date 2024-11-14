@@ -4,6 +4,7 @@ const { hbsConfig } = require('./config/hbsConfig.js');
 const { expressConfig } = require('./config/expressConfig.js');
 const { router } = require('./config/router.js');
 const { databaseConfig } = require('./config/databaseConfig.js');
+const { sessionConfig } = require('./middlewares/session.js');
 
 const PORT = 3001;
 
@@ -13,6 +14,7 @@ async function start() {
     await databaseConfig();
     hbsConfig(app);
     expressConfig(app);
+    sessionConfig(app);
     app.use(router);
 
     app.listen(PORT, () => console.log('Server is listening on port', PORT));

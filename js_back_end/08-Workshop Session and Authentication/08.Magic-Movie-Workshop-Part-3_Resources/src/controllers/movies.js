@@ -26,8 +26,21 @@ module.exports = {
 
             res.redirect(`/details/${_id}`);
         },
-        editController: (req, res) => {
-            // No edit page for now
+    },
+    editController: {
+        get: (req, res) => {
+            const movieId = req.params.id;
+            res.render('edit');
         },
+        post: (req, res) => {
+            // post request
+        },
+    },
+    deleteController: (req, res) => {
+        const movieId = req.params.id;
+        console.log('Delete action');
+        // delete movie from db
+        // redirect to home
+        res.redirect('/');
     },
 };
