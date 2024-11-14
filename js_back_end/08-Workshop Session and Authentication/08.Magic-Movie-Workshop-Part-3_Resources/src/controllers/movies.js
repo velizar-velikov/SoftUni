@@ -1,12 +1,20 @@
 const { createMovie } = require('../services/movies.js');
+const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     createController: {
         get: (req, res) => {
             const { user } = req.session;
+
+            ifNoUserRedirectToHome(req, res);
+
             res.render('create', { user });
         },
         post: async (req, res) => {
+            const { user } = req.session;
+
+            ifNoUserRedirectToHome(req, res);
+
             const errors = {
                 title: !req.body.title,
                 genre: !req.body.genre,
@@ -31,14 +39,25 @@ module.exports = {
     editController: {
         get: (req, res) => {
             const { user } = req.session;
+
+            ifNoUserRedirectToHome(req, res);
+
             const movieId = req.params.id;
             res.render('edit', { user });
         },
         post: (req, res) => {
+            const { user } = req.session;
+
+            ifNoUserRedirectToHome(req, res);
+
             // post request
         },
     },
     deleteController: (req, res) => {
+        const { user } = req.session;
+
+        ifNoUserRedirectToHome(req, res);
+
         const movieId = req.params.id;
         console.log('Delete action');
         // delete movie from db

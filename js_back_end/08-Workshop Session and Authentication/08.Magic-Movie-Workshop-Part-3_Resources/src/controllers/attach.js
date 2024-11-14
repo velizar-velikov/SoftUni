@@ -1,10 +1,12 @@
 const { getAllCasts } = require('../services/casts.js');
 const { getMovieById, attachCastToMovie } = require('../services/movies.js');
+const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     attachController: {
         get: async (req, res) => {
             const { user } = req.session;
+            ifNoUserRedirectToHome(req, res);
             const movieId = req.params.id;
             const movie = await getMovieById(movieId);
 
@@ -22,9 +24,11 @@ module.exports = {
                 return !castInMovie.find((castId) => cast._id.toString() == castId);
             }
 
-            res.render('attach-cast', { movie, casts: castsToShow, user });
+            res.render('attach-cast', { user, movie, casts: castsToShow });
         },
         post: async (req, res) => {
+            const { user } = req.session;
+            ifNoUserRedirectToHome(req, res);
             const castId = req.body.cast;
             const movieId = req.params.id;
 
@@ -37,7 +41,7 @@ module.exports = {
             if (castId == 'none') {
                 const movie = await getMovieById(movieId);
                 const allCasts = await getAllCasts();
-                res.render('attach-cast', { movie, casts: allCasts, error: true });
+                res.render('attach-cast', { user, movie, casts: allCasts, error: true });
 
                 return;
             }

@@ -1,15 +1,25 @@
 const { getAllCasts } = require('../services/casts.js');
 const { getAllMovies, getMovieById, searchMovies } = require('../services/movies.js');
+const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     homeController: async (req, res) => {
         const { user } = req.session;
-        const movies = await getAllMovies();
+        let movies = await getAllMovies();
+        console.log({ user });
+
+        movies = movies.map((m) => {
+            m.user = user;
+            return m;
+        });
 
         res.render('home', { movies, user, title: 'Home Page' });
     },
     detailsController: async (req, res) => {
         const { user } = req.session;
+
+        ifNoUserRedirectToHome(req, res);
+
         const { id } = req.params;
         const movie = await getMovieById(id);
 
@@ -20,7 +30,7 @@ module.exports = {
 
         movie.stars = Array(movie.rating).fill('star');
 
-        res.render('details', { movie, user });
+        res.render('details', { user, movie });
     },
     searchController: async (req, res) => {
         const { user } = req.session;

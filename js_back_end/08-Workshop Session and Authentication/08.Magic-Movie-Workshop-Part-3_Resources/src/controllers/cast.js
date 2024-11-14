@@ -1,12 +1,18 @@
 const { createCast } = require('../services/casts.js');
+const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     createCastController: {
         get: (req, res) => {
             const { user } = req.session;
+            ifNoUserRedirectToHome(req, res);
+
             res.render('create-cast', { user });
         },
         post: async (req, res) => {
+            const { user } = req.session;
+            ifNoUserRedirectToHome(req, res);
+
             const errors = {
                 name: !req.body.name,
                 age: !req.body.age,
@@ -16,7 +22,7 @@ module.exports = {
             };
 
             if (Object.values(errors).some((v) => v)) {
-                res.render('create-cast', { cast: req.body, errors });
+                res.render('create-cast', { user, cast: req.body, errors });
                 return;
             }
 
