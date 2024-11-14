@@ -6,7 +6,6 @@ module.exports = {
     homeController: async (req, res) => {
         const { user } = req.session;
         let movies = await getAllMovies();
-        console.log({ user });
 
         movies = movies.map((m) => {
             m.user = user;

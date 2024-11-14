@@ -1,5 +1,5 @@
 const { getAllCasts } = require('../services/casts.js');
-const { getMovieById, attachCastToMovie } = require('../services/movies.js');
+const { getMovieById, attachCastToMovie, isOwnerOfMovie } = require('../services/movies.js');
 const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
@@ -8,6 +8,14 @@ module.exports = {
             const { user } = req.session;
             ifNoUserRedirectToHome(req, res);
             const movieId = req.params.id;
+
+            const isOwner = await isOwnerOfMovie(movieId, user._id);
+
+            if (!isOwner) {
+                res.render('404', { user });
+                return;
+            }
+
             const movie = await getMovieById(movieId);
 
             if (!movie) {
@@ -29,8 +37,16 @@ module.exports = {
         post: async (req, res) => {
             const { user } = req.session;
             ifNoUserRedirectToHome(req, res);
+
             const castId = req.body.cast;
             const movieId = req.params.id;
+
+            const isOwner = await isOwnerOfMovie(movieId, user._id);
+
+            if (!isOwner) {
+                res.render('404', { user });
+                return;
+            }
 
             if (!movieId || !castId) {
                 console.error(`Missing movieId: ${movieId} or castId: ${castId}`);
