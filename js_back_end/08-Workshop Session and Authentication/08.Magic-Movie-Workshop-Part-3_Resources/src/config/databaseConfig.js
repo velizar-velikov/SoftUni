@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('../models/User.js');
 require('../models/Movie.js');
 require('../models/Cast.js');
 

@@ -43,6 +43,11 @@ const MovieSchema = new Schema({
         ref: 'Cast',
         default: [],
     },
+    creatorId: {
+        type: Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 });
 
 MovieSchema.path('imageURL').validate(function (value) {
