@@ -1,5 +1,6 @@
 module.exports = {
     notFound: (req, res) => {
-        res.render('404');
+        const { user } = req.session;
+        res.render('404', { user });
     },
 };

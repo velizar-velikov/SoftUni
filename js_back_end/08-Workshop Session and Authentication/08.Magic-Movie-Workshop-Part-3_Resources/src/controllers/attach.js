@@ -4,11 +4,12 @@ const { getMovieById, attachCastToMovie } = require('../services/movies.js');
 module.exports = {
     attachController: {
         get: async (req, res) => {
+            const { user } = req.session;
             const movieId = req.params.id;
             const movie = await getMovieById(movieId);
 
             if (!movie) {
-                res.render('404');
+                res.render('404', { user });
                 return;
             }
 
@@ -21,7 +22,7 @@ module.exports = {
                 return !castInMovie.find((castId) => cast._id.toString() == castId);
             }
 
-            res.render('attach-cast', { movie, casts: castsToShow });
+            res.render('attach-cast', { movie, casts: castsToShow, user });
         },
         post: async (req, res) => {
             const castId = req.body.cast;

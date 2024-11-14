@@ -3,7 +3,8 @@ const { createCast } = require('../services/casts.js');
 module.exports = {
     createCastController: {
         get: (req, res) => {
-            res.render('create-cast');
+            const { user } = req.session;
+            res.render('create-cast', { user });
         },
         post: async (req, res) => {
             const errors = {

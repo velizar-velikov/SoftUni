@@ -3,7 +3,8 @@ const { createMovie } = require('../services/movies.js');
 module.exports = {
     createController: {
         get: (req, res) => {
-            res.render('create');
+            const { user } = req.session;
+            res.render('create', { user });
         },
         post: async (req, res) => {
             const errors = {
@@ -29,8 +30,9 @@ module.exports = {
     },
     editController: {
         get: (req, res) => {
+            const { user } = req.session;
             const movieId = req.params.id;
-            res.render('edit');
+            res.render('edit', { user });
         },
         post: (req, res) => {
             // post request
