@@ -1,5 +1,5 @@
 const { getAllCasts } = require('../services/casts.js');
-const { getAllMovies, getMovieById, searchMovies } = require('../services/movies.js');
+const { getAllMovies, getMovieById, searchMovies, isOwnerOfMovie } = require('../services/movies.js');
 const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
@@ -7,10 +7,14 @@ module.exports = {
         const { user } = req.session;
         let movies = await getAllMovies();
 
-        movies = movies.map((m) => {
-            m.user = user;
-            return m;
-        });
+        // map is synchronous, therefore we need to await all of the promises returned
+        movies = await Promise.all(
+            movies.map(async (m) => {
+                m.user = user;
+                m.isOwner = user ? await isOwnerOfMovie(m._id, user._id) : false;
+                return m;
+            })
+        );
 
         res.render('home', { movies, user, title: 'Home Page' });
     },
@@ -26,6 +30,8 @@ module.exports = {
             res.render('404', { user, title: 'Error Page' });
             return;
         }
+
+        movie.isOwner = await isOwnerOfMovie(movie._id, user._id);
 
         movie.stars = Array(movie.rating).fill('star');
 

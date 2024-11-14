@@ -29,8 +29,8 @@ async function createMovie(movieData, userId) {
     return createdMovie;
 }
 
-async function editMovie(movieId, movieData, userId) {
-    const movie = await Movie.find({ _id: movieId });
+async function editMovie(movieId, movieData) {
+    const movie = await Movie.findOne({ _id: movieId });
 
     if (!movie) {
         throw new Error(`Movie ${movieId} does not exist`);
