@@ -1,4 +1,5 @@
 const { register, login } = require('../services/auth.js');
+const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     login: {
@@ -94,6 +95,7 @@ module.exports = {
         },
     },
     logout: (req, res) => {
+        ifNoUserRedirectToHome(req, res);
         req.session.user = undefined;
         res.redirect('/');
     },
