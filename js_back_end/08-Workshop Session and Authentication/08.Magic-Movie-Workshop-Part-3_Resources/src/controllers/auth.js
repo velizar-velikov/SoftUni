@@ -1,21 +1,10 @@
 const { register, login } = require('../services/auth.js');
-const { ifNoUserRedirectToHome } = require('../util.js');
+const { createToken } = require('../services/token.js');
 
 module.exports = {
     login: {
         get: (req, res) => {
-            const { user, error, fieldErrors, formData } = req.session;
-
-            if (user) {
-                res.redirect('/');
-                return;
-            }
-
-            delete req.session.error;
-            delete req.session.formData;
-            delete req.session.fieldErrors;
-
-            res.render('login', { error, fieldErrors, formData });
+            res.render('login');
         },
         post: async (req, res) => {
             const { email, password } = req.body;
@@ -24,7 +13,7 @@ module.exports = {
                 email: !email,
                 password: !password,
             };
-            req.session.fieldErrors = fieldErrors;
+
             try {
                 if (!email) {
                     throw new Error('Email is required');
@@ -33,14 +22,12 @@ module.exports = {
                     throw new Error('Password is required');
                 }
                 const user = await login(email, password);
-                req.session.user = user;
+
+                const token = createToken(user);
+                // setting the cookie through the response
+                res.cookie('token', token, { httpOnly: true });
             } catch (error) {
-                req.session.error = {
-                    type: 'login',
-                    message: error.message,
-                };
-                req.session.formData = { email };
-                res.redirect('/login');
+                res.render('login', { error: { message: error.message }, fieldErrors, formData: { email } });
                 return;
             }
             res.redirect('/');
@@ -48,18 +35,7 @@ module.exports = {
     },
     register: {
         get: (req, res) => {
-            const { user, error, fieldErrors, formData } = req.session;
-
-            if (user) {
-                res.redirect('/');
-                return;
-            }
-
-            delete req.session.error;
-            delete req.session.formData;
-            delete req.session.fieldErrors;
-
-            res.render('register', { error, fieldErrors, formData });
+            res.render('register');
         },
         post: async (req, res) => {
             const { email, password, 'repeat-password': rePass } = req.body;
@@ -81,22 +57,18 @@ module.exports = {
                     throw new Error('Passwords must match');
                 }
                 const user = await register(email, password);
-                req.session.user = user;
+
+                const token = createToken(user);
+                res.cookie('token', token, { httpOnly: true });
             } catch (error) {
-                req.session.error = {
-                    type: 'register',
-                    message: error.message,
-                };
-                req.session.formData = { email };
-                res.redirect('/register');
+                res.render('register', { error: { message: error.message }, fieldErrors, formData: { email } });
                 return;
             }
             res.redirect('/');
         },
     },
     logout: (req, res) => {
-        ifNoUserRedirectToHome(req, res);
-        req.session.user = undefined;
+        res.clearCookie('token');
         res.redirect('/');
     },
 };

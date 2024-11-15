@@ -21,7 +21,7 @@ async function createMovie(movieData, userId) {
         rating: Number(movieData.rating),
         description: movieData.description,
         imageURL: movieData.imageURL,
-        creatorId: userId,
+        author: userId,
     };
 
     const createdMovie = await Movie.create(movie);
@@ -63,14 +63,6 @@ async function searchMovies(search) {
     const foundMovies = await Movie.find({ title: `${search.title}`, genre: `${search.genre}`, year: `${search.year}` }).lean();
 
     return foundMovies;
-
-    function filterMovie(movie) {
-        return (
-            movie.title.toLowerCase().startsWith(search.title?.toLowerCase()) &&
-            movie.genre.toLowerCase().startsWith(search.genre?.toLowerCase()) &&
-            movie.year == search.year
-        );
-    }
 }
 
 async function attachCastToMovie(movieId, castId) {
@@ -93,7 +85,7 @@ async function isOwnerOfMovie(movieId, userId) {
         return false;
     }
 
-    if (movie.creatorId?.toString() != userId.toString()) {
+    if (movie.author.toString() != userId.toString()) {
         return false;
     }
 

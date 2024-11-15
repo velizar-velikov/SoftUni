@@ -1,16 +1,26 @@
-const session = require('express-session');
+const { verifyToken } = require('../services/token.js');
 
 const secret = 'top secret';
 
-function sessionConfig(app) {
-    const _session = session({
-        secret,
-        resave: true,
-        saveUninitialized: true,
-        cookie: { secure: false },
-    });
+// pass-through middleware
+function session() {
+    return function (req, res, next) {
+        const token = req.cookies.token;
 
-    app.use(_session);
+        if (token) {
+            try {
+                const payload = verifyToken(token);
+                req.user = payload;
+
+                // passing information to handlebars context
+                res.locals.hasUser = true;
+            } catch (error) {
+                // if the token is not verified, it throws an error and we clear the cookie
+                res.clearCookie('token');
+            }
+        }
+        next();
+    };
 }
 
-module.exports = { sessionConfig };
+module.exports = { session };

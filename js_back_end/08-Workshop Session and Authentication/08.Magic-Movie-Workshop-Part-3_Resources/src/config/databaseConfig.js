@@ -6,14 +6,9 @@ require('../models/Cast.js');
 async function databaseConfig() {
     const connectionStr = 'mongodb://127.0.0.1:27017/movies';
 
-    mongoose.connection.on('connected', () => {
-        console.log('Mongoose connected to ' + connectionStr);
-    });
-    mongoose.connection.on('error', (err) => {
-        console.log('Mongoose error connection: ' + err);
-    });
-
     await mongoose.connect(connectionStr);
+
+    console.log('Database connected');
 }
 
 module.exports = { databaseConfig };

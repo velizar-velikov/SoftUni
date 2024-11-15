@@ -1,19 +1,12 @@
 const { createMovie, editMovie, getMovieById, isOwnerOfMovie, deleteMovie } = require('../services/movies.js');
-const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     createController: {
         get: (req, res) => {
-            const { user } = req.session;
-
-            ifNoUserRedirectToHome(req, res);
-
-            res.render('create', { user });
+            res.render('create');
         },
         post: async (req, res) => {
-            const { user } = req.session;
-
-            ifNoUserRedirectToHome(req, res);
+            const userId = req.user._id;
 
             const errors = {
                 title: !req.body.title,
@@ -31,33 +24,29 @@ module.exports = {
             }
 
             // creating movie and getting the id from the returned movie
-            const { _id } = await createMovie(req.body, user._id);
+            const { _id } = await createMovie(req.body, userId);
 
             res.redirect(`/details/${_id}`);
         },
     },
     editController: {
         get: async (req, res) => {
-            const { user } = req.session;
-            ifNoUserRedirectToHome(req, res);
+            const user = req.user;
 
             const movieId = req.params.id;
+            const movie = await getMovieById(movieId);
 
-            const isOwner = await isOwnerOfMovie(movieId, user._id);
+            const isOwner = movie.author.toString() == user?._id;
 
             if (!isOwner) {
                 res.render('404', { user });
                 return;
             }
 
-            const movie = await getMovieById(movieId);
-
-            res.render('edit', { user, movie });
+            res.render('edit', { movie });
         },
         post: async (req, res) => {
-            const { user } = req.session;
-
-            ifNoUserRedirectToHome(req, res);
+            const user = req.user;
 
             const movieId = req.params.id;
             const userId = user._id;
@@ -65,7 +54,7 @@ module.exports = {
             const isOwner = await isOwnerOfMovie(movieId, userId);
 
             if (!isOwner) {
-                res.render('404', { user });
+                res.render('404');
                 return;
             }
 
@@ -95,15 +84,13 @@ module.exports = {
         },
     },
     deleteController: async (req, res) => {
-        const { user } = req.session;
-
-        ifNoUserRedirectToHome(req, res);
+        const user = req.user;
 
         const movieId = req.params.id;
         const isOwner = await isOwnerOfMovie(movieId, user._id);
 
         if (!isOwner) {
-            res.render('404', { user });
+            res.render('404');
             return;
         }
 

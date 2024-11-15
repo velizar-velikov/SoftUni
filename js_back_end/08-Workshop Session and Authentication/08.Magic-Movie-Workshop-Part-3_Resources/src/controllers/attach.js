@@ -1,25 +1,22 @@
 const { getAllCasts } = require('../services/casts.js');
 const { getMovieById, attachCastToMovie, isOwnerOfMovie } = require('../services/movies.js');
-const { ifNoUserRedirectToHome } = require('../util.js');
 
 module.exports = {
     attachController: {
         get: async (req, res) => {
-            const { user } = req.session;
-            ifNoUserRedirectToHome(req, res);
+            const user = req.user;
             const movieId = req.params.id;
+            const movie = await getMovieById(movieId);
 
-            const isOwner = await isOwnerOfMovie(movieId, user._id);
+            const isOwner = movie.author.toString() == user?._id;
 
             if (!isOwner) {
-                res.render('404', { user });
+                res.render('404');
                 return;
             }
 
-            const movie = await getMovieById(movieId);
-
             if (!movie) {
-                res.render('404', { user });
+                res.render('404');
                 return;
             }
 
@@ -32,11 +29,10 @@ module.exports = {
                 return !castInMovie.find((castId) => cast._id.toString() == castId);
             }
 
-            res.render('attach-cast', { user, movie, casts: castsToShow });
+            res.render('attach-cast', { movie, casts: castsToShow });
         },
         post: async (req, res) => {
-            const { user } = req.session;
-            ifNoUserRedirectToHome(req, res);
+            const user = req.user;
 
             const castId = req.body.cast;
             const movieId = req.params.id;
@@ -44,7 +40,7 @@ module.exports = {
             const isOwner = await isOwnerOfMovie(movieId, user._id);
 
             if (!isOwner) {
-                res.render('404', { user });
+                res.render('404');
                 return;
             }
 
@@ -57,7 +53,7 @@ module.exports = {
             if (castId == 'none') {
                 const movie = await getMovieById(movieId);
                 const allCasts = await getAllCasts();
-                res.render('attach-cast', { user, movie, casts: allCasts, error: true });
+                res.render('attach-cast', { movie, casts: allCasts, error: true });
 
                 return;
             }
