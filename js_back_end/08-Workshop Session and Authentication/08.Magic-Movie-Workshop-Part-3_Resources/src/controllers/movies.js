@@ -31,32 +31,10 @@ module.exports = {
     },
     editController: {
         get: async (req, res) => {
-            const user = req.user;
-
-            const movieId = req.params.id;
-            const movie = await getMovieById(movieId);
-
-            const isOwner = movie.author.toString() == user?._id;
-
-            if (!isOwner) {
-                res.render('404', { user });
-                return;
-            }
-
-            res.render('edit', { movie });
+            res.render('edit');
         },
         post: async (req, res) => {
-            const user = req.user;
-
             const movieId = req.params.id;
-            const userId = user._id;
-
-            const isOwner = await isOwnerOfMovie(movieId, userId);
-
-            if (!isOwner) {
-                res.render('404');
-                return;
-            }
 
             const errors = {
                 title: !req.body.title,
@@ -69,7 +47,7 @@ module.exports = {
             };
 
             if (Object.values(errors).some((v) => v)) {
-                res.render(`/edit/${movieId}`, { movie: req.body, errors });
+                res.render('edit', { movie: req.body, errors });
                 return;
             }
 
@@ -84,25 +62,15 @@ module.exports = {
         },
     },
     deleteController: async (req, res) => {
-        const user = req.user;
-
         const movieId = req.params.id;
-        const isOwner = await isOwnerOfMovie(movieId, user._id);
-
-        if (!isOwner) {
-            res.render('404');
-            return;
-        }
 
         console.log('Delete action');
-        // delete movie from db
         try {
             await deleteMovie(movieId);
         } catch (error) {
             res.render('404');
             return;
         }
-        // redirect to home
         res.redirect('/');
     },
 };
