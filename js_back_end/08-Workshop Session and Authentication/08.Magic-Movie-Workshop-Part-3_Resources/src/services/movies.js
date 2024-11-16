@@ -30,32 +30,28 @@ async function createMovie(movieData, userId) {
 }
 
 async function editMovie(movieId, movieData) {
-    const movie = await Movie.findOne({ _id: movieId });
-
-    if (!movie) {
-        throw new Error(`Movie ${movieId} does not exist`);
-    }
-
-    movie.title = movieData.title;
-    movie.genre = movieData.genre;
-    movie.director = movieData.director;
-    movie.year = movieData.year;
-    movie.rating = movieData.rating;
-    movie.description = movieData.description;
-    movie.imageURL = movieData.imageURL;
-
-    await movie.save();
+    //single db request to update
+    // runs validations only if explicitly set in the options parameter
+    const movie = await Movie.findOneAndUpdate(
+        { _id: movieId },
+        {
+            $set: {
+                title: movieData.title,
+                genre: movieData.genre,
+                director: movieData.director,
+                year: movieData.year,
+                rating: movieData.rating,
+                description: movieData.description,
+                imageURL: movieData.imageURL,
+            },
+        },
+        { runValidators: true }
+    );
 
     return movie;
 }
 
 async function deleteMovie(id) {
-    const movie = await Movie.findOne({ _id: id });
-
-    if (!movie) {
-        throw new Error(`Movie ${id} does not exist`);
-    }
-
     await Movie.findByIdAndDelete(id);
 }
 

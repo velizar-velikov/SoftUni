@@ -16,14 +16,15 @@ const router = Router();
 router.get('/', homeController);
 router.get('/about', aboutController);
 router.get('/search', searchController);
+router.get('/details/:id', detailsController);
 
 // authentication needed
 router.get('/register', isGuest(), register.get);
 router.post('/register', isGuest(), register.post);
 router.get('/login', isGuest(), login.get);
 router.post('/login', isGuest(), login.post);
+
 router.get('/logout', logout);
-router.get('/details/:id', isUser(), detailsController);
 
 // authentication needed
 router.get('/create-movie', isUser(), createController.get);
@@ -34,7 +35,8 @@ router.post('/create-cast', isUser(), createCastController.post);
 // authorization needed
 router.get('/edit/:id', isUser(), preload(), isOwner(), editController.get);
 router.post('/edit/:id', isUser(), preload(), isOwner(), editController.post);
-router.get('/delete/:id', isUser(), preload(), isOwner(), deleteController);
+router.get('/delete/:id', isUser(), preload(), isOwner(), deleteController.get);
+router.post('/delete/:id', isUser(), preload(), isOwner(), deleteController.post);
 router.get('/attach/:id', isUser(), preload(), isOwner(), attachController.get);
 router.post('/attach/:id', isUser(), preload(), isOwner(), attachController.post);
 

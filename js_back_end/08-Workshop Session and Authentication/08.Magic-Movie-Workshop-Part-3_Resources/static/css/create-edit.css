@@ -1,5 +1,6 @@
 .createSection,
-.editSection {
+.editSection,
+.deleteSection {
   background-color: #b5838d;
   margin: auto;
   width: 740px;
@@ -24,28 +25,32 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .createForm,
-.editForm {
+.editForm,
+.deleteForm {
   width: 720px;
   padding: 10px 0;
   transition: 0.2s;
 }
 
 .createForm>h2,
-.editForm>h2 {
+.editForm>h2,
+.deleteForm>h2 {
   font-weight: bold;
   font-size: 27px;
   margin-bottom: 0.8em;
 }
 
 /* Added from additional resources */
-.info-edit {
+.info-edit,
+.info-delete {
   width: 250px;
   background: #6D6875;
   padding: 55px 5px;
   border-right: 5px solid black;
 }
 
-.info-edit>h2 {
+.info-edit>h2,
+.info-delete>h2 {
   padding-top: 150%;
   font-weight: bold;
   font-size: 23px;
@@ -54,7 +59,9 @@ input[type=number]::-webkit-outer-spin-button {
 /* to here */
 
 #create-btn,
-#edit-btn {
+#edit-btn,
+#confirm-btn,
+#cancel-btn {
   border: 1px solid black;
   background: #6d6875;
   font-size: 18px;
@@ -66,7 +73,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #create-btn:hover,
-#edit-btn:hover {
+#edit-btn:hover,
+#confirm-btn:hover,
+#cancel-btn:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }

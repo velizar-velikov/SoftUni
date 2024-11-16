@@ -19,7 +19,6 @@ module.exports = {
             res.render('attach-cast', { casts: castsToShow });
         },
         post: async (req, res) => {
-
             const castId = req.body.cast;
             const movieId = req.params.id;
 
@@ -47,6 +46,7 @@ module.exports = {
             try {
                 await attachCastToMovie(movieId, castId);
             } catch (error) {
+                // we can reload the template with custom error message
                 console.error('Error encountered attaching cast to movie', error);
                 res.status(400).end();
                 return;

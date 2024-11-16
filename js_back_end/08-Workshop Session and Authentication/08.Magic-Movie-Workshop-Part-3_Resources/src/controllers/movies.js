@@ -55,22 +55,28 @@ module.exports = {
                 await editMovie(movieId, req.body);
             } catch (error) {
                 console.log(error.message);
+                // we can reload the template with custom error message
                 res.render('404');
                 return;
             }
             res.redirect(`/details/${movieId}`);
         },
     },
-    deleteController: async (req, res) => {
-        const movieId = req.params.id;
+    deleteController: {
+        get: (req, res) => {
+            res.render('delete');
+        },
+        post: async (req, res) => {
+            const movieId = req.params.id;
 
-        console.log('Delete action');
-        try {
-            await deleteMovie(movieId);
-        } catch (error) {
-            res.render('404');
-            return;
-        }
-        res.redirect('/');
+            console.log('Delete action');
+            try {
+                await deleteMovie(movieId);
+            } catch (error) {
+                res.render('404');
+                return;
+            }
+            res.redirect('/');
+        },
     },
 };
