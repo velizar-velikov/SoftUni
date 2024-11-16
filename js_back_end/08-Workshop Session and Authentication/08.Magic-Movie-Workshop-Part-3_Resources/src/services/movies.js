@@ -74,20 +74,6 @@ async function attachCastToMovie(movieId, castId) {
     return movie;
 }
 
-async function isOwnerOfMovie(movieId, userId) {
-    const movie = await Movie.findOne({ _id: movieId });
-
-    if (!movie) {
-        return false;
-    }
-
-    if (movie.author.toString() != userId.toString()) {
-        return false;
-    }
-
-    return true;
-}
-
 module.exports = {
     getAllMovies,
     getMovieById,
@@ -96,5 +82,4 @@ module.exports = {
     deleteMovie,
     searchMovies,
     attachCastToMovie,
-    isOwnerOfMovie,
 };

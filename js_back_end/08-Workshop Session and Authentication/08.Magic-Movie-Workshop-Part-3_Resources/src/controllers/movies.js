@@ -1,4 +1,4 @@
-const { createMovie, editMovie, getMovieById, isOwnerOfMovie, deleteMovie } = require('../services/movies.js');
+const { createMovie, editMovie, deleteMovie } = require('../services/movies.js');
 
 module.exports = {
     createController: {

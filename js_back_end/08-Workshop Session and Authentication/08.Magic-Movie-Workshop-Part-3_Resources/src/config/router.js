@@ -16,7 +16,7 @@ const router = Router();
 router.get('/', homeController);
 router.get('/about', aboutController);
 router.get('/search', searchController);
-router.get('/details/:id', detailsController);
+router.get('/details/:id', preload(), detailsController);
 
 // authentication needed
 router.get('/register', isGuest(), register.get);

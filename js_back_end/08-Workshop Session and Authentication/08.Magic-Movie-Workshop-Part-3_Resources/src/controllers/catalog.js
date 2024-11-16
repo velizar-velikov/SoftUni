@@ -20,20 +20,13 @@ module.exports = {
     detailsController: async (req, res) => {
         const user = req.user;
 
-
-        const { id } = req.params;
-        const movie = await getMovieById(id);
-
-        if (!movie) {
-            res.render('404', { title: 'Error Page' });
-            return;
-        }
+        const movie = req.data.movie;
 
         movie.isOwner = movie.author.toString() == user?._id;
 
         movie.stars = Array(movie.rating).fill('star');
 
-        res.render('details', { movie });
+        res.render('details');
     },
     searchController: async (req, res) => {
         const query = req.query;

@@ -1,11 +1,10 @@
 const { getAllCasts } = require('../services/casts.js');
-const { getMovieById, attachCastToMovie, isOwnerOfMovie } = require('../services/movies.js');
+const { attachCastToMovie } = require('../services/movies.js');
 
 module.exports = {
     attachController: {
         get: async (req, res) => {
-            const movieId = req.params.id;
-            const movie = await getMovieById(movieId);
+            const movie = req.data.movie;
 
             const castInMovie = movie.cast.map((cast) => cast._id.toString());
 
@@ -29,7 +28,7 @@ module.exports = {
             }
 
             if (castId == 'none') {
-                const movie = await getMovieById(movieId);
+                const movie = req.data.movie;
                 const castInMovie = movie.cast.map((cast) => cast._id.toString());
 
                 const allCasts = await getAllCasts();
