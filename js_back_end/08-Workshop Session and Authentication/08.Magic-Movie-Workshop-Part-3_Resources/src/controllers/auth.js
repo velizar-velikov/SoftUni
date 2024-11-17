@@ -45,7 +45,7 @@ module.exports = {
                 password: !password,
                 rePass: !rePass,
             };
-            req.session.fieldErrors = fieldErrors;
+
             try {
                 if (!email) {
                     throw new Error('Email is required');
