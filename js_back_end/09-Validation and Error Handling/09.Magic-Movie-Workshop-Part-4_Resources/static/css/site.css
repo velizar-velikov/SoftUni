@@ -33,7 +33,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    
+
 }
 
 nav,
@@ -94,13 +94,13 @@ nav a {
     text-transform: uppercase;
 }
 
-nav>img {
+nav a>img {
     width: 50px;
     height: 50px;
     margin-left: 10px;
 }
 
-nav a:hover {
+nav a.hover:hover {
     font-weight: normal;
     height: 30px;
     border-radius: 10%;
@@ -127,8 +127,8 @@ footer {
     z-index: 11111;
     top: 13%;
     text-align: center;
-    border-radius: 1rem;
-    color: white;
+    border-radius: 0.5rem;
+    color: rgb(255, 255, 255);
     font-style: italic;
     font-weight: bold;
     height: auto;
@@ -137,12 +137,21 @@ footer {
 }
 
 .error-container>p {
-    background: #B5838D;
+    background: #22333B;
     font-size: 18px;
     padding: 10px;
     height: auto;
-    border-radius: 1rem;
+}
 
+/* Added for error type visualization */
+.error label {
+    color: red;
+}
+
+.error input.inputFields,
+.error textarea.inputFields,
+.error select {
+    border-color: red;
 }
 
 .error-container {
@@ -156,8 +165,9 @@ footer {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
-/* 
-@keyframes cssAnimation {
+
+/*
+ @keyframes cssAnimation {
     to {
         width: 0;
         height: 0;
@@ -173,4 +183,5 @@ footer {
         visibility: hidden;
         padding: 0;
     }
-} */
+}
+*/

@@ -1,5 +1,6 @@
 .createSection,
-.editSection {
+.editSection,
+.deleteSection {
   background-color: #b5838d;
   margin: auto;
   width: 740px;
@@ -17,41 +18,50 @@
   resize: none;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .createForm,
-.editForm {
+.editForm,
+.deleteForm {
   width: 720px;
   padding: 10px 0;
   transition: 0.2s;
 }
 
-.createForm > h2,
-.editForm > h2 {
+.createForm>h2,
+.editForm>h2,
+.deleteForm>h2 {
   font-weight: bold;
   font-size: 27px;
   margin-bottom: 0.8em;
 }
 
-.info-edit {
+/* Added from additional resources */
+.info-edit,
+.info-delete {
   width: 250px;
   background: #6D6875;
   padding: 55px 5px;
   border-right: 5px solid black;
 }
 
-.info-edit>h2 {
+.info-edit>h2,
+.info-delete>h2 {
   padding-top: 150%;
   font-weight: bold;
   font-size: 23px;
 }
 
+/* to here */
+
 #create-btn,
-#edit-btn {
+#edit-btn,
+#confirm-btn,
+#cancel-btn {
   border: 1px solid black;
   background: #6d6875;
   font-size: 18px;
@@ -63,16 +73,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #create-btn:hover,
-#edit-btn:hover {
+#edit-btn:hover,
+#confirm-btn:hover,
+#cancel-btn:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
 
+/* Added from additional resources */
 .details-btn {
   margin-left: 20%;
 }
 
-#edit-button, #delete-button {
+#edit-button,
+#delete-button {
   border: 1px solid black;
   background: #b5838d;
   font-size: 18px;
@@ -85,7 +99,8 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
 }
 
-#edit-button:hover, #delete-button:hover {
+#edit-button:hover,
+#delete-button:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
@@ -94,3 +109,5 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 30px;
   font-weight: bold;
 }
+
+/* to here */
