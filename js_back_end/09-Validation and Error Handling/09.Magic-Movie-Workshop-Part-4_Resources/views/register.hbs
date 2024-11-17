@@ -1,6 +1,8 @@
-{{#if error}}
+{{#if errors}}
     <div class='error-container'>
-        <p>{{error.message}}</p>
+        {{#each errors}}
+        <p>{{this}}</p>
+        {{/each}}
     </div>
 {{/if}}
 <section id='register-page'>
@@ -12,17 +14,17 @@
         <form method='post' class='signupForm'>
             <h2>Register</h2>
             <ul class='noBullet'>
-                <li {{#if fieldErrors.email}}class="error"{{/if}}>
+                <li {{#if errors.email}}class="error"{{/if}}>
                     <label for='email'>Email:</label>
-                    <input type='text' class='inputFields' id='email' name='email' value='{{formData.email}}' />
+                    <input type='text' class='inputFields' id='email' name='email' {{#if errors}}value='{{formData.email}}'{{/if}} />
                 </li>
-                <li {{#if fieldErrors.password}}class="error"{{/if}}>
+                <li {{#if errors.password}}class="error"{{/if}}>
                     <label for='password'>Password:</label>
                     <input type='password' class='inputFields' id='password' name='password' />
                 </li>
-                <li {{#if fieldErrors.rePass}}class="error"{{/if}}>
+                <li {{#if errors.repass}}class="error"{{/if}}>
                     <label for='repeat-password'>Repeat-Password:</label>
-                    <input type='password' class='inputFields' id='repeat-password' name='repeat-password' />
+                    <input type='password' class='inputFields' id='repeat-password' name='repass' />
                 </li>
                 <li id='center-btn'>
                     <button id='join-btn'>Register</button>

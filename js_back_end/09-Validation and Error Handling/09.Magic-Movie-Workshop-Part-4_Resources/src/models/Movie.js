@@ -8,14 +8,20 @@ const MovieSchema = new Schema({
     title: {
         type: String,
         required: true,
+        minLength: [5, 'Title must be at least 5 characters long'],
+        match: [/^[a-z0-9 ]+&/gi, 'Title must be only English letters, numbers and spaces'],
     },
     genre: {
         type: String,
         required: true,
+        minLength: [5, 'Genre must be at least 5 characters long'],
+        match: [/^[a-z0-9 ]+&/gi, 'Genre must be only English letters, numbers and spaces'],
     },
     director: {
         type: String,
         required: true,
+        minLength: [5, 'Director must be at least 5 characters long'],
+        match: [/^[a-z0-9 ]+&/gi, 'Director must be only English letters, numbers and spaces'],
     },
     year: {
         type: Number,
@@ -32,11 +38,14 @@ const MovieSchema = new Schema({
     description: {
         type: String,
         required: true,
+        minLength: [20, 'Description must be at least 20 characters long'],
         maxLength: [500, 'Description must be no more than 500 characters, got {VALUE}'],
+        match: [/^[a-z0-9 ]+&/gi, 'Description must be only English letters, numbers and spaces'],
     },
     imageURL: {
         type: String,
         required: true,
+        match: [/^https{0,1}:\/\/.+/, 'ImageURL must be of http/https type'],
     },
     cast: {
         type: [Types.ObjectId],
@@ -49,10 +58,6 @@ const MovieSchema = new Schema({
         required: true,
     },
 });
-
-MovieSchema.path('imageURL').validate(function (value) {
-    return /^https{0,1}:\/\/.+/.test(value);
-}, 'Image url must be either http or https type');
 
 const Movie = model('Movie', MovieSchema);
 
