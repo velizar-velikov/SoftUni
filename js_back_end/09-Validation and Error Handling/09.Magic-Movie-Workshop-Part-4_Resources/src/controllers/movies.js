@@ -5,7 +5,6 @@ const { createMovie, editMovie, deleteMovie } = require('../services/movies.js')
 const { isUser } = require('../middlewares/guards.js');
 const { preload } = require('../middlewares/preload.js');
 const { isOwner } = require('../middlewares/isOwner.js');
-const { MongooseError } = require('mongoose');
 const { parseError } = require('../util.js');
 
 const movieRouter = Router();

@@ -6,7 +6,7 @@ function isOwner() {
             next();
         } else {
             // error can be thrown and custom message to be shown in the templates
-            res.redirect('/');
+            res.redirect('/login');
         }
     };
 }
