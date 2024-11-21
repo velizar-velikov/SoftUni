@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 const { isUser } = require('../middlewares/guards.js');
-const { parseError } = require('../util.js');
+const { parseError, validateFurnitureInput } = require('../util.js');
 const { getAllFurniture, getFurnitureById, getFurnitureForUser } = require('../services/furniture.js');
 const { createFurniture, updateFurniture, deleteFurniture } = require('../services/furniture.js');
 
@@ -72,29 +72,8 @@ const deleteController = async (req, res) => {
 
 catalogRouter.get('/', dashboardController);
 catalogRouter.get('/:id', detailsController);
-
-catalogRouter.post(
-    '/',
-    isUser(),
-    body('make').trim().isLength({ min: 4 }).withMessage('make must be at least 4 characters long'),
-    body('model').trim().isLength({ min: 4 }).withMessage('model must be at least 4 characters long'),
-    body('year').trim().isInt({ min: 1950, max: 2050 }).withMessage('year must be between 1950 and 2050'),
-    body('price').trim().isFloat({ min: 0.01 }).withMessage('price must be a positive number'),
-    body('img').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('image must be a valid URL'),
-    body('material').trim(),
-    createController
-);
-catalogRouter.put(
-    '/:id',
-    isUser(),
-    body('make').trim().isLength({ min: 4 }).withMessage('make must be at least 4 characters long'),
-    body('model').trim().isLength({ min: 4 }).withMessage('model must be at least 4 characters long'),
-    body('year').trim().isInt({ min: 1950, max: 2050 }).withMessage('year must be between 1950 and 2050'),
-    body('price').trim().isFloat({ min: 0.01 }).withMessage('price must be a positive number'),
-    body('img').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('image must be a valid URL'),
-    body('material').trim(),
-    editController
-);
+catalogRouter.post('/', isUser(), validateFurnitureInput(), createController);
+catalogRouter.put('/:id', isUser(), validateFurnitureInput(), editController);
 
 catalogRouter.delete('/:id', isUser(), deleteController);
 
