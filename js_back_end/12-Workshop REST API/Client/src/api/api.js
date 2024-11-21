@@ -1,5 +1,5 @@
 export const settings = {
-    host: ''
+    host: '',
 };
 
 async function request(url, options) {
@@ -7,10 +7,18 @@ async function request(url, options) {
         const response = await fetch(url, options);
 
         if (response.ok == false) {
+            if (response.status == 401) {
+                // Unauthorized
+                await logout();
+            }
             const error = await response.json();
             throw new Error(error.message);
         }
 
+        if (response.status == 204) {
+            // No content
+            return response;
+        }
         try {
             const data = await response.json();
             return data;
@@ -26,7 +34,7 @@ async function request(url, options) {
 function getOptions(method = 'get', body) {
     const options = {
         method,
-        headers: {}
+        headers: {},
     };
 
     const token = sessionStorage.getItem('authToken');
