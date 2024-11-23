@@ -2,7 +2,7 @@
 
     <head>
         <meta charset='UTF-8' />
-        <title>All-Ads Page</title>
+        <title>{{pageTitle}}</title>
         <link rel='stylesheet' href='/static/css/style.css' />
     </head>
 
@@ -25,28 +25,31 @@
                 <nav class='header-nav'>
                     <ul class='header-nav-list'>
 
-                        <li class='header-nav-list-item active'>
-                            <a href='/' class='header-nav-list-item-link active'>Home Page</a>
+                        <li class='header-nav-list-item{{#if page.home}} active{{/if}}'>
+                            <a href='/' class='header-nav-list-item-link{{#if page.home}} active{{/if}}'>Home Page</a>
                         </li>
-                        <li class='header-nav-list-item'>
-                            <a href='/catalog' class='header-nav-list-item-link'>All ads</a>
+                        <li class='header-nav-list-item{{#if page.catalog}} active{{/if}}'>
+                            <a href='/catalog' class='header-nav-list-item-link{{#if page.catalog}} active{{/if}}'>All ads</a>
                         </li>
                         {{#if hasUser}}
-                            <li class='header-nav-list-item'>
-                                <a href='/create' class='header-nav-list-item-link'>Create Ad</a>
+                            <li class='header-nav-list-item{{#if page.create}} active{{/if}}'>
+                                <a href='/create' class='header-nav-list-item-link{{#if page.create}} active{{/if}}'>Create Ad</a>
                             </li>
-                            <li class='header-nav-list-item'>
-                                <a href='/search' class='header-nav-list-item-link'>Search</a>
+                            <li class='header-nav-list-item{{#if page.search}} active{{/if}}'>
+                                <a href='/search' class='header-nav-list-item-link{{#if page.search}} active{{/if}}'>Search</a>
+                            </li>
+                            <li class='header-nav-list-item{{#if page.profile}} active{{/if}}'>
+                                <a href='/profile' class='header-nav-list-item-link{{#if page.profile}} active{{/if}}'>Profile</a>
                             </li>
                             <li class='header-nav-list-item'>
                                 <a href='/logout' class='header-nav-list-item-link'>Logout</a>
                             </li>
                         {{else}}
-                            <li class='header-nav-list-item'>
-                                <a href='/register' class='header-nav-list-item-link'>Register</a>
+                            <li class='header-nav-list-item{{#if page.register}} active{{/if}}'>
+                                <a href='/register' class='header-nav-list-item-link{{#if page.register}} active{{/if}}'>Register</a>
                             </li>
-                            <li class='header-nav-list-item'>
-                                <a href='/login' class='header-nav-list-item-link'>Login</a>
+                            <li class='header-nav-list-item{{#if page.login}} active{{/if}}'>
+                                <a href='/login' class='header-nav-list-item-link{{#if page.login}} active{{/if}}'>Login</a>
                             </li>
                         {{/if}}
                     </ul>

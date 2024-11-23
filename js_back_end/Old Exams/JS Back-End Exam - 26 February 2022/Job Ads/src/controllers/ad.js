@@ -8,7 +8,8 @@ const adRouter = Router();
 
 const createController = {
     get: (req, res) => {
-        res.render('create');
+        res.locals.pageTitle = 'Create Ad Page';
+        res.render('create', { page: { create: true } });
     },
     post: async (req, res) => {
         try {
@@ -19,7 +20,8 @@ const createController = {
             await createAd(req.body, req.user._id);
             res.redirect('/catalog');
         } catch (err) {
-            res.render('create', { data: req.body, errors: parseError(err).errors });
+            res.locals.pageTitle = 'Create Ad Page';
+            res.render('create', { data: req.body, errors: parseError(err).errors, page: { create: true } });
         }
     },
 };
@@ -27,6 +29,7 @@ const createController = {
 const editController = {
     get: async (req, res) => {
         const ad = await getAdById(req.params.id);
+        res.locals.pageTitle = 'Edit Ad Page';
         res.render('edit', { data: ad });
     },
     post: async (req, res) => {
@@ -41,6 +44,7 @@ const editController = {
             await updateAd(adId, req.body, userId);
             res.redirect(`/details/${req.params.id}`);
         } catch (err) {
+            res.locals.pageTitle = 'Edit Ad Page';
             res.render('edit', { data: req.body, errors: parseError(err).errors });
         }
     },
@@ -60,6 +64,7 @@ const applyController = async (req, res) => {
         await applyForAd(adId, userId);
         res.redirect(`/details/${adId}`);
     } catch (err) {
+        res.locals.pageTitle = 'Not Found';
         res.render('404');
     }
 };

@@ -9,6 +9,10 @@ async function getThreeAds() {
     return Ad.find().limit(3).lean();
 }
 
+async function getAllAdsByUser(userId) {
+    return Ad.find({ author: userId }).lean();
+}
+
 async function getAdById(id) {
     return Ad.findById(id).lean().populate('author').populate('applicants');
 }
@@ -84,6 +88,7 @@ async function searchForAdsByEmail(email) {
 module.exports = {
     getAllAds,
     getThreeAds,
+    getAllAdsByUser,
     getAdById,
     createAd,
     updateAd,

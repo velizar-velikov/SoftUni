@@ -38,4 +38,24 @@ async function login(email, password) {
     return user;
 }
 
-module.exports = { register, login };
+async function getUser(userId) {
+    return User.findById(userId).lean();
+}
+
+async function updateUser(userId, data) {
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new Error(`User with id ${userId} doesn't exist`);
+    }
+
+    user.email = data.email;
+    user.password = data.password;
+    user.description = data.description;
+
+    await user.save();
+
+    return user;
+}
+
+module.exports = { register, login, getUser, updateUser };

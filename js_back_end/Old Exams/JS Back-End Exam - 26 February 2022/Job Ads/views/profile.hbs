@@ -1,0 +1,14 @@
+<section id='all-ads-page'>
+    <a class="personal-info-link" href="/profile/edit">Personal Info</a>
+    <article class='all-ads-title'>
+        <h1>Your ads</h1>
+    </article>
+    {{#each ads}}
+    {{>profile-ad}}
+    {{else}}
+        <article class='not-available-ads'>
+            <h1>You haven't created any ads yet.</h1>
+            <h2>Create your first ad <a href="/create">here</a></h2>
+        </article>
+    {{/each}}
+</section>
