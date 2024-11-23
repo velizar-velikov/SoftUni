@@ -2,12 +2,25 @@
     <article class='all-ads-title'>
         <h1>All ads</h1>
     </article>
+    {{#if ads}}
     {{#each ads}}
     {{>catalog-ad}}
+    {{/each}}
+    <div class="page-btn-container">
+        {{#if pagination.isNotFirstPage}}
+        <a class="back arrow" href="{{pagination.back}}">&larr;</a>
+        {{/if}}
+        {{#each pagination.pages}}
+        <a {{#if current}}class="current"{{/if}} href="{{href}}">{{num}}</a>
+        {{/each}}
+        {{#if pagination.isnotLastPage}}
+        <a class="forward arrow" href="{{pagination.forward}}">&rarr;</a>
+        {{/if}}
+    </div>
     {{else}}
         <article class='not-available-ads'>
             <h1>No ads created yet.</h1>
             <h2>Join and find your perfect workers.</h2>
         </article>
-    {{/each}}
+    {{/if}}
 </section>

@@ -1,5 +1,13 @@
 const { Router } = require('express');
-const { getAllAds, getThreeAds, getAdById, searchForAdsByEmail, getAllAdsByUser } = require('../services/ad.js');
+const {
+    getAllAds,
+    getThreeAds,
+    getAdById,
+    searchForAdsByEmail,
+    getAllAdsByUser,
+    getPageAds,
+    getAdsCount,
+} = require('../services/ad.js');
 const { isUser } = require('../middlewares/guards.js');
 
 const catalogRouter = Router();
@@ -14,9 +22,42 @@ const homeController = async (req, res) => {
 };
 
 const catalogController = async (req, res) => {
-    const ads = await getAllAds();
+    let page = req.query.page || 1;
+    page = Number(page);
+
+    const adsPerPage = 4;
+    const totalPages = Math.ceil((await getAdsCount()) / adsPerPage);
+
+    if (!Number.isInteger(page) || page > totalPages || page < 0) {
+        res.render('404');
+        return;
+    }
+
+    const isNotFirstPage = page != 1;
+    const isnotLastPage = page != totalPages;
+
+    const pagesArr = [];
+    for (let i = 1; i <= totalPages; i++) {
+        const pageObj = { num: i, href: `/catalog?page=${i}` };
+        if (page == i) {
+            pageObj.current = true;
+        }
+        pagesArr.push(pageObj);
+    }
+
+    const pagination = { pages: pagesArr, isNotFirstPage, isnotLastPage };
+
+    if (isNotFirstPage) {
+        pagination.back = `/catalog?page=${page - 1}`;
+    }
+    if (isnotLastPage) {
+        pagination.forward = `/catalog?page=${page + 1}`;
+    }
+
+    const pageAds = await getPageAds(page, adsPerPage);
+
     res.locals.pageTitle = 'All Ads Page';
-    res.render('catalog', { ads, page: { catalog: true } });
+    res.render('catalog', { ads: pageAds, page: { catalog: true }, pagination });
 };
 
 const detailsController = async (req, res) => {

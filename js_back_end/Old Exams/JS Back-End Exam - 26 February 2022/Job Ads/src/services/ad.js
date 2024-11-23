@@ -9,6 +9,17 @@ async function getThreeAds() {
     return Ad.find().limit(3).lean();
 }
 
+async function getPageAds(page, adsPerPage) {
+    return Ad.find()
+        .skip((Number(page) - 1) * adsPerPage)
+        .limit(adsPerPage)
+        .lean();
+}
+
+async function getAdsCount() {
+    return Ad.countDocuments();
+}
+
 async function getAllAdsByUser(userId) {
     return Ad.find({ author: userId }).lean();
 }
@@ -88,6 +99,8 @@ async function searchForAdsByEmail(email) {
 module.exports = {
     getAllAds,
     getThreeAds,
+    getPageAds,
+    getAdsCount,
     getAllAdsByUser,
     getAdById,
     createAd,
