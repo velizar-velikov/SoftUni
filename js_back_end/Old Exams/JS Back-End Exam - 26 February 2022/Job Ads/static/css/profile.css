@@ -1,7 +1,12 @@
 #all-ads-page {
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-left: 42px;
+    /* padding-left: 42px; */
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em 4em;
 }
 
 .all-ads-title {
@@ -23,15 +28,17 @@
 
 .profile-ads-card {
     background: white;
-    width: 532px;
     height: 164px auto;
     position: relative;
     display: inline-flex;
     border-radius: 3px;
     border: 1px solid #aaaa;
     padding-top: 26px;
-    margin-left: 8.5em;
     margin-bottom: 1.6em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 560px;
 }
 
 .profile-ads-card-image {
@@ -70,6 +77,10 @@
     transition: box-shadow 0.07s ease-in-out;
 }
 
+.personal-info-link-container {
+    flex-basis: 100%;
+}
+
 .profile-ads-card-content>h2 {
     font-family: 'Poppins', sans-serif;
     margin-top: 0;
@@ -80,7 +91,6 @@
     text-align: left;
     font-size: 19.5px;
     word-wrap: break-word;
-    width: 250px;
 }
 
 .profile-ads-card-content>h3 {
@@ -98,7 +108,7 @@
     text-decoration-color: rgb(60, 32, 100);
     text-decoration-line: none;
     word-wrap: break-word;
-    width: 250px;
+    /* width: 250px; */
     text-decoration-style: solid;
 }
 
@@ -122,7 +132,7 @@
     font-family: "Poppins", sans-serif;
     font-size: 13.5px;
     font-weight: 400;
-    width: 200px;
+    /* width: 200px; */
     line-height: 25.15px;
     margin-top: 13px;
     text-align: left;
