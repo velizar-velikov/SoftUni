@@ -30,19 +30,19 @@ const catalogController = async (req, res) => {
 
     const adsPerPage = 4;
     let adsCount;
-    const filter = {};
+    const data = {};
     if (location) {
-        filter.location = location;
+        data.location = location;
     }
     if (company) {
-        filter.company = company;
+        data.company = company;
     }
 
-    const pageAds = await getPageAds(page, adsPerPage);
-    console.log(pageAds.length);
+    const pageAds = await getPageAds(data, page, adsPerPage);
 
-    const totalPages = Math.ceil((await getAdsCount(filter)) / adsPerPage);
-    if (!Number.isInteger(page) || page > totalPages || page < 0) {
+    const totalPages = Math.ceil((await getAdsCount(data)) / adsPerPage);
+
+    if (!Number.isInteger(page) || (page > totalPages && totalPages != 0) || page < 0) {
         res.render('404');
         return;
     }
@@ -68,13 +68,38 @@ const catalogController = async (req, res) => {
     const isnotLastPage = page != totalPages;
 
     const pagination = { pages: pagesArr, isNotFirstPage, isnotLastPage };
+
+    // distinct options for company and location
     const filterOptions = { company: await getDistinctField('companyName'), location: await getDistinctField('location') };
 
+    // maping to see which option field is selected
+    filterOptions.company = filterOptions.company.map((value) => ({ value, selected: value == company ? true : false }));
+    filterOptions.location = filterOptions.location.map((value) => ({ value, selected: value == location ? true : false }));
+
+    // add link for go back
     if (isNotFirstPage) {
-        pagination.back = `/catalog?page=${page - 1}`;
+        if (req.query.location) {
+            if (req.query.page) {
+                pagination.back = req.url.slice(0, -1) + (page - 1);
+            } else {
+                pagination.back = `${req.url}&page=${page - 1}`;
+            }
+        } else {
+            pagination.back = `/catalog?page=${page - 1}`;
+        }
     }
+
+    // add link for go forward
     if (isnotLastPage) {
-        pagination.forward = `/catalog?page=${page + 1}`;
+        if (req.query.location) {
+            if (req.query.page) {
+                pagination.forward = req.url.slice(0, -1) + (page + 1);
+            } else {
+                pagination.forward = `${req.url}&page=${page + 1}`;
+            }
+        } else {
+            pagination.forward = `/catalog?page=${page + 1}`;
+        }
     }
 
     res.locals.pageTitle = 'All Ads Page';

@@ -9,8 +9,15 @@ async function getThreeAds() {
     return Ad.find().limit(3).lean();
 }
 
-async function getPageAds(page, adsPerPage) {
-    return Ad.find()
+async function getPageAds(filter, page, adsPerPage) {
+    const query = {};
+    if (filter.location) {
+        query.location = filter.location;
+    }
+    if (filter.company) {
+        query.companyName = filter.company;
+    }
+    return Ad.find(query)
         .skip((Number(page) - 1) * adsPerPage)
         .limit(adsPerPage)
         .lean();
@@ -18,8 +25,10 @@ async function getPageAds(page, adsPerPage) {
 
 async function getAdsCount(filter) {
     let query = {};
-    if (Object.values(filter).legnth > 0) {
+    if (filter.location) {
         query.location = filter.location;
+    }
+    if (filter.company) {
         query.companyName = filter.company;
     }
     return Ad.countDocuments(query);

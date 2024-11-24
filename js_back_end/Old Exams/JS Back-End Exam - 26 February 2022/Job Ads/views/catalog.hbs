@@ -9,16 +9,18 @@
             <div class="location-container">
                 <label for="location">Location:</label>
                 <select name="location" id="location">
+                    <option value="">--select--</option>
                     {{#each filterOptions.location}}
-                    <option value="{{this}}">{{this}}</option>
+                    <option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>
                     {{/each}}
                 </select>
             </div>
             <div class="company-container">
                 <label for="company">Company:</label>
                 <select name="company" id="company">
+                    <option value="">--select--</option>
                     {{#each filterOptions.company}}
-                    <option value="{{this}}">{{this}}</option>
+                    <option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>
                     {{/each}}
                 </select>
             </div>
