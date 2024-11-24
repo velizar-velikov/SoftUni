@@ -37,7 +37,7 @@
     margin-bottom: 1.6em;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     flex-basis: 560px;
 }
 
@@ -53,6 +53,7 @@
 
 .all-ads-card-content {
     padding: 14px;
+    flex-basis: 280px;
 }
 
 .personal-info-link {

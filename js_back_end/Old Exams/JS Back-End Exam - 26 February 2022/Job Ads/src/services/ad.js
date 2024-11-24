@@ -16,8 +16,13 @@ async function getPageAds(page, adsPerPage) {
         .lean();
 }
 
-async function getAdsCount() {
-    return Ad.countDocuments();
+async function getAdsCount(filter) {
+    let query = {};
+    if (Object.values(filter).legnth > 0) {
+        query.location = filter.location;
+        query.companyName = filter.company;
+    }
+    return Ad.countDocuments(query);
 }
 
 async function getAllAdsByUser(userId) {
@@ -96,6 +101,10 @@ async function searchForAdsByEmail(email) {
     return ads;
 }
 
+async function getDistinctField(fieldName) {
+    return Ad.find().distinct(fieldName).lean();
+}
+
 module.exports = {
     getAllAds,
     getThreeAds,
@@ -108,4 +117,5 @@ module.exports = {
     deleteAd,
     applyForAd,
     searchForAdsByEmail,
+    getDistinctField,
 };

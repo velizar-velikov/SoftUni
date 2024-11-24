@@ -7,6 +7,7 @@ const {
     getAllAdsByUser,
     getPageAds,
     getAdsCount,
+    getDistinctField,
 } = require('../services/ad.js');
 const { isUser } = require('../middlewares/guards.js');
 
@@ -25,27 +26,49 @@ const catalogController = async (req, res) => {
     let page = req.query.page || 1;
     page = Number(page);
 
-    const adsPerPage = 4;
-    const totalPages = Math.ceil((await getAdsCount()) / adsPerPage);
+    let { location, company, sortBy } = req.query;
 
+    const adsPerPage = 4;
+    let adsCount;
+    const filter = {};
+    if (location) {
+        filter.location = location;
+    }
+    if (company) {
+        filter.company = company;
+    }
+
+    const pageAds = await getPageAds(page, adsPerPage);
+    console.log(pageAds.length);
+
+    const totalPages = Math.ceil((await getAdsCount(filter)) / adsPerPage);
     if (!Number.isInteger(page) || page > totalPages || page < 0) {
         res.render('404');
         return;
     }
 
-    const isNotFirstPage = page != 1;
-    const isnotLastPage = page != totalPages;
-
     const pagesArr = [];
     for (let i = 1; i <= totalPages; i++) {
         const pageObj = { num: i, href: `/catalog?page=${i}` };
+        if (req.query.location) {
+            if (req.query.page) {
+                pageObj.href = req.url.slice(0, -1) + i;
+            } else {
+                pageObj.href = `${req.url}&page=${i}`;
+            }
+        } else {
+            pageObj.href = `/catalog?page=${i}`;
+        }
         if (page == i) {
             pageObj.current = true;
         }
         pagesArr.push(pageObj);
     }
+    const isNotFirstPage = page != 1;
+    const isnotLastPage = page != totalPages;
 
     const pagination = { pages: pagesArr, isNotFirstPage, isnotLastPage };
+    const filterOptions = { company: await getDistinctField('companyName'), location: await getDistinctField('location') };
 
     if (isNotFirstPage) {
         pagination.back = `/catalog?page=${page - 1}`;
@@ -54,10 +77,8 @@ const catalogController = async (req, res) => {
         pagination.forward = `/catalog?page=${page + 1}`;
     }
 
-    const pageAds = await getPageAds(page, adsPerPage);
-
     res.locals.pageTitle = 'All Ads Page';
-    res.render('catalog', { ads: pageAds, page: { catalog: true }, pagination });
+    res.render('catalog', { ads: pageAds, page: { catalog: true }, pagination, filterOptions });
 };
 
 const detailsController = async (req, res) => {

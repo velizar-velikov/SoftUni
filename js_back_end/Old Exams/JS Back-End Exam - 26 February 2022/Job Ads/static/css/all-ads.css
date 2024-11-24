@@ -40,7 +40,7 @@
     margin-bottom: 1.6em;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     flex-basis: 560px;
 }
 
@@ -50,6 +50,7 @@
 
 .all-ads-card-content {
     padding: 14px;
+    flex-basis: 280px;
 }
 
 .all-ads-card-content>h2 {
@@ -216,4 +217,83 @@
 
 .page-btn-container a.arrow {
     font-weight: bold;
+}
+
+#filtrationForm {
+    position: absolute;
+    left: 7em;
+    top: 9em;
+    display: flex;
+    gap: 2em;
+}
+
+.filter-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: -1.2em;
+    margin-right: -8.5em;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.filter-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.7em;
+    width: 13em;
+    color: #3c2064;
+    font-style: oblique;
+}
+
+.filter-heading span {
+    font-weight: bold;
+}
+
+#location {
+    margin-left: 0.7em;
+}
+
+#company {
+    margin-left: 0.4em;
+}
+
+#sortBy {
+    margin-left: 0.4em;
+}
+
+i.fa-solid {
+    margin-top: 1.2em;
+}
+
+.filter-container {
+    z-index: 10;
+}
+
+.filter-container label,
+.sort-container label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3c2064;
+}
+
+input.apply-filters {
+    margin-top: -0.3em;
+    height: 2.5em;
+    width: 7.5em;
+    font-size: 0.93em;
+    font-weight: bold;
+    background-color: rgb(252, 83, 74);
+    color: whitesmoke;
+    border: none;
+    transition: box-shadow 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+input.apply-filters:hover {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }

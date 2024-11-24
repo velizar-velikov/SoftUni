@@ -1,4 +1,39 @@
 <section id='all-ads-page'>
+    <form id="filtrationForm" action="" method="get">
+    <article class="filter-container-wrapper">
+        <div class="filter-heading">
+            <i class="fa-solid fa-plus"></i>
+            <h3>Filter</h3>
+        </div>
+        <article class="filter-container">
+            <div class="location-container">
+                <label for="location">Location:</label>
+                <select name="location" id="location">
+                    {{#each filterOptions.location}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="company-container">
+                <label for="company">Company:</label>
+                <select name="company" id="company">
+                    {{#each filterOptions.company}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </article>
+    </article>
+    <article class="sort-container">
+        <label for="sortBy">Sort by:</label>
+        <select name="sortBy" id="sortBy">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+        </select>
+    </article>
+    <input class="apply-filters" type="submit" value="Apply filters">
+</form>
+
     <article class='all-ads-title'>
         <h1>All ads</h1>
     </article>
