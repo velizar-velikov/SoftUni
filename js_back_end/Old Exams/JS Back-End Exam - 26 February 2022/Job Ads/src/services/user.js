@@ -50,7 +50,7 @@ async function updateUser(userId, data) {
     }
 
     user.email = data.email;
-    user.password = data.password;
+    user.password = await bcrypt.hash(data.password, Number(saltRounds));
     user.description = data.description;
 
     await user.save();

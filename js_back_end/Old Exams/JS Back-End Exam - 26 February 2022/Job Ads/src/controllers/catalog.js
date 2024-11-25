@@ -29,7 +29,6 @@ const catalogController = async (req, res) => {
     let { location, company, sortBy } = req.query;
 
     const adsPerPage = 4;
-    let adsCount;
     const data = {};
     if (location) {
         data.location = location;
