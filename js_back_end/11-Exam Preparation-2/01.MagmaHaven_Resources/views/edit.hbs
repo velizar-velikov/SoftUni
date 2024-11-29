@@ -14,12 +14,9 @@
                     <input type="text" id="image" name="image" placeholder="http://..." {{#if data.image}}value="{{data.image}}"{{/if}}>
                     <label>Volcano Type:</label>
                     <select id="type" name="typeVolcano">
-                        <option value="Supervolcanoes">Supervolcanoes</option>
-                        <option value="Submarine">Submarine</option>
-                        <option value="Subglacial">Subglacial</option>
-                        <option value="Mud">Mud</option>
-                        <option value="Stratovolcanoes">Stratovolcanoes</option>
-                        <option value="Shield">Shield</option>
+                         {{#each data.options}}
+                        <option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>
+                        {{/each}}
                     </select>
                     <label>Description:</label>
                     <textarea id="description" name="description" placeholder="...">{{data.description}}</textarea>
