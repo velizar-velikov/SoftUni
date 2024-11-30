@@ -19,8 +19,8 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
 
 # Endpoints: Todos
 
--   `/todos` -- get todo list/ create todo;
--   `/todos/{todoId}` -- get todo/update todo/ delete todo by provided id;
+- `/todos` -- get todo list/ create todo;
+- `/todos/{todoId}` -- get todo/update todo/ delete todo by provided id;;
 
 ## Get todo list
 
@@ -94,3 +94,4 @@ Content:
   "isCompleted": boolean,
 }
 ```
+
