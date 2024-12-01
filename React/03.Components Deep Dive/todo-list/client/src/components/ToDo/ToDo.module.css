@@ -1,0 +1,19 @@
+.todo-list-container {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.todo-list-container h1 {
+    font-size: 2rem;
+    height: 4rem;
+}
+
+.table-wrapper {
+    position: relative;
+    height: calc(100vh - 13rem - 45px);
+    overflow-y: scroll;
+    background: white;
+    overflow: auto;
+    width: 100%;
+}

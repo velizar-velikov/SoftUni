@@ -1,5 +1,7 @@
+import styles from './ToDo.module.css';
+
 import { useEffect, useState } from 'react';
-import LoadingSpinner from '../LoadingSpinner.jsx';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx';
 import ToDoTable from './ToDoTable.jsx';
 import Form from './Form.jsx';
 import { createTodo, getAll } from '../../api/service.js';
@@ -42,11 +44,11 @@ export default function ToDo() {
     }
 
     return (
-        <section className="todo-list-container">
+        <section className={styles['todo-list-container']}>
             <h1>Todo List</h1>
             <Form onSubmit={onSubmit} />
 
-            <div className="table-wrapper">{tasks.length > 0 ? <ToDoTable tasks={tasks} /> : <LoadingSpinner />}</div>
+            <div className={styles['table-wrapper']}>{tasks.length > 0 ? <ToDoTable tasks={tasks} /> : <LoadingSpinner />}</div>
         </section>
     );
 }

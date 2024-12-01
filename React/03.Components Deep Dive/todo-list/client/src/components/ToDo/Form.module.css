@@ -1,0 +1,17 @@
+.form-container form {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-container form input {
+    height: 2rem;
+    padding: 0.25rem 0.4rem;
+}
+
+.form-container form label {
+    display: block;
+    padding: auto;
+}

@@ -1,13 +1,14 @@
+import styles from './ToDoTable.module.css';
 import ToDoTableRow from './ToDoTableRow.jsx';
 
 export default function ToDoTable({ tasks }) {
     return (
-        <table className="table">
+        <table className={styles.table}>
             <thead>
                 <tr>
-                    <th className="table-header-task">Task</th>
-                    <th className="table-header-status">Status</th>
-                    <th className="table-header-action">Action</th>
+                    <th className={styles['table-header-task']}>Task</th>
+                    <th className={styles['table-header-status']}>Status</th>
+                    <th className={styles['table-header-action']}>Action</th>
                 </tr>
             </thead>
             <tbody>
