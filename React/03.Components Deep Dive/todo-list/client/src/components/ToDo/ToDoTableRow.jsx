@@ -26,7 +26,7 @@ export default function ToDoTableRow({ task }) {
             <td>{task.text}</td>
             <td>{status ? 'Complete' : 'Incomplete'}</td>
             <td className={styles['todo-action']}>
-                <button onClick={onButtonClick} className={styles.btn + ' ' + styles['todo-btn']}>
+                <button onClick={onButtonClick} className={`btn ${styles['todo-btn']}`}>
                     Change status
                 </button>
             </td>
