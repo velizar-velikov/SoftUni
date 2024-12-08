@@ -36,7 +36,18 @@ const createController = {
 const editController = {
     get: async (req, res) => {
         const itemId = req.params.id;
-        const item = await getById(itemId);
+        let item;
+        try {
+            item = await getById(itemId);
+        } catch (error) {
+            res.status(404).render('404');
+            return;
+        }
+
+        if (!item) {
+            res.status(404).render('404');
+            return;
+        }
 
         const userId = req.user._id;
         if (item.owner.toString() !== userId) {
@@ -69,13 +80,7 @@ const editController = {
 
 const deleteController = async (req, res) => {
     const itemId = req.params.id;
-    const item = await getById(itemId);
 
-    const userId = req.user._id;
-    if (item.owner.toString() !== userId) {
-        res.redirect('/');
-        return;
-    }
     try {
         await deleteItem(itemId, req.user._id);
         res.redirect('/catalog');

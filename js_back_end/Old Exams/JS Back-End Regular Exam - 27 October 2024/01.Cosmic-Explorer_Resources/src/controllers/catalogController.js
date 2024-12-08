@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getAll, getById, likeItem, searchData } = require('../services/dataService.js');
 const { isUser } = require('../middlewares/guards.js');
+const { parseError } = require('../utils/errorParser.js');
 
 const catalogRouter = Router();
 
@@ -16,7 +17,18 @@ const catalogController = async (req, res) => {
 const detailsController = async (req, res) => {
     const itemId = req.params.id;
     const userId = req.user?._id;
-    const item = await getById(itemId);
+    let item;
+    try {
+        item = await getById(itemId);
+    } catch (error) {
+        res.status(404).render('404');
+        return;
+    }
+
+    if (!item) {
+        res.status(404).render('404');
+        return;
+    }
 
     const isOwner = item.owner.toString() == userId;
     const hasLiked = item.likedList.some((id) => id.toString() == userId);
@@ -27,7 +39,6 @@ const detailsController = async (req, res) => {
 
 const searchController = async (req, res) => {
     const search = req.query;
-    console.log(req.query);
     const items = await searchData(search);
 
     res.render('search', { items });
@@ -39,7 +50,7 @@ const likeController = async (req, res) => {
         await likeItem(itemId, req.user._id);
         res.redirect(`/details/${itemId}`);
     } catch (error) {
-        res.redirect('/');
+        res.render('404', { errors: parseError(error).errors });
     }
 };
 

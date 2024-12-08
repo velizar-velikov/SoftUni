@@ -70,6 +70,10 @@ async function updateItem(id, data, userId) {
 async function deleteItem(id, userId) {
     const item = await Data.findById(id);
 
+    if (!item) {
+        throw new Error(`Record ${id} does not exist`);
+    }
+
     if (item.owner.toString() != userId) {
         throw new Error('Access denied');
     }
@@ -81,6 +85,10 @@ async function deleteItem(id, userId) {
 
 async function likeItem(id, userId) {
     const item = await Data.findById(id);
+
+    if (!item) {
+        throw new Error(`Record ${id} does not exist`);
+    }
 
     if (item.owner.toString() == userId) {
         throw new Error('Owner cannot like his own item');

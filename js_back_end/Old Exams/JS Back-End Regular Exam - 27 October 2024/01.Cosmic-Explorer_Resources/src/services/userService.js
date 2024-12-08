@@ -11,12 +11,6 @@ async function register(username, email, password) {
         throw new Error('User with the same email already exists');
     }
 
-    const existingUsername = await User.findOne({ username });
-
-    if (existingUsername) {
-        throw new Error('User with the same username already exists');
-    }
-
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const user = new User({
@@ -25,7 +19,13 @@ async function register(username, email, password) {
         password: hashedPassword,
     });
 
-    await user.save();
+    try {
+        await user.save();
+    } catch (error) {
+        if (error.code === 11000) {
+            throw new Error('This username is taken');
+        }
+    }
 
     return user;
 }

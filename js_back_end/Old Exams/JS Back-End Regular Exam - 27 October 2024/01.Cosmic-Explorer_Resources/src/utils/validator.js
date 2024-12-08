@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 
 const validations = {
+    login: [body('username').trim(), body('password').trim()],
     register: [
         body('username').trim().isLength({ min: 2, max: 20 }).withMessage('username must be between 2 and 20 characters long'),
         body('email').trim().isLength({ min: 10 }).isEmail().withMessage('email must be at least 10 characters long'),

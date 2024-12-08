@@ -60,7 +60,7 @@ const logoutController = async (req, res) => {
 userRouter.get('/register', isGuest(), registerController.get);
 userRouter.post('/register', isGuest(), validateInputs('register'), registerController.post);
 userRouter.get('/login', isGuest(), loginController.get);
-userRouter.post('/login', isGuest(), loginController.post);
+userRouter.post('/login', isGuest(), validateInputs('login'), loginController.post);
 userRouter.get('/logout', isUser(), logoutController);
 
 module.exports = { userRouter };
