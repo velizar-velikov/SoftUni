@@ -1,0 +1,32 @@
+<section id='detailsPage'>
+    <div id='detailsInfo'>
+        <h1>Name: Laptop HP EliteBook 820 G4</h1>
+        <div class='info'><img src='{{electronic.image}}' /></div>
+
+        <div class='info'>
+            <h3>Type: {{electronic.type}}</h3>
+            <h3>Year of Production: {{electronic.production}}</h3>
+            <h3>Years of Exploitation: {{electronic.exploitation}}</h3>
+            <h3>Damages: {{electronic.damages}}.</h3>
+            <h3>Description: {{electronic.description}}</h3>
+            <h2>Price: ${{electronic.price}}</h2>
+        </div>
+
+        {{#if hasUser}}
+            <div class='buttons'>
+                {{#if isOwner}}
+                    <a href='/edit/{{electronic._id}}' class='edit-btn'>Edit</a>
+                    <a href='/delete/{{electronic._id}}' class='delete-btn'>Delete</a>
+                {{else}}
+
+                    {{#if canBuy}}
+                        <a href='/buy/{{electronic._id}}' class='buy-btn'>Buy</a>
+                    {{else}}
+                        <p><span class='buy'>Thank You For Your Purchase</span></p>
+                    {{/if}}
+
+                {{/if}}
+            </div>
+        {{/if}}
+    </div>
+</section>
